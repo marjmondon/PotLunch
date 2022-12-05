@@ -1,0 +1,5 @@
+class ChangeTagsToLunch < ActiveRecord::Migration[7.0]
+  def change
+    remove_column :lunches, :tags
+  end
+end

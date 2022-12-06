@@ -3,9 +3,14 @@ class LunchesController < ApplicationController
 
   def index
     @lunches = policy_scope(Lunch)
+    @group = policy_scope(Group)
+    @group = Group.find(params[:group_id])
+    @lunches = @group.lunches
   end
 
   def show
+    @group = Group.find(params[:group_id])
+    @lunch = Lunch.find(params[:id])
   end
 
   def new

@@ -4,6 +4,6 @@
   <% else %>
     <%= image_tag('lunch.jpg') %>
   <% end %>
-  <%= lunch.title %>
+  <%= link_to "#{lunch.title}", group_lunch_path(@group, lunch) %>
 
 <% end %>

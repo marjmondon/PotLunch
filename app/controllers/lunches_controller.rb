@@ -11,7 +11,6 @@ class LunchesController < ApplicationController
 
   def show
     @group = Group.find(params[:group_id])
-    @lunch = Lunch.find(params[:id])
   end
 
   def new
@@ -39,7 +38,6 @@ class LunchesController < ApplicationController
   end
 
   def update
-    # TODO la ligne 36 pour afficher sur ma page index
     @group = Group.find(params[:group_id])
     if @lunch.update(edit_lunch_params)
       if params[:lunch][:photos].present?
@@ -47,8 +45,7 @@ class LunchesController < ApplicationController
           @lunch.photos.attach(photo)
         end
       end
-       # TODO a rediriger vers show:  redirect_to group_lunch_path(@lunch)
-      redirect_to group_lunches_path(@group), notice: "Your lunch was successfully updated."
+      redirect_to group_lunch_path([@group, @lunch]), notice: "Your lunch was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

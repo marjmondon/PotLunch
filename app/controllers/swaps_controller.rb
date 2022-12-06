@@ -7,13 +7,26 @@ class SwapsController < ApplicationController
 
   def new
     @swap = Swap.new
+    @lunch = Lunch.find(params[:lunch_id])
+    @group = Group.find(params[:group_id])
     authorize @swap
+
   end
 
   def create
     @swap = Swap.new(swap_params)
-    @swap.requested!
+    # @swap.requested!
+    @group = Group.find(params[:group_id])
+    @lunch = Lunch.find(params[:lunch_id])
+    @swap.lunch = @lunch
+    @swap.user = current_user
     authorize @swap
+    if @swap.save
+      # TODO :redéfinir la redirection vers dashboard ou autre
+      redirect_to group_lunch_swaps_path([@group, @lunch]), notice: 'Your swap request was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private

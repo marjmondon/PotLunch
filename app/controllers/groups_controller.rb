@@ -1,16 +1,19 @@
 class GroupsController < ApplicationController
   def index
     @groups = policy_scope(Group)
-  end
-
-  def show
-    authorize @group
+    @usergroups = Usergroup.where(user: current_user)
+    @group = Group.new
   end
 
   def create
-    @group = Group.new(group_params)
-    @group.user = current_user
     authorize @group
+    @group = Group.new(group_params)
+    @usergroup = Usergroup.new(user: current_user, group: @group)
+    if @usergroup.save && @group.save
+      redirect_to group_lunches_path(@group), notice: "#{@group.name} group was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -23,5 +26,11 @@ class GroupsController < ApplicationController
 
   def destroy
     authorize @group
+  end
+
+  private
+
+  def group_params
+    params.require(:group).permit(:name, :logo_url)
   end
 end

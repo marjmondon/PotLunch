@@ -1,1 +1,4 @@
-<h1>hOLAAAA</h1>
+<%= simple_form_for ([@group, @lunch, @swap]) do |f|  %>
+  <%= f.input :delivery_date, placeholder: "delivery date", as: :date, html5: true %>
+  <%= f.button :submit, "Ask for Lunch"%>
+<% end %>

@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts 'Clear DB..'
+
+Group.destroy_all
+User.destroy_all
+Lunch.destroy_all
+
+puts 'Create data...'
+
+# le_wagon = Group.new()

@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :lunches
-  has_many :groups, througt: :usergroup
+  has_many :usergroups
+  has_many :groups, through: :usergroups
 end

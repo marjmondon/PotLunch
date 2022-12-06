@@ -1,0 +1,6 @@
+<%# hide the links for unauthorized users %>
+<% if policy(@lunch).edit? %>
+  <%= link_to "Edit this lunch", edit_lunch_path(@lunch) %> |
+<% end %>
+<!-- [bouton destroy] -->
+<%= button_to "Destroy this lunch", @lunch, method: :delete if policy(@lunch).destroy? %>

@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @groups = policy_scope(Group)
     @usergroups = Usergroup.where(user: current_user)

@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       resources :swaps, only: %i[index new create update]
     end
   end
+
+  get "/dashboard", to: "swaps#index"
 end

@@ -1,7 +1,9 @@
 class SwapsController < ApplicationController
 
   def index
-    raise
+    @swaps = policy_scope(Swap)
+    @lunches = Lunches.where(user: current_user)
+    @swaps = Swap.where(lunch_id: @lunches)
   end
 
   def new

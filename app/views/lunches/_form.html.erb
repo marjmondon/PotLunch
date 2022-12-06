@@ -1,0 +1,8 @@
+<%= simple_form_for ([@group, @lunch]) do |f|  %>
+  <%= f.input :cooking_date, placeholder: "cooking date", as: :date, html5: true %>
+  <%= f.input :title, placeholder: "Title" %>
+  <%= f.input :description, placeholder: "Description" %>
+  <%= f.input :recipe_url, placeholder: "Recipe_url" %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.button :submit, "Create Lunch"%>
+<% end %>

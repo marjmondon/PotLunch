@@ -1,1 +1,19 @@
 <h1>My lunches and swaps</h1>
+<% if @lunches.nil? %>
+  <p>You didn't create lunch yet!</p>
+<% else %>
+  <% @lunches.each do |lunch| %>
+    <%= lunch.title %>
+  <% end %>
+<% end %>
+<br>
+<br>
+<br>
+<span>*************************************</span>
+
+<% @swaps.each do |swap| %>
+  <%= swap.lunch.title  %>
+  <%= swap.user.first_name %>
+  <%= swap.delivery_date %>
+  <span>-------------------</span>
+<% end %>

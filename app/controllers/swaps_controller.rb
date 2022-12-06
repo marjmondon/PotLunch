@@ -2,7 +2,7 @@ class SwapsController < ApplicationController
 
   def index
     @swaps = policy_scope(Swap)
-    @lunches = Lunches.where(user: current_user)
+    @lunches = Lunch.where(user: current_user)
     @swaps = Swap.where(lunch_id: @lunches)
   end
 

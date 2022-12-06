@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_170957) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_201128) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_170957) do
     t.index ["user_id"], name: "index_lunches_on_user_id"
   end
 
+  create_table "swaps", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.bigint "user_id", null: false
+    t.bigint "lunch_id", null: false
+    t.date "delivery_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lunch_id"], name: "index_swaps_on_lunch_id"
+    t.index ["user_id"], name: "index_swaps_on_user_id"
+  end
+
   create_table "usergroups", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
@@ -91,6 +102,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_170957) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "lunches", "groups"
   add_foreign_key "lunches", "users"
+  add_foreign_key "swaps", "lunches"
+  add_foreign_key "swaps", "users"
   add_foreign_key "usergroups", "groups"
   add_foreign_key "usergroups", "users"
 end

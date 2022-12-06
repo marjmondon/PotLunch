@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :groups, except: [:new] do
-    resources :lunches
+    resources :lunches do
+      resources :swaps, only: %i[index new create update]
+    end
   end
 end

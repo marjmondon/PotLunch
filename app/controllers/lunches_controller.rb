@@ -9,6 +9,8 @@ class LunchesController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:group_id])
+    @lunch = Lunch.find(params[:id])
   end
 
   def new

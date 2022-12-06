@@ -6,11 +6,13 @@ class SwapsController < ApplicationController
 
   def new
     @swap = Swap.new
+    authorize @swap
   end
 
   def create
     @swap = Swap.new(swap_params)
     @swap.requested!
+    authorize @swap
   end
 
   private

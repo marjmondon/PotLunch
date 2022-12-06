@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :lunches
   has_many :usergroups
   has_many :groups, through: :usergroups
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end

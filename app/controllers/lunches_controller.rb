@@ -10,15 +10,19 @@ class LunchesController < ApplicationController
 
   def new
     @lunch = Lunch.new
+    @group = Group.find(params[:group_id])
     authorize @lunch
   end
 
   def create
     @lunch = Lunch.new(lunch_params)
     @lunch.user = current_user
+    @group = Group.find(params[:group_id])
+    @lunch.group = @group
     authorize @lunch
+
     if @lunch.save
-      redirect_to root_path, notice: 'Your lunch was successfully created.'
+      redirect_to group_lunches_path(@group), notice: 'Your lunch was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -53,11 +57,11 @@ class LunchesController < ApplicationController
   end
 
   def edit_lunch_params
-    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :tags)
+    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :tags, photos: [])
   end
 
   def lunch_params
-    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :tags, photos: [])
+    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :lunch_id, :tags, :user_id, photos: [])
   end
 
 end

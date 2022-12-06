@@ -1,4 +1,4 @@
-class LunchPolicy < ApplicationPolicy
+class GroupPolicy < ApplicationPolicy
   def show?
     true
   end

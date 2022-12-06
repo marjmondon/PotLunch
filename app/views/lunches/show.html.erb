@@ -1,0 +1,17 @@
+<% @lunch.photos.each do |photo| %>
+  <% if lunch.photos.attached? %>
+    <%= cl_image_tag lunch.photos.first.key, height: 250 %>
+  <% else %>
+    <%= image_tag('lunch.jpg') %>
+  <% end %>
+<% end %>
+
+ <h1><%= @lunch.title %></h1>
+ <%= @lunch.description %>
+
+<%# hide the links for unauthorized users %>
+<% if policy(@lunch).edit? %>
+  <%= link_to "Edit this lunch", edit_lunch_path(@lunch) %> |
+<% end %>
+<!-- [bouton destroy] -->
+<%= button_to "Destroy this lunch", @lunch, method: :delete if policy(@lunch).destroy? %>

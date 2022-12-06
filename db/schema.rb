@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_03_211621) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_201128) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,47 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_211621) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "logo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lunches", force: :cascade do |t|
+    t.date "cooking_date"
+    t.string "title"
+    t.text "description"
+    t.string "recipe_url"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "tags", array: true
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_lunches_on_group_id"
+    t.index ["user_id"], name: "index_lunches_on_user_id"
+  end
+
+  create_table "swaps", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.bigint "user_id", null: false
+    t.bigint "lunch_id", null: false
+    t.date "delivery_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lunch_id"], name: "index_swaps_on_lunch_id"
+    t.index ["user_id"], name: "index_swaps_on_user_id"
+  end
+
+  create_table "usergroups", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_usergroups_on_group_id"
+    t.index ["user_id"], name: "index_usergroups_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -50,10 +91,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_211621) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "lunches", "groups"
+  add_foreign_key "lunches", "users"
+  add_foreign_key "swaps", "lunches"
+  add_foreign_key "swaps", "users"
+  add_foreign_key "usergroups", "groups"
+  add_foreign_key "usergroups", "users"
 end

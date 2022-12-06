@@ -1,0 +1,9 @@
+ <% @lunches.each do |lunch| %>
+  <% if lunch.photos.attached? %>
+    <%= cl_image_tag lunch.photos.first.key, height: 250 %>
+  <% else %>
+    <%= image_tag('lunch.jpg') %>
+  <% end %>
+  <%= lunch.title %>
+
+<% end %>

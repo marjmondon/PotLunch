@@ -1,0 +1,13 @@
+.vertical-nav{
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  padding: 50px 10px;
+  margin-bottom: 300px;
+  position: fixed;
+  top: 50;
+  width: 80px;
+  z-index: 1;
+}

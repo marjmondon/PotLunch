@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :groups, except: [:new] do
     resources :lunches do
-      resources :swaps, only: %i[index new create update]
+      resources :swaps, only: %i[index new create update] do
+        resources :chatrooms, only: :show do
+          resources :messages, only: :create
+        end
+      end
     end
   end
 end

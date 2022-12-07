@@ -18,4 +18,6 @@
 <% end %>
 <!-- [bouton destroy] -->
 <%= button_to "Destroy this lunch", group_lunch_path([@group,@lunch]), method: :delete if policy(@lunch).destroy? %>
-<%= link_to "Ask this lunch", new_group_lunch_swap_path(@group, @lunch) %>
+<% if (@lunch.user != current_user) && (@swap.exists? == false) %>
+  <%= link_to "Ask this lunch", new_group_lunch_swap_path(@group, @lunch) %>
+<% end %>

@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :groups, except: [:new] do
     resources :lunches do
       resources :swaps, only: %i[new create update] do
-        resources :chatrooms, only: %i[new show] do
-          resources :messages, only: :create
+        resources :chatrooms, only: %i[new show] do #non necessaire
+          resources :messages, only: :create #non necessaire
         end
       end
     end
@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   resources :lunches, only: [] do
     resources :swaps, only: %i[new create]
     end
-  resources :swaps, only: %i[index update]
+  resources :swaps, only: %i[index update] do
+    resources :messages, only: :create
+  end
   # get "/dashboard", to: "swaps#index"
+  post 'lunches/:lunch_id', to: "swaps#initiate_chat", as: :new_swap_for_chat
+  get 'swaps/:swap_id/chatroom', to: "swaps#chatroom", as: :swap_chatroom
 end
+
+# swap id a rajouter a messages

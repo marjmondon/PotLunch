@@ -1,0 +1,27 @@
+<h1>chatroom</h1>
+<p><%= @swap.user %></p>
+<p><%= @swap.lunch %></p>
+
+<div class="container chatroom"
+  data-controller="swap-subscription"
+  data-swap-subscription-swap-id-value="<%= @swap.id %>"
+>
+  <h1>Chat for : <%= @swap.lunch.title %>!</h1>
+
+  <div class="messages" data-swap-subscription-target="messages">
+    <% @swap.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [@swap.lunch.group, @swap.lunch, @swap, @message],
+    html: {data: {action: "turbo:submit-end->swap-subscription#resetForm"}, class: "d-flex"} do |f|
+  %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message here for #{@swap.lunch.title}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 class Swap < ApplicationRecord
   belongs_to :user
   belongs_to :lunch
-  has_many :chatrooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   enum status: {
     pending: 0,

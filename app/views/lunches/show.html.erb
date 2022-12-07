@@ -19,4 +19,4 @@
 <!-- [bouton destroy] -->
 <%= button_to "Destroy this lunch", group_lunch_path([@group,@lunch]), method: :delete if policy(@lunch).destroy? %>
 <%= link_to "Ask this lunch", new_lunch_swap_path(@lunch) %>
-<%= link_to "Chat for more details", new_group_lunch_swap_chatroom_path(@chatroom, @message) %>
+<%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), data: {turbo_method: :post} %>

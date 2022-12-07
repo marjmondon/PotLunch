@@ -8,11 +8,14 @@
 
  <h1><%= @lunch.title %></h1>
  <%= @lunch.description %>
+ <% @lunch.tags.each do |tag| %>
+ <%= tag %>
+ <% end %>
 
 <%# hide the links for unauthorized users %>
 <% if policy(@lunch).edit? %>
   <%= link_to "Edit this lunch", edit_group_lunch_path([@group, @lunch]) %>
 <% end %>
 <!-- [bouton destroy] -->
-<%# <%= button_to "Destroy this lunch", @lunch, method: :delete if policy(@lunch).destroy? %>
+<%= button_to "Destroy this lunch", group_lunch_path([@group,@lunch]), method: :delete if policy(@lunch).destroy? %>
 <%= link_to "Ask this lunch", new_group_lunch_swap_path(@group, @lunch) %>

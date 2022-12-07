@@ -3,6 +3,8 @@
   <%= f.input :title, placeholder: "Title" %>
   <%= f.input :description, placeholder: "Description" %>
   <%= f.input :recipe_url, placeholder: "Recipe_url" %>
+  <%= f.input :tags, :collection => ["Vegan", "Vege", "Spicy", "Nuts free", "Gluten free", "Seafood"], as: :check_boxes,  input_html: { class: "tag-selector" },
+              item_wrapper_class: 'tag-item' %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit, "Create Lunch"%>
 <% end %>

@@ -52,8 +52,9 @@ class LunchesController < ApplicationController
   end
 
   def destroy
+    @group = Group.find(params[:group_id])
     @lunch.destroy
-    redirect_to group_lunches_path, status: :see_other
+    redirect_to group_lunches_path(@group), status: :see_other
   end
 
   private
@@ -64,11 +65,11 @@ class LunchesController < ApplicationController
   end
 
   def edit_lunch_params
-    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :lunch_id, :tags, :user_id, photos: [])
+    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :lunch_id, :user_id, tags: [], photos: [])
   end
 
   def lunch_params
-    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :lunch_id, :tags, :user_id, photos: [])
+    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :lunch_id, :user_id, tags: [], photos: [])
   end
 
 end

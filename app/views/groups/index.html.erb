@@ -1,13 +1,22 @@
-<h1>Page index groups</h1>
-
 <% @usergroups.each do |usergroup| %>
   <%= link_to "#{usergroup.group.name}", group_lunches_path(usergroup.group)%>
 <% end %>
 
 <div class="container">
-  <h1>Create new group </h1>
-  <%= simple_form_for @group do |f| %>
-    <%= f.input :name, placeholder: "Name" %>
-    <%= f.button :submit, "Submit", class: "btn btn-primary" %>
-  <% end %>
+  <div class="row">
+    <div class="col form">
+    <h1 class="text-center">Create new group </h1>
+      <div class="form-inputs">
+      <%= simple_form_for @group do |f| %>
+        <%= f.input :name %>
+      </div>      
+      <div class="text-center">
+        <%= f.button :submit, "Submit", class: "form__button" %>
+      </div>
+      <% end %>
+    </div> 
+    <div class="col form">
+      <%= image_tag('SWAPC.png', :class => "swap-image") %>
+    </div>  
+  </div>
 </div>

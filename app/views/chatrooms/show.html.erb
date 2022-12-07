@@ -10,7 +10,7 @@
     <% end %>
   </div>
 
-  <%= simple_form_for [@chatroom, @message],
+  <%= simple_form_for [@chatroom.swap.lunch.group, @chatroom.swap.lunch, @chatroom.swap, @chatroom, @message],
     html: {data: {action: "turbo:submit-end->chatroom-subscription#resetForm"}, class: "d-flex"} do |f|
   %>
     <%= f.input :content,

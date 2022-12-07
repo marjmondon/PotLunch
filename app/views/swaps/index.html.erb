@@ -20,12 +20,14 @@
   <br>
   <%= swap.status %>
   <br>
-  <%= simple_form_for(swap) do |f| %>
-    <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
-    <%= f.button :submit, "Update swap" %>
+  <% if swap.status == "pending" %>
+    <%= simple_form_for(swap) do |f| %>
+      <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
+      <%= f.button :submit, "Update swap" %>
+    <% end %>
+    <span>-------------------</span>
+    <br>
   <% end %>
-  <span>-------------------</span>
-  <br>
 <% end %>
 <br>
 <span>*************************************</span>
@@ -38,4 +40,22 @@
   <br>
   <span>-------------------</span>
   <br>
+<% end %>
+
+<%= week_calendar(events: @swaps_calendar, attribute: :delivery_date) do |date, swaps| %>
+  <%= date %>
+  <% swaps.each do |swap| %>
+  <%# <-- We will add some style to the meeting class later so let's add it now --> %>
+    <% if swap.status == "accepted" %>
+      <% if swap.user == current_user || swap.lunch.user == current_user %>
+        <div class="meeting">
+          <% if swap.lunch.user == current_user %>
+            <p>You have to bring <%= swap.lunch.title %> to <%= swap.user.first_name %></p>
+          <% else %>
+            <p>You'll received <%= swap.lunch.title %> from <%= swap.lunch.user.first_name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>

@@ -1,19 +1,41 @@
-<h1>My lunches and swaps</h1>
+<h1>My lunches</h1>
 <% if @lunches.nil? %>
   <p>You didn't create lunch yet!</p>
 <% else %>
   <% @lunches.each do |lunch| %>
     <%= lunch.title %>
+    <br>
+    <span>-------------------</span>
+    <br>
   <% end %>
 <% end %>
 <br>
 <br>
 <br>
 <span>*************************************</span>
-
+<h1>My swaps</h1>
+<br>
 <% @swaps.each do |swap| %>
-  <%= swap.lunch.title  %>
-  <%= swap.user.first_name %>
-  <%= swap.delivery_date %>
+  <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} at #{swap.delivery_date}" %>
+  <br>
+  <%= swap.status %>
+  <br>
+  <%= simple_form_for(swap) do |f| %>
+    <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
+    <%= f.button :submit, "Update swap" %>
+  <% end %>
   <span>-------------------</span>
+  <br>
+<% end %>
+<br>
+<span>*************************************</span>
+<h1>My swaps asked</h1>
+<br>
+<% @swaps_asked.each do |swap| %>
+  <%= "You have asked for #{swap.lunch.title} from #{swap.lunch.user.first_name} at #{swap.delivery_date}" %>
+  <br>
+  <%= swap.status %>
+  <br>
+  <span>-------------------</span>
+  <br>
 <% end %>

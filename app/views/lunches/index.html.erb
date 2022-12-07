@@ -1,9 +1,13 @@
  <% @lunches.each do |lunch| %>
   <% if lunch.photos.attached? %>
-    <%= cl_image_tag lunch.photos.first.key, height: 250 %>
+    <%# <%= cl_image_tag lunch.photos.first.key, height: 250%> %>
   <% else %>
     <%= image_tag('lunch.jpg') %>
   <% end %>
   <%= link_to "#{lunch.title}", group_lunch_path(@group, lunch) %>
 
 <% end %>
+<br>
+<span>***********************</span>
+<br>
+<%= link_to "Create a lunch", new_group_lunch_path(@group) %>

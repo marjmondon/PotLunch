@@ -1,0 +1,13 @@
+<h5><strong>Filter by</strong></h5>
+  <%= form_with url: group_lunches_path(@group), method: :get do |form|%>
+    <%# <%= form.text_field :query, { value:params[:query], class: "form-control", placeholder: "Search by name" }%>
+    <%# <%= form.check_box :eatable, label: "Eatable"  %>
+    <%#= form.check_box :trippy value: "1"  %>
+    <%# <div> %>
+
+      <%= form.select :query, [" ", "Vegan", "Vege", "Spicy", "Nuts", "Gluten", "Seafood"]%>
+    <%# </div> %>
+    <%# <%= form.select :trippy, [" ", "Yes", "No"]  %>
+    <%# <%= form.select :eatable, [" ", "Yes", "No"]  %>
+    <%= submit_tag "Search"%>
+  <% end %>

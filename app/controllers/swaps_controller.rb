@@ -11,7 +11,6 @@ class SwapsController < ApplicationController
   def new
     @swap = Swap.new
     @lunch = Lunch.find(params[:lunch_id])
-    @group = Group.find(params[:group_id])
     authorize @swap
   end
 

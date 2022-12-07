@@ -1,19 +1,45 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-  <div class="card-text-spacing">
-    <h1>Hello <%=current_user.first_name.capitalize %></h1>
-    <%= link_to "Share a lunch", new_group_lunch_path, class:"header__button" %>
+<div class="container">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <div class="card-text-spacing">
+      <h1>Hello <%=current_user.first_name.capitalize %></h1>
+      <%= link_to "Share a lunch", new_group_lunch_path, class:"header__button" %>
+    </div>
   </div>
-</div>
- 
- <% @lunches.each do |lunch| %>
-  <% if lunch.photos.attached? %>
-    <%= cl_image_tag lunch.photos.first.key, height: 250%>
-  <% else %>
-    <%= image_tag('lunch.jpeg') %>
-  <% end %>
-  <%= link_to "#{lunch.title}", group_lunch_path(@group, lunch) %>
 
-<% end %>
-<br>
-<br>
-<%= link_to "Create a lunch", new_group_lunch_path(@group) %>
+<div class="col mb-5">
+  <form>
+    <input class="outlined-input" type="text" id="groundlink" name="fname" placeholder="group referral link">
+  </form>
+</div>
+
+<div class="col mb-5 filter ">
+
+  <form>
+    <input class="outlined-input" type="text" id="groundlink" name="fname" placeholder="Search by name">
+    <%= link_to "Search", new_group_lunch_path, class:"header__button" %>
+  </form>
+    <p>Filter by:</p>
+      <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
+      <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
+      <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
+
+
+  
+</div>
+
+
+
+  
+  <% @lunches.each do |lunch| %>
+    <% if lunch.photos.attached? %>
+      <%= cl_image_tag lunch.photos.first.key, height: 250%>
+    <% else %>
+      <%= image_tag('lunch.jpeg') %>
+    <% end %>
+    <%= link_to "#{lunch.title}", group_lunch_path(@group, lunch) %>
+
+  <% end %>
+  <br>
+  <br>
+  <%= link_to "Create a lunch", new_group_lunch_path(@group) %>
+</div>

@@ -52,8 +52,9 @@ class LunchesController < ApplicationController
   end
 
   def destroy
+    @group = Group.find(params[:group_id])
     @lunch.destroy
-    redirect_to group_lunches_path, status: :see_other
+    redirect_to group_lunches_path(@group), status: :see_other
   end
 
   private

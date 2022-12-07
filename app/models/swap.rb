@@ -1,6 +1,6 @@
 class Swap < ApplicationRecord
   belongs_to :user
-  belongs_to :lunch
+  belongs_to :lunch, dependent: :destroy
 
   enum status: {
     pending: 0,

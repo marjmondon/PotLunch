@@ -1,12 +1,19 @@
-.navbar-lewagon {
+.navbar-home {
   justify-content: space-between;
-  background: white;
+  background-color: $white;
+  // background-image: url(header-bg.png);
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-home .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-home .navbar-brand img {
+  width: 125px;
+}
+
+.nav-link {
+  color: $gray;
+  font-weight: bold;
+  font-size: 20px;
 }

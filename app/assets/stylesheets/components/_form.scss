@@ -1,0 +1,28 @@
+.form{
+  padding: 40px;
+  margin: 40px;
+}
+
+.form h1{
+  font-weight: 700;
+}
+
+.form-inputs {
+  padding: 50px;
+  font-weight: 700;
+  color: $light-gray;
+}
+
+.form-inputs input {
+  border: 2px solid $orange;
+}
+
+.form-inputs input:focus {
+  border: 2px solid $red;
+}
+
+.swap-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}

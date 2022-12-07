@@ -1,0 +1,25 @@
+.header {
+  background-image: url(header-bg.png);
+  height: 400px;
+  margin-bottom: 20px;
+  padding: 80px;
+  position: relative;
+}
+
+.header__title {
+  font-size: 74px;
+  font-weight: 700;
+  color: $gray;
+  margin-bottom: 20px;
+}
+
+.header__subtitle {
+  font-size: 24px;
+  font-weight: 400;
+  color: $gray;
+  margin-bottom: 30px;
+  inline-size: 450px;
+  overflow-wrap: break-word;
+}
+
+

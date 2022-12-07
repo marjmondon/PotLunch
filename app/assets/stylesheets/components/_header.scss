@@ -2,7 +2,7 @@
   background-image: url(header-bg.png);
   height: 400px;
   margin-bottom: 20px;
-  padding: 100px;
+  padding: 80px;
   position: relative;
 }
 
@@ -22,17 +22,18 @@
 
 .header__button {
   background-image: linear-gradient(180deg, $orange 0%, $red 100%);
+  background-position: cover;
   border-radius: 15px;
   color: $tan;
   font-size: 24px;
   font-weight: 700;
-  padding: 10px 50px;
+  padding: 5px 50px;
   text-decoration: none;
   transition: 0.5s ease;
 }
 
 .header__button:hover {
   background-image: linear-gradient(180deg, $orange 51%, $red 100%);
-  color: $gray;
+  color: $tan;
 }
 

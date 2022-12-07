@@ -7,7 +7,7 @@
 }
 
 .header__title {
-  font-size: 70px;
+  font-size: 74px;
   font-weight: 700;
   color: $gray;
   margin-bottom: 20px;
@@ -18,6 +18,8 @@
   font-weight: 400;
   color: $gray;
   margin-bottom: 30px;
+  inline-size: 450px;
+  overflow-wrap: break-word;
 }
 
 .header__button {
@@ -27,13 +29,13 @@
   color: $tan;
   font-size: 24px;
   font-weight: 700;
-  padding: 5px 50px;
+  padding: 5px 60px;
   text-decoration: none;
-  transition: 0.5s ease;
+  transition: 1s ease;
 }
 
 .header__button:hover {
-  background-image: linear-gradient(180deg, $orange 51%, $red 100%);
+  background-image: linear-gradient(160deg, $orange 0%, $red 80%);
   color: $tan;
 }
 

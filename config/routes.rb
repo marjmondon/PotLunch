@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   resources :groups, except: [:new] do
     resources :lunches do
-      resources :swaps, only: %i[new create update]
+      resources :swaps, only: %i[new create update] do
+        resources :chatrooms, only: :show do
+          resources :messages, only: :create
+        end
+      end
     end
   end
   resources :swaps, only: %i[index update]

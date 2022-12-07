@@ -1,6 +1,24 @@
 .home_features {
   display: flex;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: space-evenly;
+  padding: 20px 100px;
+}
+
+.home_features_div {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding: 100px;
+
+}
+
+.home_features img {
+  width: 300px;
   margin: 0px auto;
+  aspect-ratio: 16/9;
+}
+
+.home_subtitle {
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -2,7 +2,10 @@ class SwapsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    raise
+    @swaps = policy_scope(Swap)
+    @lunches = Lunch.where(user: current_user)
+    @swaps = Swap.where(lunch_id: @lunches)
+    @swaps_asked = Swap.where(user_id: current_user)
   end
 
   def new
@@ -10,7 +13,6 @@ class SwapsController < ApplicationController
     @lunch = Lunch.find(params[:lunch_id])
     @group = Group.find(params[:group_id])
     authorize @swap
-
   end
 
   def create
@@ -29,9 +31,19 @@ class SwapsController < ApplicationController
     end
   end
 
+  def update
+    @swap = Swap.find(params[:id])
+    authorize @swap
+    if @swap.update(swap_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def swap_params
-    params.require(:swap).permit(:user_id, :lunch_id, :delivery_date)
+    params.require(:swap).permit(:user_id, :lunch_id, :delivery_date, :status)
   end
 end

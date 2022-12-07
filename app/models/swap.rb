@@ -5,7 +5,7 @@ class Swap < ApplicationRecord
   enum status: {
     pending: 0,
     requested: 1,
-    approbated: 2,
+    accepted: 2,
     refused: 3
   }
 end

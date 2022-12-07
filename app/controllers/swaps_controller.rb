@@ -6,6 +6,9 @@ class SwapsController < ApplicationController
     @lunches = Lunch.where(user: current_user)
     @swaps = Swap.where(lunch_id: @lunches)
     @swaps_asked = Swap.where(user_id: current_user)
+    start_date = params.fetch(:start_date, Date.today).to_date
+    @swaps_calendar = Swap.where(delivery_date: start_date.beginning_of_week..start_date.end_of_week)
+    # raise
   end
 
   def new
@@ -24,8 +27,7 @@ class SwapsController < ApplicationController
     @swap.user = current_user
     authorize @swap
     if @swap.save
-      # TODO :redéfinir la redirection vers dashboard ou autre
-      redirect_to group_lunch_swaps_path([@group, @lunch]), notice: 'Your swap request was successfully created.'
+      redirect_to group_lunches_path(@group), notice: 'Your swap request was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -44,6 +46,6 @@ class SwapsController < ApplicationController
   private
 
   def swap_params
-    params.require(:swap).permit(:user_id, :lunch_id, :delivery_date, :status)
+    params.require(:swap).permit(:user_id, :lunch_id, :delivery_date, :status, :start_date)
   end
 end

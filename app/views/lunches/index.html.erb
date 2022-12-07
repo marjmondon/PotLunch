@@ -24,6 +24,14 @@
         <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
   </div>
   <%# fin du filter %>
+<%= render "filter", lunch: @lunch %>
+ <% @lunches.each do |lunch| %>
+  <% if lunch.photos.attached? %>
+    <%= cl_image_tag lunch.photos.first.key, height: 250%>
+  <% else %>
+    <%= image_tag('lunch.jpeg') %>
+  <% end %>
+  <%= link_to "#{lunch.title}", group_lunch_path(@group, lunch) %>
 
   <div class="col mb-4 filter">
     <h2 class="mb-4">Lunches avalaible</h2>

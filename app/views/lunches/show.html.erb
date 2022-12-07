@@ -1,4 +1,3 @@
-
 <% if @lunch.photos.attached? %>
   <% @lunch.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 250 %>
@@ -8,10 +7,10 @@
 <% end %>
 
  <h1><%= @lunch.title %></h1>
- <%#= @lunch.description %>
- <%# @lunch.tags.each do |tag| %>
- <%#= tag %>
- <%# end %>
+ <%= @lunch.description %>
+ <%# <% @lunch.tags.each do |tag| %>
+ <%# <%= tag %>
+ <%# <% end %>
 
 <%# hide the links for unauthorized users %>
 <% if policy(@lunch).edit? %>

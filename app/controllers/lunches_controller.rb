@@ -3,10 +3,18 @@ class LunchesController < ApplicationController
   before_action :set_lunch, only: %i[show edit update destroy]
 
   def index
-    @lunches = policy_scope(Lunch)
-    @group = policy_scope(Group)
-    @group = Group.find(params[:group_id])
-    @lunches = @group.lunches
+    # @lunches = policy_scope(Lunch)
+    # @group = policy_scope(Group)
+    # @group = Group.find(params[:group_id])
+    # @lunches = @group.lunches
+
+    if params[:query].present?
+      @lunches = policy_scope(Lunch).where("? = ANY (tags) AND group_id = ? ", params[:query], params[:group_id])
+      @group = policy_scope(Group).find(params[:group_id])
+    else
+      @group = policy_scope(Group).find(params[:group_id])
+      @lunches = policy_scope(Lunch).where("group_id = ? ", params[:group_id])
+    end
   end
 
   def show

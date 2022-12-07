@@ -1,16 +1,16 @@
-<% @lunch.photos.each do |photo| %>
-  <% if lunch.photos.attached? %>
-    <%= cl_image_tag lunch.photos.first.key, height: 250 %>
-  <% else %>
-    <%= image_tag('lunch.jpeg') %>
+<% if @lunch.photos.attached? %>
+  <% @lunch.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 250 %>
   <% end %>
+<% else %>
+  <%= image_tag('lunch.jpeg') %>
 <% end %>
 
  <h1><%= @lunch.title %></h1>
  <%= @lunch.description %>
- <% @lunch.tags.each do |tag| %>
- <%= tag %>
- <% end %>
+ <%# <% @lunch.tags.each do |tag| %>
+ <%# <%= tag %>
+ <%# <% end %>
 
 <%# hide the links for unauthorized users %>
 <% if policy(@lunch).edit? %>

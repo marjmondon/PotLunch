@@ -22,20 +22,4 @@
   overflow-wrap: break-word;
 }
 
-.header__button {
-  background-image: linear-gradient(180deg, $orange 0%, $red 100%);
-  background-position: cover;
-  border-radius: 15px;
-  color: $tan;
-  font-size: 24px;
-  font-weight: 700;
-  padding: 5px 60px;
-  text-decoration: none;
-  transition: 1s ease;
-}
-
-.header__button:hover {
-  background-image: linear-gradient(160deg, $orange 0%, $red 80%);
-  color: $tan;
-}
 

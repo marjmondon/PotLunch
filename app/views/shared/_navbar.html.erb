@@ -4,43 +4,40 @@
       <%= image_tag "logo.png" %>
     <% end %>
         <div>
-        <% if user_signed_in? %>
+          <% if user_signed_in? %>
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <%= link_to "Share a lunch", new_group_lunch_path(:group_id), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+              <%= link_to "Dashboard", swaps_path, class: "nav-link" %>
+              </li>
+            </ul>
+        </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <%= link_to "Share a lunch", new_group_lunch_path(:group_id), class: "nav-link" %>
+              <%= link_to "Tokens", root_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-             <%= link_to "Dashboard", swaps_path, class: "nav-link" %>
-            </li>
-          </ul>
-        </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        
-
-          <li class="nav-item">
-            <%= link_to "Tokens", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <li class="nav-item dropdown">
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
-          </li>
-        <% else %>
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-             <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
-            </li>
-          </ul>
-        <% end %>
+          <% else %>
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+              <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+              </li>
+            </ul>
+          <% end %>
       </ul>
     </div>
   </div>

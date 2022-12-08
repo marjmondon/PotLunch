@@ -16,7 +16,7 @@ class SwapsController < ApplicationController
     @swap = Swap.new
     authorize @swap
     if current_user.coins < 10
-      flash[:notice] = "LunchCoins  "
+      flash[:alert] = "Mmh 🤔 seems like you don't have enough LunchCoins"
       redirect_to group_lunches_path(@group)
     end
   end

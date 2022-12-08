@@ -14,17 +14,18 @@ class SwapsController < ApplicationController
   def new
     @swap = Swap.new
     authorize @swap
+
     if current_user.coins < 10
       flash[:alert] = "Mmh 🤔 seems like you don't have enough LunchCoins"
-      redirect_to group_lunches_path(@group)
+      redirect_to group_lunches_path(@lunch.group)
     end
   end
 
   def create
     @swap = Swap.new(swap_params)
-    @swap.requested!
     @swap.lunch = @lunch
     @swap.user = current_user
+    @swap.requested!
     authorize @swap
 
     if @swap.save

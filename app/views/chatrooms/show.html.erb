@@ -21,3 +21,13 @@
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>
 </div>
+
+
+<% if @chatroom.swap.status == "pending" %>
+  <%= simple_form_for(@chatroom.swap) do |f| %>
+    <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
+    <%= f.button :submit, "Update swap" %>
+  <% end %>
+  <span>-------------------</span>
+  <br>
+<% end %>

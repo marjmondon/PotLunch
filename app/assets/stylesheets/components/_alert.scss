@@ -6,7 +6,7 @@
 }
 
 .flash {
-  padding: 16px 24px;
+  padding: 16px 38px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,4 +18,8 @@
 
 .flash-warning {
   border: 2px solid #FFC65A;
+}
+
+.flash-danger {
+  border: 2px solid #FD1015;
 }

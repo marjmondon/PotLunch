@@ -4,6 +4,7 @@ class ChatroomsController < ApplicationController
 
   def show
     @message = Message.new
+    @swap = Swap.find(params[:swap_id])
   end
 
   def new

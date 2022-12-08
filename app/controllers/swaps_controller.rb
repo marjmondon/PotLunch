@@ -1,7 +1,6 @@
 class SwapsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_lunch, only: %i[new create]
-  before_action :set_group, only: %i[new create]
 
   def index
     @swaps = policy_scope(Swap)
@@ -16,14 +15,14 @@ class SwapsController < ApplicationController
     @swap = Swap.new
     authorize @swap
     if current_user.coins < 10
-      flash[:notice] = "LunchCoins  "
+      flash[:alert] = "Mmh 🤔 seems like you don't have enough LunchCoins"
       redirect_to group_lunches_path(@group)
     end
   end
 
   def create
     @swap = Swap.new(swap_params)
-    # @swap.requested!
+    @swap.requested!
     @swap.lunch = @lunch
     @swap.user = current_user
     authorize @swap
@@ -45,6 +44,8 @@ class SwapsController < ApplicationController
         new_coins_current_user = current_user.coins + 10
         current_user.update!(coins: new_coins_current_user)
       end
+
+      @swap.destroy if @swap.status == "refused"
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
@@ -75,10 +76,6 @@ class SwapsController < ApplicationController
 
   def set_lunch
     @lunch = Lunch.find(params[:lunch_id])
-  end
-
-  def set_group
-    @group = Group.find(params[:group_id])
   end
 
   def swap_params

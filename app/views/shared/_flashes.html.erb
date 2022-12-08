@@ -1,22 +1,14 @@
-<%# <% if notice %>
-  <%# <div class="alert alert-info alert-dismissible fade show m-1" role="alert"> %>
-    <%# <%= notice %>
-    <%# <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> %>
-    <%# </button> %>
-  <%# </div> %>
-<%# <% end %>
-
 <% if notice %>
   <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-    <span><strong>Mmh</strong> 🤔 seems like you don't have enough <%= notice %></span>
-    <a data-bs-dismiss="alert" aria-label="Close">
-      <i class="fas fa-times"></i>
-    </a>
+    <%= notice%>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
   </div>
 <% end %>
 
+
 <% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+  <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
     <%= alert %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>

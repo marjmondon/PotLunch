@@ -41,7 +41,7 @@
     <% end %>
     <div class="card-product-infos">
       <h2><%= link_to "#{lunch.title.capitalize}", group_lunch_path(@group, lunch) %></h2>
-      <p> <%= lunch.description %> Description a venir
+      <p> <%= lunch.description %> </p>
       <%#= lunch.tokens %>
       <%= link_to "Infos", new_group_lunch_path(@group), class:"header__button" %>
     </div>

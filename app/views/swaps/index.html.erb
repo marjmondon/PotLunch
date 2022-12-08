@@ -43,7 +43,7 @@
         <% if swap.status == "requested" %>
          <%= simple_form_for(swap) do |f| %>
          <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
-        <%= f.button :submit, "Update swap" %>
+         <%= f.button :submit, "Update swap", class: "btn btn-primary"  %>
         <% end %>
        <br>
        <% end %>

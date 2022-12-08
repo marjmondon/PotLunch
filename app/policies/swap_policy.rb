@@ -5,7 +5,7 @@ class SwapPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    create?
   end
 
   def create?
@@ -14,6 +14,14 @@ class SwapPolicy < ApplicationPolicy
 
   def update?
     true
+  end
+
+  def initiate_chat?
+    create?
+  end
+
+  def chatroom?
+    create?
   end
 
   class Scope < Scope

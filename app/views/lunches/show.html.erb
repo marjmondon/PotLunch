@@ -6,40 +6,41 @@
   <% else %>
     <%= image_tag('lunch.jpg') %>
   <% end %>
-  <div class="card-show-infos">
-      <%= cl_image_tag User.find(@lunch.user_id).avatar.key, class:"card-show-user" %>
-    <ul class="card-show-icons">
-        <%= @lunch.user.first_name %> <%= @lunch.user.last_name %>
-        <%= link_to image_tag("AddGroupButton.png") %>
-        <%= link_to image_tag("AddGroupButton.png") %>
-        <%= link_to image_tag("AddGroupButton.png") %>
+  <div>
+    <ul>
+      <li class="d-flex justify-content-start"><%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %></li>
+      <li class="icons bold"><%= @lunch.user.first_name %> <%= @lunch.user.last_name %></li>
+      <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
+      <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
+      <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
     </ul>
   </div>
 </div>
 
-<div class="card-product">
-  <div class="card-product-infos">
-    <h1 class="card-show-title text-center"><%= @lunch.title %></h1>
-    <h2>Cooking date: </h2>
-    <h2>Price: </h2>
-    <h2>Recipe url: </h2>
-    <h2>Description:  <%= @lunch.description %></h2>
-    <%= link_to "Infos", new_group_lunch_path(@group), class:"header__button" %>
+<div class="card-show-info">
+  <div class="card-show-title">
+    <h1 class=" text-center"><%= @lunch.title %></h1>
+    <p>Cooking date: <%= @lunch.cooking_date %></p>
+    <p>Price: 10 tokens</p>
+    <p>Recipe url: <%= @lunch.recipe_url %></p>
+    <p>Description:  <%= @lunch.description %></p>
   </div>
 </div>
 
  <%# <% @lunch.tags.each do |tag| %>
  <%# <%= tag %>
  <%# <% end %>
+<div class="text-center d-flex justify-content-evenly">
+  <% if policy(@lunch).edit? %>
+    <%= link_to "Edit this lunch", edit_group_lunch_path([@group, @lunch]), class:"header__button" %>
+  <% end %>
+  <!-- [bouton destroy] -->
+  <%= button_to "Destroy this lunch", group_lunch_path([@group,@lunch]), class:"header__button",  method: :delete if policy(@lunch).destroy? %>
 
-<%# hide the links for unauthorized users %>
-<% if policy(@lunch).edit? %>
-  <%= link_to "Edit this lunch", edit_group_lunch_path([@group, @lunch]) %>
-<% end %>
-<!-- [bouton destroy] -->
-<%= button_to "Destroy this lunch", group_lunch_path([@group,@lunch]), method: :delete if policy(@lunch).destroy? %>
+  <%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), class:"header__button-outlined", data: {turbo_method: :post} %>
+    
+  <% if (@lunch.user != current_user) && (@swap.exists? == false) %>
+    <%= link_to "Claim this lunch", new_lunch_swap_path(@lunch.group_id), class:"header__button"  %>
+  <% end %>
+</div>
 
-<% if (@lunch.user != current_user) && (@swap.exists? == false) %>
-  <%= link_to "Ask this lunch", new_lunch_swap_path(@lunch) %>
-  <%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), data: {turbo_method: :post} %>
-<% end %>

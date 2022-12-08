@@ -23,11 +23,16 @@
       <label class="box-close" for="acc-close"></label>
       <div class="box-content">
         <% @swaps.each do |swap| %>
-          <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} at #{swap.delivery_date}" %>
+          <% if swap.status == "pending" %>
+            <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} but wants to chat first with you 😊" %>
+            <%= link_to "Click here to chat with #{swap.user.first_name}", swap_chatroom_path(swap, @message) %>
+          <% elsif swap.status == "requested" %>
+            <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} at #{swap.delivery_date}" %>
+          <% end %>
           <br>
           <%= swap.status %>
           <br>
-        <% if swap.status == "pending" %>
+        <% if swap.status == "requested" %>
          <%= simple_form_for(swap) do |f| %>
          <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
         <%= f.button :submit, "Update swap" %>
@@ -44,45 +49,97 @@
       <label class="box-close" for="acc-close"></label>
       <div class="box-content">
       <% @swaps_asked.each do |swap| %>
-=======
-<h1>My lunches</h1>
-<% if @lunches.nil? %>
-  <p>You didn't create lunch yet!</p>
-<% else %>
-  <% @lunches.each do |lunch| %>
-    <%= lunch.title %>
-    <br>
-    <span>-------------------</span>
-    <br>
-  <% end %>
-<% end %>
-<br>
-<br>
-<br>
-<span>*************************************</span>
-<h1>My swaps</h1>
-<br>
-<% @swaps.each do |swap| %>
-  <% if swap.status == "pending" %>
-    <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} but wants to chat first with you 😊" %>
-    <%= link_to "Click here to chat with #{swap.user.first_name}", swap_chatroom_path(swap, @message) %>
-  <% elsif swap.status == "requested" %>
-    <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} at #{swap.delivery_date}" %>
-  <% end %>
-  <br>
+        <%= "You have asked for #{swap.lunch.title} from #{swap.lunch.user.first_name} at #{swap.delivery_date}" %>
+        <%= "Chat here : " %>
+        <%# <%= link_to "Click here to answer", swap_chatroom_path(swap, @message) %> %>
+        <br>
   <%= swap.status %>
   <br>
-  <% if swap.status == "requested" %>
-    <%= simple_form_for(swap) do |f| %>
-      <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
-      <%= f.button :submit, "Update swap" %>
+  <span>-------------------</span>
+  <br>
+<% end %>
+      </div>
+    </section>
+
+    <input type="radio" name="accordion" id="acc-close" />
+    <%= week_calendar(events: @swaps_calendar, attribute: :delivery_date) do |date, swaps| %>
+  <%= date %>
+  <% swaps.each do |swap| %>
+  <%# <-- We will add some style to the meeting class later so let's add it now --> %>
+    <% if swap.status == "accepted" %>
+      <% if swap.user == current_user || swap.lunch.user == current_user %>
+        <div class="meeting">
+          <% if swap.lunch.user == current_user %>
+            <p>You have to bring <%= swap.lunch.title %> to <%= swap.user.first_name %></p>
+          <% else %>
+            <p>You'll received <%= swap.lunch.title %> from <%= swap.lunch.user.first_name %></p>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-    <span>-------------------</span>
-    <br>
   <% end %>
 <% end %>
-<br>
-<span>*************************************</span>
-<h1>My swaps asked</h1>
-<br>
-<% @swaps_asked.each do |swap| %>
+  </nav>
+</div>
+
+<%# <h1>My lunches</h1>
+<% if @lunches.nil? %>
+  <%# <p>You didn't create lunch yet!</p> %>
+<%# <% else %>
+  <%# <% @lunches.each do |lunch| %>
+    <%# <%= lunch.title %>
+    <%# <br> %>
+    <%# <span>-------------------</span> %>
+    <%# <br> %>
+  <%# <% end %>
+<%# <% end %>
+<%# <br> %>
+<%# <br> %>
+<%# <br> %>
+<%# <span>*************************************</span> %>
+<%# <h1>My swaps</h1> %>
+<%# <br> %>
+<%# <% @swaps.each do |swap| %>
+  <%# <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} at #{swap.delivery_date}" %>
+  <%# <br> %>
+  <%# <%= swap.status %>
+  <%# <br> %>
+  <%# <% if swap.status == "pending" %>
+    <%# <%= simple_form_for(swap) do |f| %>
+      <%# <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
+      <%# <%= f.button :submit, "Update swap" %>
+    <%# <% end %>
+    <%# <span>-------------------</span> %>
+    <%# <br> %>
+  <%# <% end %>
+<%# <% end %>
+<%# <br> %>
+<%# <span>*************************************</span> %>
+<%# <h1>My swaps asked</h1> %>
+<%# <br> %>
+<%# <% @swaps_asked.each do |swap| %>
+  <%# <%= "You have asked for #{swap.lunch.title} from #{swap.lunch.user.first_name} at #{swap.delivery_date}" %>
+  <%# <br> %>
+  <%# <%= swap.status %>
+  <%# <br> %>
+  <%# <span>-------------------</span> %>
+  <%# <br> %>
+<%# <% end %>
+
+<%#= week_calendar(events: @swaps_calendar, attribute: :delivery_date) do |date, swaps| %>
+  <%#= date %>
+  <%# swaps.each do |swap| %>
+  <%# <-- We will add some style to the meeting class later so let's add it now --> %>
+    <%# if swap.status == "accepted" %>
+      <%# if swap.user == current_user || swap.lunch.user == current_user %>
+        <%# <div class="meeting"> %>
+          <%# if swap.lunch.user == current_user %>
+            <%# <p>You have to bring <%= swap.lunch.title to <%= swap.user.first_name</p> %>
+          <%# else %>
+            <%# <p>You'll received <%= swap.lunch.title from <%= swap.lunch.user.first_name</p> %>
+          <%# end %>
+        <%# </div> %>
+      <%# end %>
+    <%# end %>
+  <%# end %>
+<%# end %>

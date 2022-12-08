@@ -57,23 +57,46 @@
   padding: 16px;
 }
 
-.card-show-title{
-  font-size: 40px;
+.card-show-title h1{
+  font-size: 50px;
   color: $gray;
   font-weight: bold;
   margin: 20px 20px;
   text-decoration: none;
 }
 
+.card-show-title p{
+  color: $gray;
+  font-weight: bold;
+  margin: 20px 20px;
+  text-decoration: none;
+}
+
+.card-show-info {
+  background: $white;
+  height: 325px;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 60px;
+}
+
 .card-show {
   background: $white;
-  height: 300px;
+  height: 375px;
   border-radius: 20px;
   margin: 60px;
 }
 
+.card-show .icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
 .card-show > img {
   height: 70%;
+  width: 100%;
   object-fit: cover;
   border-radius: 20px;
 }

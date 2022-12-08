@@ -1,6 +1,7 @@
 class LunchesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_lunch, only: %i[show edit update destroy]
+  before_action :set_group
 
   def index
     # @lunches = policy_scope(Lunch)
@@ -18,41 +19,39 @@ class LunchesController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:group_id])
+    # @group = Group.find(params[:group_id])
     @swap = Swap.where(lunch_id: @lunch)
     # raise
   end
 
   def new
     @lunch = Lunch.new
-    @group = Group.find(params[:group_id])
+    # @group = Group.find(params[:group_id])
     authorize @lunch
   end
 
   def create
     @lunch = Lunch.new(lunch_params)
     @lunch.user = current_user
-    @group = Group.find(params[:group_id])
+    # @group = Group.find(params[:group_id])
     @lunch.group = @group
     authorize @lunch
+    @lunches = Lunch.where(user_id: current_user)
+    current_user.coins = 10 if @lunches.count.zero?
 
     if @lunch.save
       redirect_to group_lunches_path(@group), notice: 'Your lunch was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
-
-    if current_user.lunch.count == 1
-      current_user.tokens += 10
-    end
   end
 
   def edit
-    @group = Group.find(params[:group_id])
+    # @group = Group.find(params[:group_id])
   end
 
   def update
-    @group = Group.find(params[:group_id])
+    # @group = Group.find(params[:group_id])
     if @lunch.update(edit_lunch_params)
       if params[:lunch][:photos].present?
         params[:lunch][:photos].each do |photo|
@@ -66,7 +65,7 @@ class LunchesController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:group_id])
+    # @group = Group.find(params[:group_id])
     @lunch.destroy
     redirect_to group_lunches_path(@group), status: :see_other
   end
@@ -76,6 +75,10 @@ class LunchesController < ApplicationController
   def set_lunch
     @lunch = Lunch.find(params[:id])
     authorize @lunch
+  end
+
+  def set_group
+    @group = Group.find(params[:group_id])
   end
 
   def edit_lunch_params

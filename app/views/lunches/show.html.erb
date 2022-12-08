@@ -1,10 +1,22 @@
-<% if @lunch.photos.attached? %>
-  <% @lunch.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 250 %>
+<div class="card-show">
+  <% if @lunch.photos.attached? %>
+    <% @lunch.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 250 %>
+    <% end %>
+  <% else %>
+    <%= image_tag('lunch.jpeg') %>
   <% end %>
-<% else %>
-  <%= image_tag('lunch.jpeg') %>
-<% end %>
+  <div class="card-show-infos">
+    <div>
+      <h2>Title here</h2>
+      <p>Short description here!</p>
+    </div>
+    <h2 class="card-show-pricing">£99.99</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+</div>
+
+
 
  <h1><%= @lunch.title %></h1>
  <%= @lunch.description %>

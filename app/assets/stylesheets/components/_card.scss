@@ -57,3 +57,43 @@
   padding: 16px;
 }
 
+.card-show {
+  background: $white;
+  height: 300px;
+  border-radius: 20px;
+  margin: 60px;
+}
+
+.card-show > img {
+  height: 80%;
+  object-fit: cover;
+}
+
+.card-show h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-show p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-show .card-show-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-show-infos .card-show-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+

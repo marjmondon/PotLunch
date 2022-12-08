@@ -65,35 +65,25 @@
 }
 
 .card-show > img {
-  height: 80%;
+  height: 70%;
   object-fit: cover;
+  border-radius: 20px;
 }
-
-.card-show h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-show p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
 
 .card-show .card-show-infos {
-  padding: 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+  align-items: center;
 }
 
 .card-show-infos .card-show-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+  left: 30px;
+  bottom: 0px;
+  width: 50px;
+  border-radius: 50%;
 }
 
+.card-show ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

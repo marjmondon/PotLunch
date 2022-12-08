@@ -7,13 +7,13 @@
     <%= image_tag('lunch.jpeg') %>
   <% end %>
   <div class="card-show-infos">
-    <div>
-        <%= cl_image_tag User.find(@lunch.user_id).avatar.key, class:"card-show-user avatar-bordered" %>
-      <%# end %>
-      <h2>Title here</h2>
-      <p>Short description here!</p>
-    </div>
-    <h2 class="card-show-pricing">£99.99</h2>
+      <%= cl_image_tag User.find(@lunch.user_id).avatar.key, class:"card-show-user" %>
+    <ul class="card-show-icons">
+        <%= @lunch.user.first_name %> <%= @lunch.user.last_name %>
+        <%= link_to image_tag("AddGroupButton.png") %>
+        <%= link_to image_tag("AddGroupButton.png") %>
+        <%= link_to image_tag("AddGroupButton.png") %>
+    </ul>
   </div>
 </div>
 

@@ -20,10 +20,18 @@
 <div class="card-show-info">
   <div class="card-show-title">
     <h1 class=" text-center"><%= @lunch.title %></h1>
-    <p>Cooking date: <%= @lunch.cooking_date %></p>
-    <p>Price: 10 tokens</p>
-    <p>Recipe url: <%= @lunch.recipe_url %></p>
+    <div class="d-flex align-items-center">
+      <p class="strong">Cooking date:</p> <%= @lunch.cooking_date %>
+    </div>
+    <div class="d-flex align-items-center">
+      <p>Lunch coins: </p><%= "10 tokens" %>
+    </div>
+    <div class="d-flex align-items-center">
+      <p>Recipe url: <%= @lunch.recipe_url %></p>
+    </div>
+    <div class="d-flex align-items-center">
     <p>Description:  <%= @lunch.description %></p>
+    </div>
   </div>
 </div>
 

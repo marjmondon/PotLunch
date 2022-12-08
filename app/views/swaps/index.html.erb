@@ -17,6 +17,8 @@
 <br>
 <% @swaps.each do |swap| %>
   <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} at #{swap.delivery_date}" %>
+  <%= "#{swap.user.first_name} wants to chat : " %>
+  <%= link_to "Click here to answer", swap_chatroom_path(swap, @message) %>
   <br>
   <%= swap.status %>
   <br>
@@ -35,6 +37,8 @@
 <br>
 <% @swaps_asked.each do |swap| %>
   <%= "You have asked for #{swap.lunch.title} from #{swap.lunch.user.first_name} at #{swap.delivery_date}" %>
+  <%= "Chat here : " %>
+  <%= link_to "Click here to answer", swap_chatroom_path(swap, @message) %>
   <br>
   <%= swap.status %>
   <br>

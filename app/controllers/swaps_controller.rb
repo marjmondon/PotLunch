@@ -14,20 +14,18 @@ class SwapsController < ApplicationController
   def new
     @swap = Swap.new
     @lunch = Lunch.find(params[:lunch_id])
-    @group = Group.find(params[:group_id])
     authorize @swap
   end
 
   def create
     @swap = Swap.new(swap_params)
     # @swap.requested!
-    @group = Group.find(params[:group_id])
     @lunch = Lunch.find(params[:lunch_id])
     @swap.lunch = @lunch
     @swap.user = current_user
     authorize @swap
     if @swap.save
-      redirect_to group_lunches_path(@group), notice: 'Your swap request was successfully created.'
+      redirect_to group_lunches_path(@lunch.group), notice: 'Your swap request was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -40,6 +38,26 @@ class SwapsController < ApplicationController
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  # show de la chatroom
+  def chatroom
+    @swap = Swap.find(params[:swap_id])
+    authorize @swap
+    @message = Message.new
+  end
+
+  def initiate_chat
+    @swap = Swap.new
+    @swap.user = current_user
+    @lunch = Lunch.find(params[:lunch_id])
+    @swap.lunch = @lunch
+    authorize @swap
+    if @swap.save
+      redirect_to swap_chatroom_path(@swap)
+    else
+      redirect_to group_lunch_path(@lunch.group, @lunch), notice: "something went wrong try again later"
     end
   end
 

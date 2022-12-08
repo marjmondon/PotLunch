@@ -24,16 +24,19 @@ puts 'Create groups..'
 
 flo = User.create!(email: "f@f.f", password: "123456", first_name: "flo", last_name: "g")
 flo.avatar.attach(io: File.open(File.join(Rails.root, 'app/assets/images/flo.jpg')), filename: "flo.jpg", content_type: "image/jpg")
+flo.update!(coins: 10)
 
 lamia = User.create!(email: "l@l.l", password: "123456", first_name: "lamia", last_name: "b")
 lamia.avatar.attach(io: File.open(File.join(Rails.root, 'app/assets/images/Lamia.jpg')), filename: "lamia.jpg", content_type: "image/jpg")
+lamia.update!(coins: 10)
 
 marjorie = User.create!(email: "m@m.m", password: "123456", first_name: "marjorie", last_name: "m")
 marjorie.avatar.attach(io: File.open(File.join(Rails.root, 'app/assets/images/marjo.jpg')), filename: "marjo.jpg", content_type: "image/jpg")
+marjorie.update!(coins: 10)
 
 marc_andre = User.create!(email: "ma@ma.ma", password: "123456", first_name: "marc-andré", last_name: "c")
 marc_andre.avatar.attach(io: File.open(File.join(Rails.root, 'app/assets/images/Marc-andre.jpg')), filename: "Marc-andre.jpg", content_type: "image/jpg")
-
+marc_andre.update!(coins: 10)
 
 john_doe = User.create!(email: "j@j.j", password: "123456", first_name: "john", last_name: "doe")
 

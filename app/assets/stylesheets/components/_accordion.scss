@@ -1,30 +1,22 @@
-.cadre {
-  height: calc(100% - 20px);
-  width: calc(100% - 20px);
-  margin: 0;
-  padding: 10px;
-  display: flex;
-  background: #f2f2f2;
-  color: rgba(0,0,0,.87);
-  font-family: 'Roboto', sans-serif;
-}
 .accordion {
   margin: auto;
-  width: 400px;
+   width: 100%;
 }
 .accordion input {
   display: none;
 }
 .box {
   position: relative;
-  background: white;
-    height: 64px;
+  border-radius: 20px;
+  background: $white;
+    height: 75px;
     transition: all .15s ease-in-out;
 }
 .box::before {
     content: '';
     position: absolute;
     display: block;
+    border-radius: 20px;
     top: 0;
     bottom: 0;
     left: 0;
@@ -32,24 +24,14 @@
     pointer-events: none;
     box-shadow: 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
 }
-header.box {
-  background: #00BCD4;
-  z-index: 100;
-  cursor: initial;
-  box-shadow: 0 -1px 0 #e5e5e5,0 0 2px -2px rgba(0,0,0,.12),0 2px 4px -4px rgba(0,0,0,.24);
-}
-header .box-title {
-  margin: 0;
-  font-weight: normal;
-  font-size: 16pt;
-  color: white;
-  cursor: initial;
-}
+
 .box-title {
   width: calc(100% - 40px);
   height: 64px;
   line-height: 64px;
   padding: 0 20px;
+   font-family: Roboto;
+  font-size: 27px;
   display: inline-block;
   cursor: pointer;
   -webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;
@@ -57,8 +39,9 @@ header .box-title {
 .box-content {
   width: calc(100% - 40px);
   padding: 30px 20px;
-  font-size: 11pt;
-  color: rgba(0,0,0,.54);
+  font-family: Roboto;
+  font-size: 15pt;
+  color: $gray;
   display: none;
 }
 .box-close {

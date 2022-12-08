@@ -19,6 +19,8 @@ class LunchesController < ApplicationController
 
   def show
     @group = Group.find(params[:group_id])
+    @swap = Swap.where(lunch_id: @lunch)
+    # raise
   end
 
   def new

@@ -6,35 +6,14 @@
   <% else %>
     <%= image_tag('lunch.jpeg') %>
   <% end %>
-  <div class="card-show-infos">
-      <%= cl_image_tag User.find(@lunch.user_id).avatar.key, class:"card-show-user" %>
-    <ul class="card-show-icons">
-        <%= @lunch.user.first_name %> <%= @lunch.user.last_name %>
-        <%= link_to image_tag("AddGroupButton.png") %>
-        <%= link_to image_tag("AddGroupButton.png") %>
-        <%= link_to image_tag("AddGroupButton.png") %>
-    </ul>
-  </div>
-</div>
-
-<div class="card-show">
-  <% if @lunch.photos.attached? %>
-    <% @lunch.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 250 %>
-    <% end %>
-  <% else %>
-    <%= image_tag('lunch.jpeg') %>
-  <% end %>
   <div>
     <ul>
-    <%= cl_image_tag User.find(@lunch.user_id).avatar.key %>
-
-        <li><%= @lunch.user.first_name %> <%= @lunch.user.last_name %></li>
-        <li><%= link_to image_tag("AddGroupButton.png") %></li>
-        <li><%= link_to image_tag("AddGroupButton.png") %></li>
-        <li><%= link_to image_tag("AddGroupButton.png") %></li>
+      <li class="d-flex justify-content-start"><%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %></li>
+      <li class="icons bold"><%= @lunch.user.first_name %> <%= @lunch.user.last_name %></li>
+      <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
+      <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
+      <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
     </ul>
-
   </div>
 </div>
 

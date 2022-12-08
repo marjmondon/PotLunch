@@ -87,8 +87,16 @@
   margin: 60px;
 }
 
+.card-show .icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
 .card-show > img {
   height: 70%;
+  width: 100%;
   object-fit: cover;
   border-radius: 20px;
 }

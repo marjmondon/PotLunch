@@ -57,6 +57,14 @@
   padding: 16px;
 }
 
+.card-show-title{
+  font-size: 40px;
+  color: $gray;
+  font-weight: bold;
+  margin: 20px 20px;
+  text-decoration: none;
+}
+
 .card-show {
   background: $white;
   height: 300px;

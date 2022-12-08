@@ -17,10 +17,17 @@
   </div>
 </div>
 
+<div class="card-product">
+  <div class="card-product-infos">
+    <h1 class="card-show-title text-center"><%= @lunch.title %></h1>
+    <h2>Cooking date: </h2>
+    <h2>Price: </h2>
+    <h2>Recipe url: </h2>
+    <h2>Description:  <%= @lunch.description %></h2>
+    <%= link_to "Infos", new_group_lunch_path(@group), class:"header__button" %>
+  </div>
+</div>
 
-
- <h1><%= @lunch.title %></h1>
- <%= @lunch.description %>
  <%# <% @lunch.tags.each do |tag| %>
  <%# <%= tag %>
  <%# <% end %>

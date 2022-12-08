@@ -17,6 +17,27 @@
   </div>
 </div>
 
+<div class="card-show">
+  <% if @lunch.photos.attached? %>
+    <% @lunch.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 250 %>
+    <% end %>
+  <% else %>
+    <%= image_tag('lunch.jpeg') %>
+  <% end %>
+  <div>
+    <ul>
+    <%= cl_image_tag User.find(@lunch.user_id).avatar.key %>
+
+        <li><%= @lunch.user.first_name %> <%= @lunch.user.last_name %></li>
+        <li><%= link_to image_tag("AddGroupButton.png") %></li>
+        <li><%= link_to image_tag("AddGroupButton.png") %></li>
+        <li><%= link_to image_tag("AddGroupButton.png") %></li>
+    </ul>
+
+  </div>
+</div>
+
 <div class="card-show-info">
   <div class="card-show-title">
     <h1 class=" text-center"><%= @lunch.title %></h1>

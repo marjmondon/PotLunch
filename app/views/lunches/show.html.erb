@@ -40,6 +40,6 @@
   <%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), class:"header__button-outlined", data: {turbo_method: :post} %>
     
   <% if (@lunch.user != current_user) && (@swap.exists? == false) %>
-    <%= link_to "Claim this lunch", new_lunch_swap_path(@lunch), class:"header__button"  %>
+    <%= link_to "Claim this lunch", new_lunch_swap_path(@lunch.group_id), class:"header__button"  %>
   <% end %>
 </div>

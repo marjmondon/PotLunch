@@ -7,12 +7,17 @@
     <%= image_tag('lunch.jpeg') %>
   <% end %>
   <div>
-    <ul>
-      <li class="d-flex justify-content-start"><%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %></li>
-      <li class="icons bold"><%= @lunch.user.first_name %> <%= @lunch.user.last_name %></li>
-      <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
-      <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
-      <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
+    <ul class="d-flex justify-content-between">
+      <div class ="d-flex">
+        <%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %>
+        <li class="icons"><%= @lunch.user.first_name %> <%= @lunch.user.last_name %></li>
+      </div>
+      <div class="card-show-info-bar">
+
+        <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
+        <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
+        <li class="icons"><%= link_to image_tag("AddGroupButton.png") %></li>
+      </div>
     </ul>
   </div>
 </div>

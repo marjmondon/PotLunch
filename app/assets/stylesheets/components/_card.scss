@@ -80,6 +80,13 @@
   margin: 60px;
 }
 
+.card-show-info-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 80px;
+}
+
 .card-show {
   background: $white;
   height: 375px;
@@ -90,12 +97,12 @@
 .card-show .icons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 20px;
 }
 
 .card-show > img {
-  height: 70%;
+  height: 75%;
   width: 100%;
   object-fit: cover;
   border-radius: 20px;

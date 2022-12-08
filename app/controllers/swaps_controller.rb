@@ -23,7 +23,7 @@ class SwapsController < ApplicationController
 
   def create
     @swap = Swap.new(swap_params)
-    # @swap.requested!
+    @swap.requested!
     @swap.lunch = @lunch
     @swap.user = current_user
     authorize @swap
@@ -45,6 +45,8 @@ class SwapsController < ApplicationController
         new_coins_current_user = current_user.coins + 10
         current_user.update!(coins: new_coins_current_user)
       end
+
+      @swap.destroy if @swap.status == "refused"
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity

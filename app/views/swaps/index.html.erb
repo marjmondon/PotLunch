@@ -63,13 +63,16 @@
 <h1>My swaps</h1>
 <br>
 <% @swaps.each do |swap| %>
-  <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} at #{swap.delivery_date}" %>
-  <%= "#{swap.user.first_name} wants to chat : " %>
-  <%= link_to "Click here to answer", swap_chatroom_path(swap, @message) %>
+  <% if swap.status == "pending" %>
+    <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} but wants to chat first with you 😊" %>
+    <%= link_to "Click here to chat with #{swap.user.first_name}", swap_chatroom_path(swap, @message) %>
+  <% elsif swap.status == "requested" %>
+    <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} at #{swap.delivery_date}" %>
+  <% end %>
   <br>
   <%= swap.status %>
   <br>
-  <% if swap.status == "pending" %>
+  <% if swap.status == "requested" %>
     <%= simple_form_for(swap) do |f| %>
       <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
       <%= f.button :submit, "Update swap" %>

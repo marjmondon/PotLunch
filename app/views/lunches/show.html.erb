@@ -41,5 +41,5 @@
 
 <% if (@lunch.user != current_user) && (@swap.exists? == false) %>
   <%= link_to "Ask this lunch", new_lunch_swap_path(@lunch) %>
+  <%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), data: {turbo_method: :post} %>
 <% end %>
-<%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), data: {turbo_method: :post} %>

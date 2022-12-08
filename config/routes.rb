@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :groups, except: [:new] do
     resources :lunches do
       resources :swaps, only: %i[new create update] do
-        resources :chatrooms, only: %i[new show] do #non necessaire
-          resources :messages, only: :create #non necessaire
-        end
+        # resources :chatrooms, only: %i[new show] do #non necessaire
+        #   resources :messages, only: :create #non necessaire
+        # end
       end
     end
   end

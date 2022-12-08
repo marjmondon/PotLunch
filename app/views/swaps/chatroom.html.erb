@@ -1,7 +1,3 @@
-<h1>chatroom</h1>
-<p><%= @swap.user %></p>
-<p><%= @swap.lunch %></p>
-
 <div class="container chatroom"
   data-controller="swap-subscription"
   data-swap-subscription-swap-id-value="<%= @swap.id %>"
@@ -14,7 +10,7 @@
     <% end %>
   </div>
 
-  <%= simple_form_for [@swap.lunch.group, @swap.lunch, @swap, @message],
+  <%= simple_form_for [@swap, @message],
     html: {data: {action: "turbo:submit-end->swap-subscription#resetForm"}, class: "d-flex"} do |f|
   %>
     <%= f.input :content,

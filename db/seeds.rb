@@ -8,11 +8,8 @@
 
 puts 'Clear DB..'
 
-
 Swap.destroy_all
 Message.destroy_all
-Chatroom.destroy_all
-
 Lunch.destroy_all
 Usergroup.destroy_all
 Group.destroy_all
@@ -63,11 +60,3 @@ pizza.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/pizza
 
 
 puts 'Create lunches..'
-
-swapchili = Swap.create!(user: marjorie, lunch: chili)
-
-puts 'Create swap..'
-
-chatroom = Chatroom.create!(name: chili, swap: swapchili)
-
-puts 'Create chatroom..'

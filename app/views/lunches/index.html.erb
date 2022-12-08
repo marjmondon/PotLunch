@@ -7,7 +7,8 @@
   </div>
 
   <div class="col mb-4">
-    <form>
+    <form >
+      <%# <label for="outlined-input" class="fs-4 fw-bold ps-5">Refferal: </label> %>
       <input class="outlined-input" type="text" id="groundlink" name="fname" placeholder="https://potlunch.club/groups">
     </form>
   </div>
@@ -30,8 +31,8 @@
   <%# end %>
   <%#= link_to "#{lunch.title}", group_lunch_path(@group, lunch) %>
 
-  <div class="col mb-4 filter">
-    <h2 class="mb-4">Lunches avalaible</h2>
+  <div class="col filter">
+    <h2 class="mb-1">Lunches avalaible</h2>
   </div>
 
   <% @lunches.each do |lunch| %>

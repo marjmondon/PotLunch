@@ -4,7 +4,7 @@
       <%= cl_image_tag photo.key, height: 250 %>
     <% end %>
   <% else %>
-    <%= image_tag('lunch.jpeg') %>
+    <%= image_tag('lunch.jpg') %>
   <% end %>
   <div class="card-show-infos">
       <%= cl_image_tag User.find(@lunch.user_id).avatar.key, class:"card-show-user" %>

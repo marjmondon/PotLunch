@@ -44,8 +44,10 @@ class SwapsController < ApplicationController
   def chatroom
     @swap = Swap.find(params[:swap_id])
     authorize @swap
-
+    @message = Message.new
   end
+
+  # manque show
 
   def initiate_chat
     @swap = Swap.new

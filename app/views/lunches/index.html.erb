@@ -13,18 +13,13 @@
   </div>
 
   <%# filter %>
-  <div class="col mb-5 filter ">
-    <form>
-      <input class="outlined-input" type="text" id="groundlink" name="fname" placeholder="Search by name">
-      <%= link_to "Search", new_group_lunch_path, class:"header__button" %>
-    </form>
-      <p>Filter by:</p>
+  <div class="col mb-5 filter_index">
+    <%= render "filter", lunch: @lunch %>
         <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
         <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
         <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
   </div>
   <%# fin du filter %>
-<%#= render "filter", lunch: @lunch %>
  <%# @lunches.each do |lunch| %>
   <%# if lunch.photos.attached? %>
     <%#= cl_image_tag lunch.photos.first.key, height: 250%>

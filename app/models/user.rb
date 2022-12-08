@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :lunches
+  has_many :lunches, dependent: :destroy
   has_many :usergroups
   has_many :groups, through: :usergroups
 

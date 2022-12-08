@@ -1,13 +1,33 @@
-<% if @lunch.photos.attached? %>
-  <% @lunch.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 250 %>
+<div class="card-show">
+  <% if @lunch.photos.attached? %>
+    <% @lunch.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 250 %>
+    <% end %>
+  <% else %>
+    <%= image_tag('lunch.jpeg') %>
   <% end %>
-<% else %>
-  <%= image_tag('lunch.jpeg') %>
-<% end %>
+  <div class="card-show-infos">
+      <%= cl_image_tag User.find(@lunch.user_id).avatar.key, class:"card-show-user" %>
+    <ul class="card-show-icons">
+        <%= @lunch.user.first_name %> <%= @lunch.user.last_name %>
+        <%= link_to image_tag("AddGroupButton.png") %>
+        <%= link_to image_tag("AddGroupButton.png") %>
+        <%= link_to image_tag("AddGroupButton.png") %>
+    </ul>
+  </div>
+</div>
 
- <h1><%= @lunch.title %></h1>
- <%= @lunch.description %>
+<div class="card-product">
+  <div class="card-product-infos">
+    <h1 class="card-show-title text-center"><%= @lunch.title %></h1>
+    <h2>Cooking date: </h2>
+    <h2>Price: </h2>
+    <h2>Recipe url: </h2>
+    <h2>Description:  <%= @lunch.description %></h2>
+    <%= link_to "Infos", new_group_lunch_path(@group), class:"header__button" %>
+  </div>
+</div>
+
  <%# <% @lunch.tags.each do |tag| %>
  <%# <%= tag %>
  <%# <% end %>
@@ -18,6 +38,8 @@
 <% end %>
 <!-- [bouton destroy] -->
 <%= button_to "Destroy this lunch", group_lunch_path([@group,@lunch]), method: :delete if policy(@lunch).destroy? %>
+
 <% if (@lunch.user != current_user) && (@swap.exists? == false) %>
-  <%= link_to "Ask this lunch", new_group_lunch_swap_path(@group, @lunch) %>
+  <%= link_to "Ask this lunch", new_lunch_swap_path(@lunch) %>
+  <%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), data: {turbo_method: :post} %>
 <% end %>

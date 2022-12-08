@@ -1,3 +1,10 @@
+.navbar-home-transparent {
+  justify-content: space-between;
+  background-color: transparent;
+  z-index: 2;
+  // background-image: url(header-bg.png);
+}
+
 .navbar-home {
   justify-content: space-between;
   background-color: $white;
@@ -9,7 +16,15 @@
   flex-grow: 0;
 }
 
+.navbar-home-transparent .navbar-collapse {
+  flex-grow: 0;
+}
+
 .navbar-home .navbar-brand img {
+  width: 125px;
+}
+
+.navbar-home-transparent .navbar-brand img {
   width: 125px;
 }
 

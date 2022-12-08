@@ -57,12 +57,27 @@
   padding: 16px;
 }
 
-.card-show-title{
-  font-size: 40px;
+.card-show-title h1{
+  font-size: 50px;
   color: $gray;
   font-weight: bold;
   margin: 20px 20px;
   text-decoration: none;
+}
+
+.card-show-title p{
+  color: $gray;
+  font-weight: bold;
+  margin: 20px 20px;
+  text-decoration: none;
+}
+
+.card-show-info {
+  background: $white;
+  height: 300px;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 60px;
 }
 
 .card-show {

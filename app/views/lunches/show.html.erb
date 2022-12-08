@@ -17,21 +17,23 @@
   </div>
 </div>
 
-<div class="card-product">
-  <div class="card-product-infos">
-    <h1 class="card-show-title text-center"><%= @lunch.title %></h1>
-    <h2>Cooking date: </h2>
-    <h2>Price: </h2>
-    <h2>Recipe url: </h2>
-    <h2>Description:  <%= @lunch.description %></h2>
-    <%= link_to "Infos", new_group_lunch_path(@group), class:"header__button" %>
+<div class="card-show-info">
+  <div class="card-show-title">
+    <h1 class=" text-center"><%= @lunch.title %></h1>
+    <p>Cooking date: </p>
+    <p>Price: </p>
+    <p>Recipe url: </p>
+    <p>Description:  <%= @lunch.description %></p>
   </div>
 </div>
 
  <%# <% @lunch.tags.each do |tag| %>
  <%# <%= tag %>
  <%# <% end %>
-
+<div class="text-center">
+    <%= link_to "Chat for details", new_group_lunch_path(@group), class:"header__button-outlined" %>
+    <%= link_to "Claim now", new_group_lunch_path(@group), class:"header__button" %>
+</div>
 <%# hide the links for unauthorized users %>
 <% if policy(@lunch).edit? %>
   <%= link_to "Edit this lunch", edit_group_lunch_path([@group, @lunch]) %>

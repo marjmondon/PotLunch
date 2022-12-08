@@ -1,7 +1,6 @@
 class SwapsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_lunch, only: %i[new create]
-  before_action :set_group, only: %i[new create]
 
   def index
     @swaps = policy_scope(Swap)
@@ -77,10 +76,6 @@ class SwapsController < ApplicationController
 
   def set_lunch
     @lunch = Lunch.find(params[:lunch_id])
-  end
-
-  def set_group
-    @group = Group.find(params[:group_id])
   end
 
   def swap_params

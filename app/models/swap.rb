@@ -1,6 +1,6 @@
 class Swap < ApplicationRecord
   belongs_to :user
-  belongs_to :lunch, dependent: :destroy
+  belongs_to :lunch # , dependent: :destroy
   has_many :chatrooms
 
   enum status: {

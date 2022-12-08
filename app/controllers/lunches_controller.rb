@@ -41,6 +41,10 @@ class LunchesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
+    if current_user.lunch.count == 1
+      current_user.tokens += 10
+    end
   end
 
   def edit

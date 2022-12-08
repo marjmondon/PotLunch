@@ -1,0 +1,26 @@
+.filter{
+  display: flex;
+  justify-content: space-between;
+  font-size: bold;
+  margin-right: 80px;
+
+}
+
+.filter p{
+  font-size: 20px;
+  font-weight: bold;
+  color: $gray;
+}
+
+.filter h2{
+  font-weight: bold;
+  margin-left: 60px;
+}
+
+.filter_index{
+  display: flex;
+  justify-content: space-between;
+  font-size: bold;
+  margin-left: 60px;
+  margin-right: 80px;
+}

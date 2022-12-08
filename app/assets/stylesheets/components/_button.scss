@@ -31,3 +31,16 @@
   background-image: linear-gradient(160deg, $orange 0%, $red 80%);
   color: $tan;
 }
+
+.form_index_button {
+  background-image: linear-gradient(180deg, $orange 0%, $red 100%);
+  background-position: cover;
+  border-radius: 15px;
+  color: $tan;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0px 60px;
+  text-decoration: none;
+  border: none;
+  transition: 1s ease;
+}

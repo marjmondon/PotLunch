@@ -9,6 +9,7 @@
 puts 'Clear DB..'
 
 Swap.destroy_all
+Message.destroy_all
 Lunch.destroy_all
 Usergroup.destroy_all
 Group.destroy_all

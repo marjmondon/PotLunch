@@ -1,10 +1,11 @@
 .header {
-  background-image: url(header-bg.png);
+  // background-image: url(header-bg.png);
   height: 450px;
   margin-bottom: 20px;
   padding: 100px;
   position: relative;
   margin-top: -65px;
+  background: linear-gradient(70deg,$orange,$tan);
 }
 
 .header__title {
@@ -22,5 +23,3 @@
   inline-size: 450px;
   overflow-wrap: break-word;
 }
-
-

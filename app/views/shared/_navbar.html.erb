@@ -3,49 +3,49 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
     <% end %>
-        <div>
-          <% if user_signed_in? %>
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <%= link_to "Share a lunch", new_group_lunch_path(current_user.group_ids), class: "nav-link" %>
-              </li>
-              <li class="nav-item">
+      <div>
+        <% if user_signed_in? %>
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <%= link_to "Share a lunch", new_group_lunch_path(current_user.group_ids), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "Dashboard", swaps_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
+            </li>
+            <li class="nav-item">
               <%= link_to "View lunches", group_lunches_path(current_user.group_ids), class: "nav-link" %>
-              </li>
-            </ul>
-        </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+            </li>
+          </ul>
+      </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
               <%= "#{current_user.coins} LunchCoin" %>
             </li>
             <li class="nav-item dropdown">
-              <% if current_user.avatar.attached? %>
-                <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <% else %>
-                <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
-              <% end %>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-              </div>
+            <% if current_user.avatar.attached? %>
+              <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% end %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
             </li>
-          <% else %>
+          </ul>
+        <% else %>
           <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
-              </li>
-            </ul>
-          <% end %>
-      </ul>
-    </div>
+            </li>
+          </ul>
+        <% end %>
+        </div>
   </div>
 </div>

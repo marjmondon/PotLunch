@@ -11,22 +11,18 @@
   </head>
 
   <body>
-
   <% if controller_name == ("lunches" || "swaps" || "groups" || "chatrooms") %>
-      <%= render "shared/navbar" %>
-      <%= render "shared/vertical_navbar" %>
-      <div class="whole-page">  
-      <%= render "shared/flashes" %>
-      <%= yield %>
-      <%= render "shared/footer" %>
-    </div>
-    <% else %>
-      <%= render "shared/navbar-transparent" %>
-     <div>  
-      <%= render "shared/flashes" %>
-      <%= yield %>
-      <%= render "shared/footer" %>
-    <% end %>
-    </div>
+    <%= render "shared/navbar" %>
+    <%= render "shared/vertical_navbar" %>
+    <div class="whole-page">
+    <%= render "shared/flashes" %>
+    <%= yield %>
+  <% else %>
+    <%= render "shared/navbar-transparent" %>
+    <%= render "shared/flashes" %>
+    <%= yield %>
+  <% end %>
   </body>
+
+  <%= render "shared/footer" %>
 </html>

@@ -58,7 +58,7 @@ lasagna.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/las
 hamburger = Lunch.create!(cooking_date: "2022-12-08", title: "Classic hamburger", user: lamia, group: le_wagon, tags: ["Gluten"],description: "Very good for meat lovers! Stuffed with onions, topping it with ooey, gooey cheese, crispy bacon, and tangy BBQ sauce. This plain ol' beef patty between 2 slabs of bread will make any meat lover's heart skip a beat.")
 hamburger.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/Hamburger.jpg')), filename: "Hamburger.jpg", content_type: "image/jpg")
 
-Vegan pizza = Lunch.create!(cooking_date: "2022-12-08", title: "Pizza", user: marc_andre, group: le_wagon, tags: ["Vegan", "Gluten"], description: "The BEST vegan pizza made with a garlic-herb crust, simple tomato sauce, TONS of basil and cheese. I topped it with spicy olive oil. Thin crust, tons of flavor, and ridiculously satisfying.")
+pizza = Lunch.create!(cooking_date: "2022-12-08", title: "Pizza", user: marc_andre, group: le_wagon, tags: ["Vegan", "Gluten"], description: "The BEST vegan pizza made with a garlic-herb crust, simple tomato sauce, TONS of basil and cheese. I topped it with spicy olive oil. Thin crust, tons of flavor, and ridiculously satisfying.")
 pizza.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/pizza.jpg')), filename: "pizza.jpg", content_type: "image/jpg")
 
 

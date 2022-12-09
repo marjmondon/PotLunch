@@ -1,95 +1,48 @@
 <div class="container my-5">
   <nav class="accordion arrows">
+
+    <%# My Lunches  %>
     <input type="radio" name="accordion" id="cb1" />
     <section class="box mb-5">
       <label class="box-title" for="cb1"> My Lunches</label>
       <label class="box-close" for="acc-close"></label>
       <div class="box-content">
-        <% if @lunches.nil? %>
-          <p>You didn't create lunch yet!</p>
-        <% else %>
-         <% @lunches.each do |lunch| %>
-          <div class="card-product">
-            <% if lunch.photos.attached? %>
-              <%= cl_image_tag lunch.photos.first.key, height: 250%>
-            <% else %>
-              <%= image_tag('lunch.jpeg') %>
-            <% end %>
-            <div class="card-product-infos">
-              <h2><%= lunch.title.capitalize %></h2>
-              <p> <%= lunch.description %> </p>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
+        <%= render "mylunches", lunch: @lunch %>
       </div>
     </section>
+
+    <%# Lunches to bring at work %>
     <input type="radio" name="accordion" id="cb2" />
     <section class="box mb-5">
       <label class="box-title" for="cb2">Lunches to bring at work</label>
       <label class="box-close" for="acc-close"></label>
       <div class="box-content">
-        <% @swaps.each do |swap| %>
-          <% if swap.status == "pending" %>
-            <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} but wants to chat first with you 😊" %>
-            <%= link_to "Click here to chat with #{swap.user.first_name}", swap_chatroom_path(swap, @message) %>
-          <% elsif swap.status == "requested" %>
-            <%= "#{swap.user.first_name} has been asked for #{swap.lunch.title} at #{swap.delivery_date}" %>
-            <%= link_to "Click here to chat with #{swap.user.first_name}", swap_chatroom_path(swap, @message) %>
-          <% end %>
-          <br>
-          <%= swap.status %>
-          <br>
-        <% if swap.status == "requested" %>
-         <%= simple_form_for(swap) do |f| %>
-         <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
-         <%= f.button :submit, "Update swap", class: "btn btn-primary"  %>
-        <% end %>
-       <br>
-       <% end %>
-      <% end %>
+        <%= render "bringatwork", lunch: @lunch %>
       </div>
     </section>
+
+    <%# Lunches to be received %>
     <input type="radio" name="accordion" id="cb3" />
     <section class="box mb-5">
       <label class="box-title" for="cb3">Lunches to be received</label>
       <label class="box-close" for="acc-close"></label>
       <div class="box-content">
-      <% @swaps_asked.each do |swap| %>
-        <div class="card mb-3">
-        <div class="card-body">
-          <%= "You have asked for #{swap.lunch.title} from #{swap.lunch.user.first_name} at #{swap.delivery_date}" %>
-          <br>
-          <br>
-          <strong> Chat here : </strong>
-          <%= link_to "Click here to answer", swap_chatroom_path(swap, @message), class: "btn btn-primary" %>
-          <br>
-          <br>
-          <strong> Status : </strong>
-          <%= swap.status %>
-          </div>
-        </div>
-      <% end %>
+        <%= render "tobereceived", lunch: @lunch %>
       </div>
     </section>
 
+    <%# Lunches pending %>
+    <input type="radio" name="accordion" id="cb4" />
+    <section class="box mb-5">
+      <label class="box-title" for="cb4">Lunches pending</label>
+      <label class="box-close" for="acc-close"></label>
+      <div class="box-content">
+        <%= render "pending", lunch: @lunch %>
+      </div>
+    </section>
     <input type="radio" name="accordion" id="acc-close" />
-    <%= week_calendar(events: @swaps_calendar, attribute: :delivery_date) do |date, swaps| %>
-  <%= date %>
-  <% swaps.each do |swap| %>
-  <%# <-- We will add some style to the meeting class later so let's add it now --> %>
-    <% if swap.status == "accepted" %>
-      <% if swap.user == current_user || swap.lunch.user == current_user %>
-        <div class="meeting">
-          <% if swap.lunch.user == current_user %>
-            <p>You have to bring <%= swap.lunch.title %> to <%= swap.user.first_name %></p>
-          <% else %>
-            <p>You'll received <%= swap.lunch.title %> from <%= swap.lunch.user.first_name %></p>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
+    <%# calendar %>
+    <%= render "calendar", lunch: @lunch %>
+
   </nav>
 </div>

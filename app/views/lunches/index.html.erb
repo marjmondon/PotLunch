@@ -44,9 +44,9 @@
     <% end %>
     <div class="card-product-infos">
       <h2><%= link_to "#{lunch.title.capitalize}", group_lunch_path(@group, lunch) %></h2>
-      <p> <%= lunch.description %> </p>
+      <p class="text-truncate"> <%= lunch.description %> </p>
       <%#= lunch.tokens %>
-      <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button" %>
+      <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button " %>
     </div>
   </div>
   <% end %>

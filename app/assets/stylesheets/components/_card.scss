@@ -57,6 +57,13 @@
   padding: 16px;
 }
 
+.card-product .card-product-infos .text-truncate {
+  max-width: 500px;
+  white-space: wrap;
+  overflow: hidden;
+  display: block;
+}
+
 .card-show-title h1{
   font-size: 50px;
   color: $gray;

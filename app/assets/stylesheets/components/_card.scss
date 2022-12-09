@@ -23,8 +23,8 @@
   overflow: hidden;
   height: 300px;
   background: $white;
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
   border-radius: 20px;
   margin: 60px;
 }
@@ -55,6 +55,7 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+  min-width: 0;
 }
 
 .card-product .card-product-infos .text-truncate {

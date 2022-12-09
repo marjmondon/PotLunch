@@ -8,14 +8,14 @@
   <%# <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%# <%= f.button :submit, "Create Lunch"%>
 <%# <% end %>
-<div class="container-create-lunch">
+<div class="container">
   <div class="card-create-lunch-banner">
     <span>Cooking is an expression of love</span>
   </div>
 
 
   <div class="container">
-    <h1 class="title text-center p-3">🍕🍜What are you sharing today? 😋</h1>
+    <h1 class="title text-center p-3"><strong>What are you sharing today?</strong></h1>
     <%= simple_form_for ([@group, @lunch]) do |f|  %>
       <div class="form-details">
 
@@ -41,8 +41,8 @@
           <%= f.input :photos, label: "Photos", label_html: {class: "label-details"}, as: :file, input_html: { multiple: true } %>
         </div>
 
-        <div id="button-create-lunch">
-          <%= f.button :submit, "Create Lunch"%>
+        <div>
+          <%= f.button :submit, "Create Lunch", class: "button-create-lunch"%>
         </div>
           <% end %>
         </div>

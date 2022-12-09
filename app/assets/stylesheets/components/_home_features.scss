@@ -1,7 +1,11 @@
+.home-view {
+  height: 95vh;
+}
+
 .home_features {
-  display: flex;
+  align-items: center;
   justify-content: space-evenly;
-  padding: 20px 100px;
+  height: 50%;
 }
 
 .home_features_div {
@@ -9,16 +13,10 @@
   flex-direction: column;
   // width: 500px;
   padding: 20px 50px;
-
 }
 
 .home_features img {
-  width: 300px;
+  height: 150px;
   margin: 0px auto;
-  aspect-ratio: 16/9;
+  padding-bottom: 10px;
 }
-
-// .home_subtitle {
-//   display: flex;
-//   justify-content: space-evenly;
-// }

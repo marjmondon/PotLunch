@@ -7,16 +7,17 @@
     <div class="col form">
     <h1 class="text-center">Create new group </h1>
       <div class="form-inputs">
-      <%= simple_form_for @group do |f| %>
-        <%= f.input :name %>
-      </div>      
+        <%= simple_form_for @group do |f| %>
+          <%= f.input :name %>
+          <%= f.input :logo_url, as: :file %>
+      </div>
       <div class="text-center">
         <%= f.button :submit, "Submit", class: "form__button" %>
       </div>
       <% end %>
-    </div> 
+    </div>
     <div class="col form-img">
       <%= image_tag('SWAPC.png', :class => "swap-image") %>
-    </div>  
+    </div>
   </div>
 </div>

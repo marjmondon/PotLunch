@@ -1,5 +1,8 @@
 <ul class="nav flex-column vertical-nav">
+  <li >
+   <%= link_to image_tag("wagon.png", :class => "group-logo"), group_lunches_path(current_user.group_ids) %>
+  </li>
   <li class="nav-item">
-   <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
+   <%= link_to image_tag("AddGroupButton.png", :class => "nav-link-vertical"), groups_path %>
   </li>
 </ul>

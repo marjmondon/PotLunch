@@ -8,8 +8,8 @@ class GroupsController < ApplicationController
   end
 
   def create
-    authorize @group
     @group = Group.new(group_params)
+    authorize @group
     @usergroup = Usergroup.new(user: current_user, group: @group)
     if @usergroup.save && @group.save
       redirect_to group_lunches_path(@group), notice: "#{@group.name} group was successfully created."

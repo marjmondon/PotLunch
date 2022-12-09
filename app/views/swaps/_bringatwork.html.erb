@@ -3,7 +3,7 @@
     <% if swap.lunch.photos.attached? %>
       <%= cl_image_tag swap.lunch.photos.first.key, height: 250%>
     <% else %>
-      <%= image_tag('lunch.jpeg') %>
+      <%= image_tag('lunch.jpg') %>
     <% end %>
     <div class="card-product-infos">
       <h2><%= swap.lunch.title.capitalize %></h2>

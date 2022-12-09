@@ -22,8 +22,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <%= "#{current_user.coins} LunchCoin" %>
+            <li class="nav-item nav-link">
+              <%= "#{current_user.coins}"%> LunchCoins
             </li>
             <li class="nav-item dropdown">
             <% if current_user.avatar.attached? %>

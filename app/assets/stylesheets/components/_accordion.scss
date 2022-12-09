@@ -2,7 +2,7 @@
   margin: auto;
    width: 100%;
 }
-.accordion input {
+.accordion input[name='accordion'] {
   display: none;
 }
 .box {

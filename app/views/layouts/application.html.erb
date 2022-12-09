@@ -11,7 +11,7 @@
   </head>
 
   <body>
-  <% if controller_name == ("lunches" || "swaps" || "groups" || "chatrooms") %>
+  <% if controller_name == "lunches" || controller_name =="swaps" || controller_name =="groups" || controller_name =="chatrooms" %>
     <%= render "shared/navbar" %>
     <%= render "shared/vertical_navbar" %>
     <div class="whole-page">

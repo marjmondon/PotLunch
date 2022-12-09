@@ -65,6 +65,7 @@ class SwapsController < ApplicationController
     @swap.user = current_user
     @lunch = Lunch.find(params[:lunch_id])
     @swap.lunch = @lunch
+    @swap.delivery_date = Date.today
     authorize @swap
     if @swap.save
       redirect_to swap_chatroom_path(@swap)

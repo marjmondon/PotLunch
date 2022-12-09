@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   end
   resources :lunches, only: [] do
     resources :swaps, only: %i[new create]
-    end
+  end
+
   resources :swaps, only: %i[index update] do
     resources :messages, only: :create
   end

@@ -68,6 +68,8 @@ class SwapsController < ApplicationController
     @swap.delivery_date = Date.today
     authorize @swap
     if @swap.save
+      new_coins_current_user = current_user.coins - 10
+      current_user.update!(coins: new_coins_current_user)
       redirect_to swap_chatroom_path(@swap)
     else
       redirect_to group_lunch_path(@lunch.group, @lunch), notice: "something went wrong try again later"

@@ -3,8 +3,21 @@
   height: 60px;
 }
 
+.home-icons:active{
+  width: 60px;
+  height: 60px;
+  opacity: 0.25;
+}
+
 .home-icons-show{
   width: 100px;
   height: 100px;
   padding: 20px;
+}
+
+.home-icons-show:active{
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  opacity: 0.25;
 }

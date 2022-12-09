@@ -1,0 +1,18 @@
+<%# calendar %>
+<%= week_calendar(events: @swaps_calendar, attribute: :delivery_date) do |date, swaps| %>
+  <%= date %>
+  <% swaps.each do |swap| %>
+  <%# <-- We will add some style to the meeting class later so let's add it now --> %>
+    <% if swap.status == "accepted" %>
+      <% if swap.user == current_user || swap.lunch.user == current_user %>
+        <div class="meeting">
+          <% if swap.lunch.user == current_user %>
+            <p>You have to bring <%= swap.lunch.title %> to <%= swap.user.first_name %></p>
+          <% else %>
+            <p>You'll received <%= swap.lunch.title %> from <%= swap.lunch.user.first_name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

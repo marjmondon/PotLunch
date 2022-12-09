@@ -1,0 +1,24 @@
+<% @swaps.each do |swap| %>
+  <div class="card-product">
+    <% if swap.lunch.photos.attached? %>
+      <%= cl_image_tag swap.lunch.photos.first.key, height: 50%>
+    <% else %>
+      <%= image_tag('lunch.jpeg') %>
+    <% end %>
+    <div class="card-product-infos">
+      <h2><%= swap.lunch.title.capitalize %></h2>
+      <% if swap.status == "requested" %>
+        <%= "#{swap.user.first_name.capitalize} has asked for your #{swap.lunch.title} to be delivered at #{swap.delivery_date}" %>
+        <%= link_to "Chat with #{swap.user.first_name.capitalize}", swap_chatroom_path(swap, @message), class: "btn btn-primary" %>
+        <%= simple_form_for(swap) do |f| %>
+          <%= f.input :status, :label => 'Do you want accept or decline this swap?', :collection => %w[accepted refused]%>
+          <%= f.button :submit, "Update swap", class: "btn btn-primary"  %>
+        <% end %>
+      <% elsif swap.status == "accepted" %>
+        <p>test</p>
+        <%= "Delivery date: #{swap.delivery_date} " %>
+      <% end %>
+      <strong><%= "Status:" %></strong> <%= swap.status %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+
+<% @swaps_asked.each do |swap| %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <%= "You have asked for #{swap.lunch.title} from #{swap.lunch.user.first_name} at #{swap.delivery_date}" %>
+      <br>
+      <br>
+      <strong> Chat here : </strong>
+      <%= link_to "Click here to answer", swap_chatroom_path(swap, @message), class: "btn btn-primary" %>
+      <br>
+      <br>
+      <strong> Status : </strong>
+      <%= swap.status %>
+    </div>
+  </div>
+<% end %>

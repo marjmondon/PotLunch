@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="card-create-lunch-banner">
+    <span>Cooking is an expression of love</span>
+  </div>
+
+
+  <div class="container">
+    <h1 class="title text-center p-3"><strong>What are you sharing today?</strong></h1>
+    <%= simple_form_for ([@group, @lunch]) do |f|  %>
+      <div class="form-details">
+
+        <div class="title-cooking-date">
+          <%= f.input :title, label: "Title", label_html: {class: "label-details"}, placeholder: "Title" %>
+          <%= f.input :cooking_date, label: "Cooking date 📅", label_html: {class: "label-details"}, placeholder: "cooking date", as: :date, html5: true %>
+        </div>
+
+        <div class="input-box-lunch">
+          <%= f.input :recipe_url, label: "Link to recipe", label_html: {class: "label-details"}, placeholder: "Recipe_url" %>
+        </div>
+
+        <div class="input-box-lunch">
+          <%= f.input :description, :as => :text, label: "Describe your lunch", label_html: {class: "label-details"}, placeholder: "Description" %>
+        </div>
+
+        <div class="input-box-lunch">
+          <%= f.input :tags, label: "Tags", label_html: {class: "label-details"}, :collection => ["Vegan", "Vege", "Spicy", "Nuts", "Gluten", "Seafood"], as: :check_boxes,  input_html: { class: "tag-selector" },
+                      item_wrapper_class: 'tag-item' %>
+        </div>
+
+        <div class="input-box-lunch">
+          <%= f.input :photos, label: "Photos", label_html: {class: "label-details"}, as: :file, input_html: { multiple: true } %>
+        </div>
+
+        <div>
+          <%= f.button :submit, "Update Lunch", class: "button-create-lunch"%>
+        </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
+
+</div>

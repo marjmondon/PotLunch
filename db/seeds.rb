@@ -32,7 +32,7 @@ lamia.update!(coins: 10)
 
 marjorie = User.create!(email: "m@m.m", password: "123456", first_name: "marjorie", last_name: "m")
 marjorie.avatar.attach(io: File.open(File.join(Rails.root, 'app/assets/images/marjo.jpg')), filename: "marjo.jpg", content_type: "image/jpg")
-marjorie.update!(coins: 10)
+
 
 marc_andre = User.create!(email: "ma@ma.ma", password: "123456", first_name: "marc-andré", last_name: "c")
 marc_andre.avatar.attach(io: File.open(File.join(Rails.root, 'app/assets/images/Marc-andre.jpg')), filename: "Marc-andre.jpg", content_type: "image/jpg")

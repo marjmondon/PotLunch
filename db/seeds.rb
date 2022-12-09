@@ -49,16 +49,16 @@ Usergroup.create!(user: john_doe, group: desjardins)
 
 puts 'Create users..'
 
-chili = Lunch.create!(cooking_date: "2022-12-05", title: "chili", user: flo, group: le_wagon, tags: ["Vege"], description: "The Best Classic Chili – This traditional chili recipe is just like mom used to make with ground beef, beans, and a simple homemade blend of chili seasonings. This classic chili is perfect for a weeknight meal because it can be made in minutes. The only thing to chop is an onion.")
+chili = Lunch.create!(cooking_date: "2022-12-08", title: "The Best Classic Chili", user: flo, group: le_wagon, tags: ["Vege", "Spicy"], description: "This traditional chili recipe is just like mom used to make with ground beef, beans, and a simple homemade blend of chili seasonings. Our friends couldn't come last night so we have way too much for us two! Even if it's good, I rather eat something else as a lunch.")
 chili.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/chili.jpg')), filename: "chili.jpg", content_type: "image/jpg")
 
-lasagna = Lunch.create!(cooking_date: "2022-12-05", title: "lasagna", user: lamia, group: le_wagon, tags: ["Spicy"], description: "Best lasagna ever")
+lasagna = Lunch.create!(cooking_date: "2022-12-08", title: "My mom's lasagna", user: lamia, group: le_wagon, tags: ["Vegan", "Spicy"], description: "This is my mom's recipe. Just made a bunch of it (way too much! I'm telling you, just the best lasagna you'll ever get. Extra meat sauce, 3 differents cheese.")
 lasagna.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lasagna.jpg')), filename: "lasagna.jpg", content_type: "image/jpg")
 
-hamburger = Lunch.create!(cooking_date: "2022-12-05", title: "hamburger", user: lamia, group: le_wagon, tags: ["Gluten"],description: "Very good for meat lovers")
+hamburger = Lunch.create!(cooking_date: "2022-12-08", title: "Classic hamburger", user: lamia, group: le_wagon, tags: ["Gluten"],description: "Very good for meat lovers! Stuffed with onions, topping it with ooey, gooey cheese, crispy bacon, and tangy BBQ sauce. This plain ol' beef patty between 2 slabs of bread will make any meat lover's heart skip a beat.")
 hamburger.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/Hamburger.jpg')), filename: "Hamburger.jpg", content_type: "image/jpg")
 
-pizza = Lunch.create!(cooking_date: "2022-12-05", title: "pizza", user: marc_andre, group: le_wagon, tags: ["Vegan", "Gluten"], description: "It has been said that pizza makes the world go ‘round, and there definitely isn’t a shortage of choices when you are craving a slice. Sometimes, you don’t want to hit up a boutique pizzeria, nationwide delivery chain, or the dreaded frozen food aisle, so you elect to make your pizza from scratch. While it may seem like an overwhelming undertaking, homemade pizza is actually a deceptively simple process. The crowning achievement of any homemade ‘za is, of course, the sauce. Before you decide to cut corners by buying a jar, consider making the sauce from scratch as well. Just make sure you add this secret ingredient to guarantee a complex and flavorful homemade pizza.")
+Vegan pizza = Lunch.create!(cooking_date: "2022-12-08", title: "Pizza", user: marc_andre, group: le_wagon, tags: ["Vegan", "Gluten"], description: "The BEST vegan pizza made with a garlic-herb crust, simple tomato sauce, TONS of basil and cheese. I topped it with spicy olive oil. Thin crust, tons of flavor, and ridiculously satisfying.")
 pizza.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/pizza.jpg')), filename: "pizza.jpg", content_type: "image/jpg")
 
 

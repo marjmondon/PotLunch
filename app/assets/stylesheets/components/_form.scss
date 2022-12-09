@@ -99,24 +99,24 @@
 
 .card-create-lunch-banner {
   background-image: url("lunch-share.jpg");
-  // filter: grayscale(50%);
-  opacity: 0.4;
   background-size: cover;
   background-position: center;
   height: 250px;
-  display: flex;
-  align-items: center;
   font-weight: bold;
-  justify-content: center;
-  text-shadow: 1px 1px 3px rgba(0,0,0,1);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 50px;
 }
 
 .card-create-lunch-banner span {
+  display: flex;
   color: black;
   font-size: 50px;
+  background-color: rgba(255,255,255,0.7);
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
 }
 
 .button-create-lunch {

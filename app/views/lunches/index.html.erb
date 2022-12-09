@@ -7,17 +7,20 @@
   </div>
 
   <div class="col mb-4">
-    <form>
-      <input class="outlined-input" type="text" id="groundlink" name="fname" placeholder="group referral link">
+    <form >
+      <%# <label for="outlined-input" class="fs-4 fw-bold ps-5">Refferal: </label> %>
+      <input class="outlined-input" type="text" id="groundlink" name="fname" placeholder="https://potlunch.club/groups">
     </form>
   </div>
 
   <%# filter %>
   <div class="col mb-5 filter_index">
     <%= render "filter", lunch: @lunch %>
+    <div class="col filter_index">
         <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
         <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
         <%= link_to image_tag("AddGroupButton.png"), groups_path, class:"nav-link-vertical" %>
+    </div>
   </div>
   <%# fin du filter %>
  <%# @lunches.each do |lunch| %>
@@ -28,8 +31,8 @@
   <%# end %>
   <%#= link_to "#{lunch.title}", group_lunch_path(@group, lunch) %>
 
-  <div class="col mb-4 filter">
-    <h2 class="mb-4">Lunches avalaible</h2>
+  <div class="col filter">
+    <h2 class="mb-1">Lunches avalaible</h2>
   </div>
 
   <% @lunches.each do |lunch| %>
@@ -43,7 +46,7 @@
       <h2><%= link_to "#{lunch.title.capitalize}", group_lunch_path(@group, lunch) %></h2>
       <p> <%= lunch.description %> Description a venir
       <%#= lunch.tokens %>
-      <%= link_to "Infos", new_group_lunch_path(@group), class:"header__button" %>
+      <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button" %>
     </div>
   </div>
   <% end %>

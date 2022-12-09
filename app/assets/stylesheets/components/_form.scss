@@ -31,3 +31,109 @@
   height: 100%;
   object-fit: fill;
 }
+
+.form-details {
+  margin: 50px 200px;
+  padding: 50px;
+}
+
+
+#lunch_cooking_date {
+  border: 2px solid $orange;
+  color: $orange;
+  border-radius: 5px;
+  width: 300px;
+  height: 40px;
+  background-color: white;
+}
+
+#lunch_title {
+  border: 2px solid $orange;
+  color: $orange;
+  border-radius: 5px;
+  width: 450px;
+  height: 40px;
+  background-color: white;
+}
+
+#lunch_description {
+  border: 2px solid $orange;
+  color: $orange;
+  border-radius: 5px;
+  width: 100%;
+  height: 100px;
+  background-color: white;
+}
+
+#lunch_recipe_url {
+  border: 2px solid $orange;
+  color: $orange;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+}
+
+#lunch_photos {
+  border: 2px solid $orange;
+  color: $orange;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+}
+
+.title-cooking-date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-create-lunch-banner {
+  background-image: url("lunch-share.jpg");
+  // filter: grayscale(50%);
+  opacity: 0.4;
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+  text-shadow: 1px 1px 3px rgba(0,0,0,1);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 50px;
+}
+
+.card-create-lunch-banner span {
+  color: black;
+  font-size: 50px;
+}
+
+.button-create-lunch {
+  background-image: linear-gradient(180deg, $orange 0%, $red 100%);
+  background-position: cover;
+  border-radius: 15px;
+  color: $tan;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 5px 60px;
+  text-decoration: none;
+  text-align: center;
+  transition: 1s ease;
+  width: 350px;
+  margin: 30px 200px;
+}
+
+.button-create-lunch:hover {
+  background-image: linear-gradient(160deg, $orange 0%, $red 80%);
+  color: $tan;
+}
+
+
+@media (max-width: 700px) {
+
+  .container {
+    max-width: 100%;
+  }
+}

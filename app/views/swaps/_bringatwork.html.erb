@@ -1,5 +1,5 @@
 <% @swaps.each do |swap| %>
-  <div class="card-product d-flex">
+  <div class="card-product d-flex shadow p-3 mb-5 bg-white rounded">
     <% if swap.lunch.photos.attached? %>
       <%= cl_image_tag swap.lunch.photos.first.key, height: 250%>
     <% else %>
@@ -14,11 +14,28 @@
           <%= f.input :status, :label => 'Do you want accept or decline this swap?', :collection => %w[accepted refused]%>
           <%= f.button :submit, "Update swap", class: "btn btn-primary"  %>
         <% end %>
+        <strong><%= "Status:" %></strong> <%= swap.status %>
       <% elsif swap.status == "accepted" %>
-        <p>test</p>
-        <%= "Delivery date: #{swap.delivery_date} " %>
+      <%# TODO Corriger la div pour le status %>
+      <div class="d-flex" >
+        <strong><%= "Delivery date:" %> </strong> <%= swap.delivery_date %>
+        <strong><%= "Status:" %></strong> <%= swap.status %>
+      </div>
+      <%# div pour le nom utilisateur et avatar %>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <strong><%= "To:" %> </strong> <%= swap.user.first_name.capitalize %>
+          </div>
+          <% if swap.user.avatar.attached? %>
+            <%= cl_image_tag swap.user.avatar.key, class: "avatar w-25" %>
+          <% else %>
+            <%= image_tag "avatar.png", class: "avatar w-25" %>
+          <% end %>
+        </div>
+        <br>
+
       <% end %>
-      <strong><%= "Status:" %></strong> <%= swap.status %>
+
     </div>
   </div>
 <% end %>

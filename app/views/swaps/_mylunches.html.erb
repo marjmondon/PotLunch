@@ -3,7 +3,7 @@
   <p>You didn't create lunch yet!</p>
 <% else %>
     <% @lunches.each do |lunch| %>
-      <div class="card-product d-flex">
+      <div class="card-product d-flex shadow p-3 mb-5 bg-white rounded">
         <% if lunch.photos.attached? %>
           <%= cl_image_tag lunch.photos.first.key, height: 250%>
         <% else %>

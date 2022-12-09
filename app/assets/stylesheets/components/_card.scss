@@ -33,7 +33,7 @@
   height: 100%;
   width: 300px;
   object-fit: cover;
-  border-radius: 20px;
+  // border-radius: 20px;
 }
 
 .card-product h2 a {
@@ -63,10 +63,11 @@
 }
 
 .card-product .card-product-infos .text-truncate p {
-  -webkit-line-clamp: 3;
-  // display: -webkit-box;
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  white-space: break-spaces;
 }
 
 .card-show-title h1{

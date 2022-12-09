@@ -59,10 +59,14 @@
 }
 
 .card-product .card-product-infos .text-truncate {
-  max-width: 500px;
-  white-space: wrap;
+  // width: 300px;
+}
+
+.card-product .card-product-infos .text-truncate p {
+  -webkit-line-clamp: 3;
+  // display: -webkit-box;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  display: block;
 }
 
 .card-show-title h1{

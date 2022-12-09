@@ -10,14 +10,15 @@
 .tag-selector + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 16px;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
-  background-color: $tan;
+  background-color: white;
   color: $red;
   border: 1px solid $orange;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
+  padding: 7px 20px;
 }
 
 .tag-selector:checked + label {

@@ -10,8 +10,10 @@
           <%= image_tag('lunch.jpg') %>
         <% end %>
         <div class="card-product-infos">
-          <h2><%= lunch.title.capitalize %></h2>
-          <p> <%= lunch.description %> </p>
+          <h2><%= link_to "#{lunch.title.capitalize}", group_lunch_path(lunch.group_id, lunch) %></h2>
+          <p><%= lunch.description %></p>
+          <%= link_to "Edit this lunch", edit_group_lunch_path(lunch.group_id, lunch), class:"header__button" %>
+          <%= button_to "Destroy this lunch", group_lunch_path(lunch.group_id, lunch), class:"header__button" %>
         </div>
       </div>
     <% end %>

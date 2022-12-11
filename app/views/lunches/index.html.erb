@@ -46,7 +46,7 @@
     <div class="col card-product-infos d-flex">
       <div class="flex-fill text-truncate pt-4 pe-4">
         <h2><%= link_to "#{lunch.title.capitalize}", group_lunch_path(@group, lunch) %></h2>
-        <p class="text-truncate pe-4"> <%= lunch.description %> </p>
+        <p class="text-truncate pe-4"><%= lunch.description %></p>
       </div>
       <%#= lunch.tokens %>
       <div class="d-flex align-items-center pe-4">

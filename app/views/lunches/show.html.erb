@@ -1,7 +1,7 @@
 <div class="card-show">
   <% if @lunch.photos.attached? %>
     <% @lunch.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 250 %>
+      <%= cl_image_tag photo.key, height: 480 %>
     <% end %>
   <% else %>
     <%= image_tag('lunch.jpg') %>
@@ -26,30 +26,25 @@
   <div class="card-show-title">
     <h1 class=" text-center"><%= @lunch.title.capitalize %></h1>
     <div class="d-flex align-items-center">
-      <p><strong>Cooking date   </strong></p> <%= @lunch.cooking_date %>
+      <p><strong>Cooking date : </strong></p><%= @lunch.cooking_date %>
     </div>
     <div class="d-flex align-items-center">
-      <p><strong>Lunch coins   </strong> </p><%= "10 tokens" %>
+      <p><strong>Lunch coins : </strong></p><%= "10" %>
     </div>
     <div class="d-flex align-items-center">
-      <p><strong>Recipe url   </strong><%= @lunch.recipe_url %></p>
+      <p><strong>Recipe url : </strong><%= @lunch.recipe_url %></p>
     </div>
     <div class="d-flex align-items-center">
-    <p><strong>Description   </strong><%= @lunch.description %></p>
+    <p><strong>Description : </strong><%= @lunch.description %></p>
     </div>
   </div>
 </div>
 
- <%# <% @lunch.tags.each do |tag| %>
- <%# <%= tag %>
- <%# <% end %>
 <div class="text-center d-flex justify-content-evenly">
   <% if policy(@lunch).edit? %>
     <%= link_to "Edit this lunch", edit_group_lunch_path([@group, @lunch]), class:"header__button" %>
   <% end %>
-  <!-- [bouton destroy] -->
   <%= button_to "Destroy this lunch", group_lunch_path([@group,@lunch]), class:"header__button",  method: :delete if policy(@lunch).destroy? %>
-
   <% if (@lunch.user != current_user) && (@swap.exists? == false) %>
     <%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), method: :post, class:"header__button-outlined", data: {turbo_method: :post} %>
     <%= link_to "Claim this lunch", new_lunch_swap_path(@lunch), class:"header__button"  %>

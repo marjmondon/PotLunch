@@ -1,7 +1,7 @@
 <%# Lunches pending %>
 <% @swaps.each do |swap| %>
   <% if swap.status == "pending" %>
-    <div class="card-product d-flex">
+    <div class="card-product d-flex shadow p-3 mb-5 bg-white rounded">
       <% if swap.lunch.photos.attached? %>
         <%= cl_image_tag swap.lunch.photos.first.key, height: 250%>
       <% else %>

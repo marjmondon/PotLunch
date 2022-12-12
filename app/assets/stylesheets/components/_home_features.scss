@@ -1,18 +1,13 @@
-.home-view {
-  height: 95vh;
-}
-
 .home_features {
   align-items: center;
   justify-content: space-evenly;
-  height: 50%;
 }
 
 .home_features_div {
   display: flex;
   flex-direction: column;
   // width: 500px;
-  padding: 20px 50px;
+  padding: 50px 50px;
 }
 
 .home_features img {

@@ -6,9 +6,18 @@
     </div>
   </div>
 
+  <div class="col mb-4">
+    <form >
+      <%# <label for="outlined-input" class="fs-4 fw-bold ps-5">Refferal: </label> %>
+      <input class="outlined-input" type="text" id="groundlink" name="fname" placeholder="https://potlunch.club/groups">
+    </form>
+  </div>
+<div data-controller="filter-lunches">
   <%# filter %>
   <div class="col mb-5 filter_index d-flex">
     <div class="col filter_index d-flex justify-content-around">
+        <span data-action="click->filter-lunches#showveganlunches"><%= link_to image_tag("vegan.png", :class=> "home-icons"), groups_path%></span>
+
         <%= link_to image_tag("all.png", class: "home-icons active"), groups_path%>
         <%= link_to image_tag("vegan.png", class: "home-icons active"), groups_path%>
         <%= link_to image_tag("vege.png", class: "home-icons"), groups_path%>
@@ -16,42 +25,38 @@
         <%= link_to image_tag("shrimp.png", class: "home-icons"), groups_path%>
         <%= link_to image_tag("peanut.png", class: "home-icons"), groups_path%>
         <%= link_to image_tag("spicy.png", class: "home-icons"), groups_path%>
+
     </div>
-  </div>
-  <%# fin du filter %>
- <%# @lunches.each do |lunch| %>
-  <%# if lunch.photos.attached? %>
-    <%#= cl_image_tag lunch.photos.first.key, height: 250%>
-  <%# else %>
-    <%#= image_tag('lunch.jpg') %>
-  <%# end %>
-  <%#= link_to "#{lunch.title}", group_lunch_path(@group, lunch) %>
+    <%# fin du filter %>
 
-  <div class="col filter">
-    <h2 class="mb-1">Lunches avalaible</h2>
-  </div>
+    <div class="col filter">
+      <h2 class="mb-1">Lunches avalaible</h2>
+    </div>
 
-  <% @lunches.each do |lunch| %>
-  <div class="col card-product d-flex ">
-    <% if lunch.photos.attached? %>
-      <%= cl_image_tag lunch.photos.first.key, height: 250%>
-    <% else %>
-      <%= image_tag('lunch.jpg') %>
+    <% @lunches.each do |lunch| %>
+    <div class="col card-product d-flex" data-filter-lunches-target="lunch" data-lunch-tags="<%= lunch.tags.to_json %>">
+
+      <% if lunch.photos.attached? %>
+        <%= cl_image_tag lunch.photos.first.key, height: 250%>
+      <% else %>
+        <%= image_tag('lunch.jpg') %>
+      <% end %>
+
+      <div class="col card-product-infos d-flex">
+        <div class="flex-fill text-truncate pt-4 pe-4">
+          <h2><%= link_to "#{lunch.title.capitalize}", group_lunch_path(@group, lunch) %></h2>
+          <p class="text-truncate pe-4"><%= lunch.description %></p>
+        </div>
+        <%#= lunch.tokens %>
+        <div class="d-flex align-items-center pe-4">
+          <% if (lunch.swaps.exists? ==false) %>
+            <%= link_to "Gone", group_lunches_path(current_user.group_ids), class:"header__button-disable text-end " %>
+          <% else %>
+            <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button text-end " %>
+          <% end %>
+        </div>
+      </div>
+    </div>
     <% end %>
-    <div class="col card-product-infos d-flex">
-      <div class="flex-fill text-truncate pt-4 pe-4">
-        <h2><%= link_to "#{lunch.title.capitalize}", group_lunch_path(@group, lunch) %></h2>
-        <p class="text-truncate pe-4"><%= lunch.description %></p>
-      </div>
-      <%#= lunch.tokens %>
-      <div class="d-flex align-items-center pe-4">
-        <% if (lunch.swaps.exists? ==false) %>
-        <%= link_to "Gone", group_lunches_path(current_user.group_ids), class:"header__button-disable text-end " %>
-        <% else %>
-        <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button text-end " %>
-        <% end %>
-      </div>
-    </div>
   </div>
-  <% end %>
 </div>

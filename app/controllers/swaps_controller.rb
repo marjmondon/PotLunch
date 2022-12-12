@@ -29,6 +29,7 @@ class SwapsController < ApplicationController
     authorize @swap
 
     if @swap.save
+      # creation notification et broadcast dans swap channel
       new_coins_current_user = current_user.coins - 10
       current_user.update!(coins: new_coins_current_user)
       redirect_to group_lunches_path(@lunch.group), notice: 'Your swap request was successfully created.'
@@ -86,3 +87,7 @@ class SwapsController < ApplicationController
     params.require(:swap).permit(:user_id, :lunch_id, :delivery_date, :status, :start_date)
   end
 end
+
+# create a userchannel
+# broadcast user_id du lunch ou le user id du swap
+# notification hasmany lunches thought swaps et messages aussi

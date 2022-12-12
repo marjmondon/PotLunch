@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
   end
 
   def create
+    #raise
     @group = Group.new(group_params)
     authorize @group
     @usergroup = Usergroup.new(user: current_user, group: @group)
@@ -16,6 +17,7 @@ class GroupsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
   end
 
   def edit
@@ -33,6 +35,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :logo_url)
+    params.require(:group).permit(:name, :photo)
   end
 end

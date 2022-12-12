@@ -9,6 +9,11 @@ class LunchesController < ApplicationController
     # @group = Group.find(params[:group_id])
     # @lunches = @group.lunches
 
+    @usergroups = Usergroup.where(user_id: current_user)
+    @groups = []
+    @usergroups.each do |usergroup|
+      @groups << usergroup.group
+    end
     if params[:query].present?
       @lunches = policy_scope(Lunch).where("? = ANY (tags) AND group_id = ? ", params[:query], params[:group_id])
       @group = policy_scope(Group).find(params[:group_id])

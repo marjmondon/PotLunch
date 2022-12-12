@@ -1,6 +1,6 @@
 <%= form_with url: group_lunches_path(@group), method: :get do |form|%>
     <%#= form.label :query, "Filter by:" %>
-    <%= form.select :query, [" ", "Vegan", "Vege", "Spicy", "Nuts", "Gluten", "Seafood"] %>
+    <%= form.select :query, [" ", "Vegan", "Vegetarian", "Spicy", "Nuts Free", "Gluten Free", "Seafood"] %>
     <%= submit_tag "Search", class:"form_index_button" %>
   <% end %>
 <%# , class:"fs-4 fw-bold" %>

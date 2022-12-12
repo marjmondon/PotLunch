@@ -1,35 +1,44 @@
 <div class="container chatroom"
   data-controller="swap-subscription"
   data-swap-subscription-swap-id-value="<%= @swap.id %>"
->
-  <h1>Chat for : <%= @swap.lunch.title %>!</h1>
+  data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
 
-  <div class="messages" data-swap-subscription-target="messages">
-    <% @swap.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+  <%= render "lunches/banner" %>
+
+  <h1>Chat for : <%= @swap.lunch.title %>!</h1>
+  <div class="chatroom-container">
+    <div class="messages" data-swap-subscription-target="messages">
+      <% @swap.messages.each do |message| %>
+        <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+          <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+            <%= render "messages/message", message: message %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= simple_form_for [@swap, @message],
+      html: {data: {action: "turbo:submit-end->swap-subscription#resetForm"}, class: "d-flex align-items-center"} do |f|
+    %>
+      <%= f.input :content,
+        as: :text,
+        label: false,
+        placeholder: "Message here for #{@swap.lunch.title}",
+        wrapper_html: {class: "flex-grow-1 message-box rounded border border-1"}
+      %>
+      <%= f.submit "Send", class: "button-chat mb-3" %>
     <% end %>
   </div>
 
-  <%= simple_form_for [@swap, @message],
-    html: {data: {action: "turbo:submit-end->swap-subscription#resetForm"}, class: "d-flex"} do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message here for #{@swap.lunch.title}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
-</div>
-
-<% if @swap.lunch.user == current_user %>
-  <% if @swap.status == "pending" %>
-    <%= simple_form_for(@swap) do |f| %>
-      <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
-      <%= f.input :delivery_date, :label => 'When do you want to swap this lunch?', placeholder: "Delivery date", as: :date, html5: true %>
-      <%= f.button :submit, "Update swap" %>
+  <div class="validation-lunch">
+    <% if @swap.lunch.user == current_user %>
+      <% if @swap.status == "pending" %>
+        <%= simple_form_for(@swap) do |f| %>
+          <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
+          <%= f.input :delivery_date, :label => 'When do you want to swap this lunch?', placeholder: "Delivery date", as: :date, html5: true %>
+          <%= f.button :submit, "Update swap", class: "button-chat mb-3" %>
+        <% end %>
+      <% end %>
     <% end %>
-    <span>-------------------</span>
-    <br>
-  <% end %>
-<% end %>
+  </div>
+</div>

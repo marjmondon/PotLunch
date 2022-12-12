@@ -10,7 +10,8 @@ class MessagesController < ApplicationController
     if @message.save
       SwapChannel.broadcast_to(
         @swap,
-        render_to_string(partial: "message", locals: {message: @message})
+        message: render_to_string(partial: "message", locals: {message: @message}),
+        sender_id: @message.user.id
       )
       head :ok
       # redirect_to group_lunch_swap_chatroom_messages_path(@chatroom)

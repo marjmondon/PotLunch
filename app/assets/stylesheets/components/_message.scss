@@ -1,0 +1,44 @@
+.chatroom-container {
+  background-color: $white;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.validation-lunch {
+  background-color: $white;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+// To style the wrapping div
+.message-row {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+// To style the message itself
+.sender-style, .receiver-style {
+  width: 70%;
+  max-width: 400px;
+  border-radius: 4px;
+  padding: 8px;
+  min-height: 80px;
+}
+
+.sender-style {
+  border: $red 2px solid;
+  border-radius: 15px;
+}
+
+.receiver-style {
+  // background-color: $tan;
+  border: $orange 2px solid;
+  border-radius: 15px;
+}
+
+.message-box {
+  border: $orange 2px solid !important;
+  margin-right: 10px;
+}

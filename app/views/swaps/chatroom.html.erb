@@ -3,9 +3,8 @@
   data-swap-subscription-swap-id-value="<%= @swap.id %>"
   data-swap-subscription-current-user-id-value="<%= current_user.id %>">
 
-  <%= render "lunches/banner" %>
+  <%= render "shared/banner", titleH1: "Chat for : #{@swap.lunch.title} !" %>
 
-  <h1>Chat for : <%= @swap.lunch.title %>!</h1>
   <div class="chatroom-container">
     <div class="messages" data-swap-subscription-target="messages">
       <% @swap.messages.each do |message| %>
@@ -29,8 +28,8 @@
     <% end %>
   </div>
 
-  <div class="validation-lunch">
-    <% if @swap.lunch.user == current_user %>
+  <% if @swap.lunch.user == current_user %>
+    <div class="validation-lunch">
       <% if @swap.status == "pending" %>
         <%= simple_form_for(@swap) do |f| %>
           <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
@@ -38,6 +37,6 @@
           <%= f.button :submit, "Update swap", class: "button-chat mb-3" %>
         <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

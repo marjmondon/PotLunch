@@ -13,12 +13,28 @@
         <li class="icons"><%= @lunch.user.first_name %> <%= @lunch.user.last_name %></li>
       </div>
       <div class="card-show-info-bar">
-        <%= link_to image_tag("vegan.png", class: "home-icons-show"), groups_path%>
-        <%= link_to image_tag("vege.png", class: "home-icons-show"), groups_path%>
-        <%= link_to image_tag("glutenfree.png", class: "home-icons-show"), groups_path%>
-        <%= link_to image_tag("shrimp.png", class: "home-icons-show"), groups_path%>
-        <%= link_to image_tag("peanut.png", class: "home-icons-show"), groups_path%>
-        <%= link_to image_tag("spicy.png", class: "home-icons-show"), groups_path%>
+        <% if @lunch.tags.include?("Vegan") %>
+          <%= image_tag("vegan.png", class: "home-icons-show")%>
+        <% end %>
+
+        <% if @lunch.tags.include?("Vegetarian") %>
+          <%= image_tag("vege.png", class: "home-icons-show")%>
+        <% end %>
+
+        <% if @lunch.tags.include?("Gluten Free") %>
+          <%= image_tag("glutenfree.png", class: "home-icons-show")%>
+        <% end %>
+
+        <% if @lunch.tags.include?("Seafood") %>
+          <%= image_tag("shrimp.png", class: "home-icons-show")%>
+        <% end %>
+
+        <% if @lunch.tags.include?("Nuts Free") %>
+          <%= image_tag("peanut.png", class: "home-icons-show")%>
+        <% end %>
+        <% if @lunch.tags.include?("Spicy") %>
+          <%= image_tag("spicy.png", class: "home-icons-show")%>
+        <% end %>
       </div>
     </ul>
   </div>

@@ -1,7 +1,7 @@
 <div class="container chatroom"
   data-controller="swap-subscription"
   data-swap-subscription-swap-id-value="<%= @swap.id %>"
-  data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+  data-swap-subscription-current-user-id-value="<%= current_user.id %>">
 
   <%= render "lunches/banner" %>
 
@@ -21,7 +21,6 @@
       html: {data: {action: "turbo:submit-end->swap-subscription#resetForm"}, class: "d-flex align-items-center"} do |f|
     %>
       <%= f.input :content,
-        as: :text,
         label: false,
         placeholder: "Message here for #{@swap.lunch.title}",
         wrapper_html: {class: "flex-grow-1 message-box rounded border border-1"}

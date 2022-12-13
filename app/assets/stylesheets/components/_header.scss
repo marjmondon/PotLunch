@@ -1,8 +1,8 @@
 .header {
   // background-image: url(header-bg.png);
-  height: 450px;
+  height: 70vh;
   margin-bottom: 20px;
-  padding: 100px;
+  padding: 20px 0px 0px 100px;
   position: relative;
   margin-top: -65px;
   background: linear-gradient(70deg,$orange,$tan);
@@ -22,4 +22,16 @@
   margin-bottom: 30px;
   inline-size: 450px;
   overflow-wrap: break-word;
+}
+
+.homeh{
+  display: flex;
+  justify-items: center;
+}
+
+.homeh img {
+  width: 25%;
+  position: absolute;
+  top: 150px;
+  right: 20px;
 }

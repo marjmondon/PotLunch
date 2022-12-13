@@ -50,7 +50,7 @@ class SwapsController < ApplicationController
       end
 
       @swap.destroy if @swap.status == "refused"
-      redirect_to swap_chatroom_path(@swap)
+      redirect_to swaps_path
     else
       render :edit, status: :unprocessable_entity
     end

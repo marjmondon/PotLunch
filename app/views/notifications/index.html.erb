@@ -1,1 +1,5 @@
-<h1>Notifications</h1>
+<div class="notifications" data-notification-subscription-target="notifications">
+  <% @notification.notifications.each do |notification| %>
+    <%= render "notification", notification: notification %>
+  <% end %>
+</div>

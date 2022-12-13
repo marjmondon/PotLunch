@@ -30,7 +30,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body data-controller="<%= 'notification-subscription' if current_user %>" data-notification-subscription-user-id-value="<%= current_user.id if current_user %>">
   <% if controller_name == "lunches" || controller_name =="swaps" || controller_name =="groups" || controller_name =="chatrooms" %>
     <%= render "shared/navbar" %>
     <%= render "shared/vertical_navbar" %>

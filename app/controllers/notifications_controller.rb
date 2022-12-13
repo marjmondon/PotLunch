@@ -1,5 +1,7 @@
 class NotificationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @notifications = current_user.notifications
+    @notifications = policy_scope(Notification)
   end
 end

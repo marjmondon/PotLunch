@@ -1,4 +1,4 @@
-class ChatroomPolicy < ApplicationPolicy
+class NotificationPolicy < ApplicationPolicy
   def index?
     true
   end

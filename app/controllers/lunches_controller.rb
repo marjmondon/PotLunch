@@ -8,18 +8,13 @@ class LunchesController < ApplicationController
     # @group = policy_scope(Group)
     # @group = Group.find(params[:group_id])
     # @lunches = @group.lunches
+    @group = policy_scope(Group).find(params[:group_id])
+    @lunches = policy_scope(Lunch).where("group_id = ? ", params[:group_id])
 
     @usergroups = Usergroup.where(user_id: current_user)
     @groups = []
     @usergroups.each do |usergroup|
       @groups << usergroup.group
-    end
-    if params[:query].present?
-      @lunches = policy_scope(Lunch).where("? = ANY (tags) AND group_id = ? ", params[:query], params[:group_id])
-      @group = policy_scope(Group).find(params[:group_id])
-    else
-      @group = policy_scope(Group).find(params[:group_id])
-      @lunches = policy_scope(Lunch).where("group_id = ? ", params[:group_id])
     end
   end
 
@@ -27,11 +22,22 @@ class LunchesController < ApplicationController
     # @group = Group.find(params[:group_id])
     @swap = Swap.where(lunch_id: @lunch)
     # raise
+    @usergroups = Usergroup.where(user_id: current_user)
+    @groups = []
+    @usergroups.each do |usergroup|
+      @groups << usergroup.group
+    end
   end
 
   def new
+    @usergroups = Usergroup.where(user_id: current_user)
+    @groups = []
+    @usergroups.each do |usergroup|
+      @groups << usergroup.group
+    end
+
     @lunch = Lunch.new
-    # @group = Group.find(params[:group_id])
+    @group = Group.find(params[:group_id])
     authorize @lunch
   end
 
@@ -53,6 +59,11 @@ class LunchesController < ApplicationController
 
   def edit
     # @group = Group.find(params[:group_id])
+    @usergroups = Usergroup.where(user_id: current_user)
+    @groups = []
+    @usergroups.each do |usergroup|
+      @groups << usergroup.group
+    end
   end
 
   def update

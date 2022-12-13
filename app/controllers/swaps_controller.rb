@@ -1,6 +1,7 @@
 class SwapsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_lunch, only: %i[new create]
+  before_action :set_groups
 
   def index
     @swaps = policy_scope(Swap)
@@ -84,5 +85,13 @@ class SwapsController < ApplicationController
 
   def swap_params
     params.require(:swap).permit(:user_id, :lunch_id, :delivery_date, :status, :start_date)
+  end
+  
+  def set_groups
+    @usergroups = Usergroup.where(user_id: current_user)
+    @groups = []
+    @usergroups.each do |usergroup|
+      @groups << usergroup.group
+    end
   end
 end

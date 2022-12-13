@@ -4,8 +4,14 @@
 
 import { application } from "./application"
 
+import AlertController from "./alert_controller"
+application.register("alert", AlertController)
+
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
+
+import CopyLinkController from "./copy_link_controller"
+application.register("copy-link", CopyLinkController)
 
 import FilterLunchesController from "./filter_lunches_controller"
 application.register("filter-lunches", FilterLunchesController)

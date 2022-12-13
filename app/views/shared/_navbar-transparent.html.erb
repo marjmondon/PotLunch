@@ -5,17 +5,19 @@
     <% end %>
       <div>
         <% if user_signed_in? %>
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <%= link_to "Share a lunch", new_group_lunch_path(current_user.group_ids), class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Dashboard", swaps_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "View lunches", group_lunches_path(current_user.group_ids), class: "nav-link" %>
-          </li>
-        </ul>
+          <% if current_user.groups.any? %>
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <%= link_to "Share a lunch", new_group_lunch_path(current_user.group_ids), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Dashboard", swaps_path, class: "nav-link" %>
+              </li>
+              <%# <li class="nav-item"> %>
+                <%#= link_to "View lunches", group_lunches_path(current_user.group_ids), class: "nav-link" %>
+              <%# </li> %>
+            </ul>
+          <% end %>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

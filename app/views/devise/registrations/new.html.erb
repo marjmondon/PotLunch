@@ -2,10 +2,8 @@
   <div class="row">
     <div class="col form">
         <h1 class="text-center">Register</h1>
-
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
         <%= f.error_notification %>
-
         <div class="form-inputs">
           <%= f.input :email,
                       required: true,
@@ -26,7 +24,7 @@
                       input_html: { autocomplete: "new-password" } %>
         </div>
 
-        <div class="text-center">
+        <div class="form-actions text-center">
           <%= f.button :submit, "Sign up", class:"form__button" %>
         </div>
       <% end %>
@@ -34,7 +32,7 @@
       <%= render "devise/shared/links" %>
     </div>
     <div class="col form-img">
-      <%= image_tag('SWAPC.png', :class => "swap-image") %>
+      <%= image_tag('SWAPC.png', class: "swap-image") %>
     </div>
   </div>
 </div>

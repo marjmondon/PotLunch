@@ -7,42 +7,22 @@
       <label class="box-title" for="cb1"> My Lunches</label>
       <label class="box-close" for="acc-close"></label>
       <div class="box-content">
-        <%= render "mylunches", swap: @swap %>
-      </div>
-    </section>
-
-    <%# Lunches to bring at work %>
-    <input type="radio" name="accordion" id="cb2" />
-    <section class="box mb-5">
-      <label class="box-title" for="cb2">Lunches to bring at work</label>
-      <label class="box-close" for="acc-close"></label>
-      <div class="box-content">
-        <%= render "bringatwork", lunch: @lunch %>
+         <%= render "bringatwork", swap: @swap %>
       </div>
     </section>
 
     <%# Lunches to be received %>
-    <input type="radio" name="accordion" id="cb3" />
+    <input type="radio" name="accordion" id="cb2" />
     <section class="box mb-5">
-      <label class="box-title" for="cb3">Lunches to be received</label>
+      <label class="box-title" for="cb2">Lunches to be received</label>
       <label class="box-close" for="acc-close"></label>
       <div class="box-content">
-        <%= render "tobereceived", lunch: @lunch %>
-      </div>
-    </section>
-
-    <%# Lunches pending %>
-    <input type="radio" name="accordion" id="cb4" />
-    <section class="box mb-5">
-      <label class="box-title" for="cb4">Lunches pending</label>
-      <label class="box-close" for="acc-close"></label>
-      <div class="box-content">
-        <%= render "pending", lunch: @lunch %>
+        <%= render "tobereceived", swap: @swap %>
       </div>
     </section>
     <input type="radio" name="accordion" id="acc-close" />
-    <%# calendar %>
-    <%= render "calendar", lunch: @lunch %>
 
+    <%# calendar %>
+    <%= render "calendar", swap: @swaps_calendar %>
   </nav>
 </div>

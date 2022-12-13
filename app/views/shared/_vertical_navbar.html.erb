@@ -1,8 +1,19 @@
 <ul class="nav flex-column vertical-nav">
-  <li >
-   <%= link_to image_tag("wagon.png", :class => "group-logo"), group_lunches_path(current_user.group_ids) %>
+  <% @groups.each do |group| %>
+    <li class="nav-item">
+    <% if group.photo.attached? %>
+      <%= link_to cl_image_tag(group.photo.key, :class => "group-logo"), group_lunches_path(group) %>
+    <% else %>
+      <%= link_to image_tag('wagon.png', :class => "group-logo"), group_lunches_path(group) %>
+    <% end %>
   </li>
-  <li class="nav-item">
+  <% end %>
+    <li class="nav-item">
    <%= link_to image_tag("AddGroupButton.png", :class => "nav-link-vertical"), groups_path %>
   </li>
+  <%#= raise %>
 </ul>
+
+
+
+

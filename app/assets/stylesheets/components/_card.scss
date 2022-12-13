@@ -17,6 +17,7 @@
   font-size: 60px;
   font-weight: bold;
   color: $gray;
+  text-shadow: 0px 0px 5px white;
 }
 
 .card-product {
@@ -58,6 +59,10 @@
   min-width: 0;
 }
 
+.card-product .card-product-avatar {
+  width: 40px;
+}
+
 .card-product .card-product-infos .text-truncate {
   // width: 300px;
 }
@@ -76,6 +81,7 @@
   font-weight: bold;
   margin: 10px 10px;
   text-decoration: none;
+  text-shadow: 0px 0px 5px white;
 }
 
 .card-show-title p{

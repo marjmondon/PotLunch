@@ -17,9 +17,41 @@
 }
 
 .flash-warning {
-  border: 2px solid #FFC65A;
+  border: 2px solid #99cc33;
 }
 
 .flash-danger {
+  border: 2px solid #FD1015;
+}
+
+// Notice for missings coins
+
+.alert-missing-coins {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  z-index: 1000;
+}
+
+.flash-missing-coins {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  margin: 8px;
+  width: 300px;
+  // height: 215px;
+  padding: 15px;
+}
+
+.flash-missing-coins a {
+
+  padding: 10px;
+}
+
+.flash-info {
   border: 2px solid #FD1015;
 }

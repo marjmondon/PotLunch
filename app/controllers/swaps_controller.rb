@@ -29,7 +29,7 @@ class SwapsController < ApplicationController
     authorize @swap
 
     if @swap.save
-      @notification = Notification.create(content: "test", swap_id: @swap.id, user_id: @lunch.user.id)
+      @notification = Notification.create(content: "Message: ", swap_id: @swap.id, user_id: @notification.swap.user_id)
       UserChannel.broadcast_to(
         @notification.user,
         render_to_string(partial: "notification", locals: {notification: @notification})

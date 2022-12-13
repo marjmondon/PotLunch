@@ -2,8 +2,9 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @groups = policy_scope(Group)
-    @usergroups = Usergroup.where(user: current_user)
+    policy_scope(Group)
+    @groups = Usergroup.where(user: current_user).map(&:group)
+    # raise
     @group = Group.new
   end
 
@@ -17,7 +18,6 @@ class GroupsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit

@@ -50,4 +50,8 @@ export default class extends Controller {
   #userStyleClass(currentUserIsSender) {
     return currentUserIsSender ? "sender-style" : "receiver-style"
   }
+
+  // received(data) {
+  //   notification = document.getElementById("notification")
+  // }
 }

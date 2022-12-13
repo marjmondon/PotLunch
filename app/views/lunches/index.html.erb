@@ -2,14 +2,19 @@
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
     <div class="card-text-spacing">
       <h1>Hello <%=current_user.first_name.capitalize %></h1>
-      <%= link_to "Share a lunch", new_group_lunch_path, class:"header__button" %>
+      <% if current_user.group_ids.include?(@group.id) %>
+        <%= link_to "Share a lunch", new_group_lunch_path, class:"header__button" %>
+      <% else %>
+        <%= link_to "Join a group", join_group_path(@group.id), class:"header__button" %>
+      <% end %>
     </div>
   </div>
 
-  <div class="col mb-4">
+  <div class="col mb-4" data-controller="copy-link">
     <form >
       <%# <label for="outlined-input" class="fs-4 fw-bold ps-5">Refferal: </label> %>
-      <input class="outlined-input" type="text" id="groundlink" name="fname" placeholder="https://potlunch.club/groups">
+      <input data-copy-link-target="link" class="outlined-input" type="text" id="groundlink" name="fname" value= <%="http://localhost:3000/groups/#{@group.id}/lunches" %>>
+      <i class="fa-regular fa-copy" data-action="click->copy-link#copy"></i>
     </form>
   </div>
 <div data-controller="filter-lunches">

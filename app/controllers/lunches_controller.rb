@@ -14,9 +14,7 @@ class LunchesController < ApplicationController
   end
 
   def show
-    # @group = Group.find(params[:group_id])
     @swap = Swap.where(lunch_id: @lunch)
-    # raise
   end
 
   def new
@@ -28,7 +26,6 @@ class LunchesController < ApplicationController
   def create
     @lunch = Lunch.new(lunch_params)
     @lunch.user = current_user
-    # @group = Group.find(params[:group_id])
     @lunch.group = @group
     authorize @lunch
     @lunches = Lunch.where(user_id: current_user)
@@ -42,11 +39,9 @@ class LunchesController < ApplicationController
   end
 
   def edit
-    # @group = Group.find(params[:group_id])
   end
 
   def update
-    # @group = Group.find(params[:group_id])
     if @lunch.update(edit_lunch_params)
       if params[:lunch][:photos].present?
         params[:lunch][:photos].each do |photo|
@@ -91,5 +86,4 @@ class LunchesController < ApplicationController
   def lunch_params
     params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :lunch_id, :user_id, tags: [], photos: [])
   end
-
 end

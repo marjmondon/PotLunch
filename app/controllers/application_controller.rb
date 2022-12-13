@@ -22,10 +22,32 @@ class ApplicationController < ActionController::Base
     { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
-
   # Pundit: allow-list approach
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
+  # after_action :store_location
+
+  # def store_location
+  #   # store last url - this is needed for post-login redirect to whatever the user last visited.
+  #   if (request.fullpath != "/users/sign_in" &&
+  #     request.fullpath != "/users/sign_up" &&
+  #     request.fullpath != "/users/password" &&
+  #     request.fullpath != "/users/sign_out" &&
+  #     !request.xhr?) # don't store ajax calls
+  #     session["user_return_to"] = request.fullpath
+  #   end
+  #   after_sign_in_path_for(current_user) if current_user
+  # end
+
+  # def after_sign_in_path_for(resource)
+  #   raise
+  #   # if resource.master
+  #     stored_location_for(resource)
+  #   # else
+  #     # super
+  #   # end
+  # end
 
   private
 
@@ -34,6 +56,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    current_user.groups.any? ? group_lunches_path(current_user.groups.last) : root_path
+    resource.groups.any? ? group_lunches_path(resource.groups.last) : root_path
   end
 end

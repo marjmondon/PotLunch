@@ -8,7 +8,6 @@ class GroupsController < ApplicationController
   end
 
   def create
-    #raise
     @group = Group.new(group_params)
     authorize @group
     @usergroup = Usergroup.new(user: current_user, group: @group)

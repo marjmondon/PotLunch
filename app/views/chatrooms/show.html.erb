@@ -1,33 +1,33 @@
-<div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
->
-  <h1>Chat for : <%= @chatroom.swap.lunch.title %>!</h1>
-
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+<div class="container">
+  <div class="chatroom-container"
+    data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+  >
+    <h1>Chat for : <%= @chatroom.swap.lunch.title %>!</h1>
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+    <%= simple_form_for [@chatroom.swap.lunch.group, @chatroom.swap.lunch, @chatroom.swap, @chatroom, @message],
+      html: {data: {action: "turbo:submit-end->chatroom-subscription#resetForm"}, class: "d-flex"} do |f|
+    %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message here for #{@chatroom.swap.lunch.title}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
     <% end %>
   </div>
 
-  <%= simple_form_for [@chatroom.swap.lunch.group, @chatroom.swap.lunch, @chatroom.swap, @chatroom, @message],
-    html: {data: {action: "turbo:submit-end->chatroom-subscription#resetForm"}, class: "d-flex"} do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message here for #{@chatroom.swap.lunch.title}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+
+  <% if @chatroom.swap.status == "pending" %>
+    <%= simple_form_for(@chatroom.swap) do |f| %>
+      <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
+      <%= f.button :submit, "Update swap" %>
+    <% end %>
+    <span>-------------------</span>
+    <br>
   <% end %>
 </div>
-
-
-<% if @chatroom.swap.status == "pending" %>
-  <%= simple_form_for(@chatroom.swap) do |f| %>
-    <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
-    <%= f.button :submit, "Update swap" %>
-  <% end %>
-  <span>-------------------</span>
-  <br>
-<% end %>

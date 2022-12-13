@@ -1,24 +1,27 @@
-<% if notice %>
-  <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-    <%= notice%>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-    </button>
-  </div>
-<% end %>
-
-
-<% if alert %>
-  <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
-    <%= alert %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-    </button>
-  </div>
-<% end %>
-
 <div data-controller="alert">
-  <% if info %>
-    <div class="flash-missing-coins flash-info alert-missing-coins alert-dismissible fade show" role="alert">
-      <%= info %><%= link_to "Go to share a lunch", new_group_lunch_path(current_user.group_ids)%>
+
+  <% if notice %>
+    <div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+      <%= notice%>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      </button>
     </div>
   <% end %>
+
+
+  <% if alert %>
+    <div class="flash flash-danger alert alert-dismissible fade show" role="alert">
+      <%= alert %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      </button>
+    </div>
+  <% end %>
+
+  <%# <div data-controller="alert"> %>
+    <% if info %>
+      <div class="flash-missing-coins flash-info alert-missing-coins alert-dismissible fade show" role="alert">
+        <%= info %><%= link_to "Go to share a lunch", new_group_lunch_path(current_user.group_ids)%>
+      </div>
+    <% end %>
+
 </div>

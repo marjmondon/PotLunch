@@ -32,6 +32,8 @@ class SwapsController < ApplicationController
     authorize @swap
 
     if @swap.save
+      # pas toucher j en ai besoin pour demain
+      #remettre avec logique du if dans partial notification
     #   if current_user == @swap.lunch.user
     #     notif_user = @swap.user
     #   else
@@ -72,6 +74,10 @@ class SwapsController < ApplicationController
     @swap = Swap.find(params[:swap_id])
     authorize @swap
     @message = Message.new
+    if params[:notif].present?
+      @notification = Notification.find(params[:notif].to_i)
+      @notification.update(read: true)
+    end
   end
 
   def initiate_chat

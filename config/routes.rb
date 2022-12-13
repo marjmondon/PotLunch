@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :swaps, only: %i[index update] do
     resources :messages, only: :create
   end
+
+  resources :notifications, only: :index
+
   # get "/dashboard", to: "swaps#index"
   post 'lunches/:lunch_id', to: "swaps#initiate_chat", as: :new_swap_for_chat
   get 'swaps/:swap_id/chatroom', to: "swaps#chatroom", as: :swap_chatroom

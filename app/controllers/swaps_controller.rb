@@ -88,6 +88,5 @@ class SwapsController < ApplicationController
   end
 end
 
-# create a userchannel
+
 # broadcast user_id du lunch ou le user id du swap
-# notification hasmany lunches thought swaps et messages aussi

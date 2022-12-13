@@ -2,7 +2,9 @@ class Swap < ApplicationRecord
   belongs_to :user
   belongs_to :lunch
   has_many :messages, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   validates :delivery_date, presence: true
+
 
   enum status: {
     pending: 0,

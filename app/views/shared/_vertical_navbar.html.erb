@@ -4,7 +4,7 @@
     <% if group.photo.attached? %>
       <%= link_to cl_image_tag(group.photo.key, :class => "group-logo"), group_lunches_path(group) %>
     <% else %>
-      <%= link_to image_tag('flo.jpg', :class => "group-logo"), group_lunches_path(group) %>
+      <%= link_to image_tag('wagon.png', :class => "group-logo"), group_lunches_path(group) %>
     <% end %>
   </li>
   <% end %>

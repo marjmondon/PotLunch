@@ -34,6 +34,10 @@
 .meeting {
   margin: 10px 0;
   background-color: $orange !important;
+  transition: background 0.3s ease;
+  color: $white;
+  padding: 8px 24px;
+  border-radius: 4px;
 }
 
 .calendar-heading a {
@@ -45,17 +49,4 @@
   font-weight: 700;
   padding: 5px 30px;
   text-decoration: none;
-}
-
-.meeting {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #1EDD88;
-  transition: background 0.3s ease;
-}
-
-.meeting:hover {
-  background: #1BCB7F;
-  color: white;
 }

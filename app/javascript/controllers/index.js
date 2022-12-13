@@ -19,5 +19,8 @@ application.register("filter-lunches", FilterLunchesController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import NotificationSubscriptionController from "./notification_subscription_controller"
+application.register("notification-subscription", NotificationSubscriptionController)
+
 import SwapSubscriptionController from "./swap_subscription_controller"
 application.register("swap-subscription", SwapSubscriptionController)

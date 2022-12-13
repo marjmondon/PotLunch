@@ -9,8 +9,12 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "UserChannel", id: this.userIdValue },
-      { received: notification => console.log(notification) }
+      { received: notification => this.#insertMessageAndScrollDown(notification) }
     )
-    console.log(`subscribe ${this.userIdValue}.`)
+  }
+
+  #insertMessageAndScrollDown(notification) {
+    // Inserting the `message` in the DOM
+    this.notificationsTarget.insertAdjacentHTML("beforeend", notification)
   }
 }

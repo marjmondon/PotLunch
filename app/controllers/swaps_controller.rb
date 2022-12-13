@@ -29,11 +29,10 @@ class SwapsController < ApplicationController
     authorize @swap
 
     if @swap.save
-      # creation notification et broadcast dans swap channel
       @notification = Notification.create(content: "test", swap_id: @swap.id, user_id: @lunch.user.id)
       UserChannel.broadcast_to(
         @notification.user,
-        "nouvelle notification"
+        render_to_string(partial: "notification", locals: {notification: @notification})
       )
       new_coins_current_user = current_user.coins - 10
       current_user.update!(coins: new_coins_current_user)
@@ -92,6 +91,3 @@ class SwapsController < ApplicationController
     params.require(:swap).permit(:user_id, :lunch_id, :delivery_date, :status, :start_date)
   end
 end
-
-
-# broadcast user_id du lunch ou le user id du swap

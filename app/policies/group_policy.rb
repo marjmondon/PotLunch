@@ -7,6 +7,10 @@ class GroupPolicy < ApplicationPolicy
     true
   end
 
+  def join?
+    true
+  end
+
   def update?
     record.user == user
   end

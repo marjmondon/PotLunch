@@ -4,9 +4,11 @@ class SwapsController < ApplicationController
   before_action :set_groups
 
   def index
-    @swaps = policy_scope(Swap)
+    # @swaps = policy_scope(Swap)
+    # @lunches_without_swap = Lunch.left_outer_joins(:swaps).where(user: current_user).where(swaps: { id: nil })
     @lunches = Lunch.where(user: current_user)
-    @swaps = Swap.where(lunch_id: @lunches)
+    @lunches_without_swap = @lunches.select { |lunch| lunch.swaps.empty? }
+    @swaps = policy_scope(Swap).where(lunch_id: @lunches)
     @swaps_asked = Swap.where(user_id: current_user)
     start_date = params.fetch(:start_date, Date.today).to_date
     @swaps_calendar = Swap.where(delivery_date: start_date.beginning_of_week..start_date.end_of_week)
@@ -90,7 +92,7 @@ class SwapsController < ApplicationController
   def swap_params
     params.require(:swap).permit(:user_id, :lunch_id, :delivery_date, :status, :start_date)
   end
-  
+
   def set_groups
     @usergroups = Usergroup.where(user_id: current_user)
     @groups = []

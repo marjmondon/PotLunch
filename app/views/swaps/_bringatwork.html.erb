@@ -7,7 +7,7 @@
     <% end %>
     <div class="card-product-infos w-100">
       <div class="mb-3">
-        <h2><%= swap.lunch.title.capitalize %></h2>
+        <h2><strong><%= swap.lunch.title.capitalize %></strong></h2>
       </div>
       <%# LUNCH REQUESTED %>
       <% if swap.status == "requested" %>
@@ -63,7 +63,6 @@
             <%= link_to "Chat", swap_chatroom_path(swap, @message), class: "btn btn-primary" %>
         </div>
       <% end %>
-
     </div>
   </div>
 <% end %>

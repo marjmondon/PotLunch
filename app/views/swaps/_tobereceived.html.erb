@@ -17,21 +17,34 @@
 <% @swaps_asked.each do |swap| %>
   <div class="card-product d-flex shadow p-3 mb-5 bg-white rounded">
     <% if swap.lunch.photos.attached? %>
-      <%=  cl_image_tag swap.lunch.photos.first.key, height: 250 %>
+      <%= cl_image_tag swap.lunch.photos.first.key, height: 250%>
     <% else %>
       <%= image_tag('lunch.jpg') %>
     <% end %>
-    <div class="card-product-infos">
-      <% @lunches.each do |lunch| %>
-        <h2><%= link_to "#{swap.lunch.title.capitalize}", group_lunch_path(lunch.group_id, lunch) %></h2>
-      <% end %>
-      <div class="content-card-swap">
-        <p><%= "Delivery date : #{swap.delivery_date}" %></p>
-        <p><%= "From : #{swap.lunch.user.first_name}" %></p>
-        <p><%= "To : #{swap.user.first_name}" %></p>
-        <p><%= "Status : #{swap.status}" %></p>
-        <div class="chat-button-swap">
-          <p><%= link_to "Chat", swap_chatroom_path(swap, @message), class: "btn btn-primary" %></p>
+    <div class="card-product-infos w-100">
+      <div class="mb-3">
+        <h2><%= link_to "#{swap.lunch.title.capitalize}", group_lunch_path(swap.lunch.group_id, swap.lunch) %></h2>
+      </div>
+      <div class="d-flex justify-content-between align-items-center my-3" >
+        <div>
+          <strong><%= "Delivery date:" %> </strong> <%= swap.delivery_date %>
+        </div>
+        <div>
+          <strong><%= "Status:" %></strong> <%= swap.status %>
+        </div>
+      </div>
+        <div class="d-flex justify-content-between align-items-center my-3">
+          <div class="d-flex justify-content-between align-items-center w-50">
+            <div>
+              <strong><%= "From:" %> </strong> <%= swap.lunch.user.first_name.capitalize %>
+            </div>
+            <% if swap.user.avatar.attached? %>
+              <%= cl_image_tag swap.lunch.user.avatar.key, class: "avatar card-product-avatar" %>
+            <% else %>
+              <%= image_tag "avatar.png", class: "avatar card-product-avatar" %>
+            <% end %>
+          </div>
+          <%= link_to "Chat", swap_chatroom_path(swap, @message), class: "btn btn-primary" %>
         </div>
       </div>
     </div>

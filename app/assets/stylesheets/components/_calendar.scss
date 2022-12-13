@@ -1,0 +1,52 @@
+.simple-calendar {
+  table {
+    min-height: 30vh;
+  }
+  .today {
+    background-color: $tan
+  }
+}
+
+.simple-calendar .today {
+  background-color: $white;
+}
+
+.simple-calendar th{
+  text-align: center;
+}
+
+.simple-calendar td{
+  text-align: center;
+}
+
+.calendar-title {
+  margin: 0px 30px;
+  font-weight: 700;
+}
+
+.calendar-heading {
+  background-color: $tan;
+  color: $red;
+  padding: 1rem;
+  text-align: center;
+}
+
+.meeting {
+  margin: 10px 0;
+  background-color: $orange !important;
+  transition: background 0.3s ease;
+  color: $white;
+  padding: 8px 24px;
+  border-radius: 4px;
+}
+
+.calendar-heading a {
+  background-image: linear-gradient(180deg, $orange 0%, $red 100%);
+  background-position: cover;
+  border-radius: 15px;
+  color: $tan;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 30px;
+  text-decoration: none;
+}

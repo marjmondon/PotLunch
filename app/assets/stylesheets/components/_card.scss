@@ -10,6 +10,7 @@
   border-radius: 5px;
   margin: 60px;
   padding: 60px;
+  background-image: asset-url('bannertsp.jpg')
 }
 
 .card-category h1 {
@@ -17,6 +18,7 @@
   font-size: 60px;
   font-weight: bold;
   color: $gray;
+  text-shadow: 0px 0px 5px white;
 }
 
 .card-product {
@@ -80,6 +82,7 @@
   font-weight: bold;
   margin: 10px 10px;
   text-decoration: none;
+  text-shadow: 0px 0px 5px white;
 }
 
 .card-show-title p{

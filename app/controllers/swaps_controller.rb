@@ -4,9 +4,11 @@ class SwapsController < ApplicationController
   before_action :set_groups
 
   def index
-    @swaps = policy_scope(Swap)
+    # @swaps = policy_scope(Swap)
+    # @lunches_without_swap = Lunch.left_outer_joins(:swaps).where(user: current_user).where(swaps: { id: nil })
     @lunches = Lunch.where(user: current_user)
-    @swaps = Swap.where(lunch_id: @lunches)
+    @lunches_without_swap = @lunches.select { |lunch| lunch.swaps.empty? }
+    @swaps = policy_scope(Swap).where(lunch_id: @lunches)
     @swaps_asked = Swap.where(user_id: current_user)
     start_date = params.fetch(:start_date, Date.today).to_date
     @swaps_calendar = Swap.where(delivery_date: start_date.beginning_of_week..start_date.end_of_week)
@@ -30,6 +32,17 @@ class SwapsController < ApplicationController
     authorize @swap
 
     if @swap.save
+    #   if current_user == @swap.lunch.user
+    #     notif_user = @swap.user
+    #   else
+    #     notif_user = @swap.lunch.user
+    #   end
+
+    #   @notification = Notification.create(content: "Message: ", swap_id: @swap.id, user: notif_user)
+    #   UserChannel.broadcast_to(
+    #     @notification.user,
+    #     render_to_string(partial: "notification", locals: {notification: @notification})
+    #   )
       new_coins_current_user = current_user.coins - 10
       current_user.update!(coins: new_coins_current_user)
       redirect_to group_lunches_path(@lunch.group), notice: 'Your swap request was successfully created.'
@@ -90,7 +103,7 @@ class SwapsController < ApplicationController
   def swap_params
     params.require(:swap).permit(:user_id, :lunch_id, :delivery_date, :status, :start_date)
   end
-  
+
   def set_groups
     @usergroups = Usergroup.where(user_id: current_user)
     @groups = []

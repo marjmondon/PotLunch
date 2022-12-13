@@ -13,12 +13,24 @@
               <li class="nav-item">
                 <%= link_to "Dashboard", swaps_path, class: "nav-link" %>
               </li>
-              <li class="nav-item">
+              <%# <li class="nav-item"> %>
                 <%#= link_to "View lunches", group_lunches_path(current_user.group_ids), class: "nav-link" %>
-              </li>
+              <%# </li> %>
             </ul>
           <% end %>
       </div>
+
+      <li class="nav-item dropdown">
+        <div class="dropdown-toggle" id="notificationsDropdown" data-bs-toggle="dropdown">
+          <%= image_tag "notification.png" %>
+        </div>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown" data-notification-subscription-target="notifications">
+          <% @notifications.each do |notification| %>
+            <%= render "notifications/notification", notification: notification %>
+          <% end %>
+        </div>
+      </li>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

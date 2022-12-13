@@ -1,5 +1,5 @@
 class ChatroomPolicy < ApplicationPolicy
-  def show?
+  def index?
     true
   end
 

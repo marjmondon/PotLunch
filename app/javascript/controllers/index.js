@@ -10,11 +10,17 @@ application.register("alert", AlertController)
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
+import CopyLinkController from "./copy_link_controller"
+application.register("copy-link", CopyLinkController)
+
 import FilterLunchesController from "./filter_lunches_controller"
 application.register("filter-lunches", FilterLunchesController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import NotificationSubscriptionController from "./notification_subscription_controller"
+application.register("notification-subscription", NotificationSubscriptionController)
 
 import SwapSubscriptionController from "./swap_subscription_controller"
 application.register("swap-subscription", SwapSubscriptionController)

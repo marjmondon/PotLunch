@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :lunches, dependent: :destroy
   has_many :usergroups
   has_many :groups, through: :usergroups
+  has_many :notifications, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

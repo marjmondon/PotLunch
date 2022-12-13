@@ -4,7 +4,6 @@ class GroupsController < ApplicationController
   def index
     policy_scope(Group)
     @groups = Usergroup.where(user: current_user).map(&:group)
-    # raise
     @group = Group.new
   end
 
@@ -30,6 +29,22 @@ class GroupsController < ApplicationController
 
   def destroy
     authorize @group
+  end
+
+  def join
+    @group = Group.find(params[:group_id])
+    authorize @group
+    if @group.users.include?(current_user)
+      flash[:info] = "Mmh 🤔 seems like you already belong to #{@group.name}."
+      redirect_to root_path
+    else
+      @usergroup = Usergroup.new(user: current_user, group: @group)
+      if @usergroup.save
+        redirect_to group_lunches_path(@group), notice: "You have successfully joined #{@group.name}."
+      else
+        render :join, status: :unprocessable_entity
+      end
+    end
   end
 
   private

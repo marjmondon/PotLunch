@@ -22,7 +22,7 @@
 
       <li class="nav-item dropdown">
         <div class="dropdown-toggle" id="notificationsDropdown" data-bs-toggle="dropdown">
-        <% if @notifications.count == 0 %>
+        <% if @notifications.all?(&:read) %>
           <%= image_tag "notification_off.png" %>
         <% else %>
           <%= image_tag "notification.png" %>

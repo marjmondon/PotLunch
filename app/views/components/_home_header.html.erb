@@ -4,7 +4,7 @@
       <h1 class="header__title">Swap your lunch</h1>
       <p class="header__subtitle">Offer your lunch on your group and claim your colleagues’ lunch.</p>
       <% if user_signed_in? %>
-        <%= link_to "View lunches", group_lunches_path(current_user.group_ids), class:"header__button" %>
+        <%= link_to "View lunches", group_lunches_path(@groups[0]), class:"header__button" %>
       <% else%>
         <%= link_to "Start now", new_user_session_path, class:"header__button" %>
       <% end %>

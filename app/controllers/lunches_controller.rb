@@ -2,20 +2,15 @@ class LunchesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_lunch, only: %i[show edit update destroy]
   before_action :set_group
+  before_action :set_groups
 
   def index
     # @lunches = policy_scope(Lunch)
     # @group = policy_scope(Group)
     # @group = Group.find(params[:group_id])
     # @lunches = @group.lunches
-
-    if params[:query].present?
-      @lunches = policy_scope(Lunch).where("? = ANY (tags) AND group_id = ? ", params[:query], params[:group_id])
-      @group = policy_scope(Group).find(params[:group_id])
-    else
-      @group = policy_scope(Group).find(params[:group_id])
-      @lunches = policy_scope(Lunch).where("group_id = ? ", params[:group_id])
-    end
+    @group = policy_scope(Group).find(params[:group_id])
+    @lunches = policy_scope(Lunch).where("group_id = ? ", params[:group_id])
   end
 
   def show
@@ -26,7 +21,7 @@ class LunchesController < ApplicationController
 
   def new
     @lunch = Lunch.new
-    # @group = Group.find(params[:group_id])
+    @group = Group.find(params[:group_id])
     authorize @lunch
   end
 
@@ -79,6 +74,14 @@ class LunchesController < ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id])
+  end
+
+  def set_groups
+    @usergroups = Usergroup.where(user_id: current_user)
+    @groups = []
+    @usergroups.each do |usergroup|
+      @groups << usergroup.group
+    end
   end
 
   def edit_lunch_params

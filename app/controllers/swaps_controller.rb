@@ -17,7 +17,7 @@ class SwapsController < ApplicationController
     authorize @swap
 
     if current_user.coins < 10
-      flash[:alert] = "Mmh 🤔 seems like you don't have enough LunchCoins"
+      flash[:info] = "Mmh 🤔 seems like you don't have enough LunchCoins."
       redirect_to group_lunches_path(@lunch.group)
     end
   end
@@ -68,7 +68,11 @@ class SwapsController < ApplicationController
     @swap.lunch = @lunch
     @swap.delivery_date = Date.today
     authorize @swap
-    if @swap.save
+
+    if current_user.coins.zero?
+      flash[:alert] = "Mmh 🤔 seems like you don't have any LunchCoins"
+      redirect_to group_lunches_path(@lunch.group)
+    elsif @swap.save
       new_coins_current_user = current_user.coins - 10
       current_user.update!(coins: new_coins_current_user)
       redirect_to swap_chatroom_path(@swap)

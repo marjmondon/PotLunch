@@ -14,3 +14,11 @@
     </button>
   </div>
 <% end %>
+
+<div data-controller="alert">
+  <% if info %>
+    <div class="flash-missing-coins flash-info alert-missing-coins alert-dismissible fade show" role="alert">
+      <%= info %><%= link_to "Go to share a lunch", new_group_lunch_path(current_user.group_ids)%>
+    </div>
+  <% end %>
+</div>

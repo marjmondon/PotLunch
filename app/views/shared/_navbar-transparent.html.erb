@@ -5,6 +5,7 @@
     <% end %>
       <div>
         <% if user_signed_in? %>
+        <%# new users without group %>
           <% if current_user.groups.any? %>
             <ul class="navbar-nav me-auto">
               <li class="nav-item">

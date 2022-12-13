@@ -8,7 +8,14 @@ class MessagesController < ApplicationController
     @message.swap = @swap
     @message.user = current_user
     if @message.save
-      @notification = Notification.create(content: "Message: ", swap_id: @swap.id, user_id: @message.user_id)
+
+      if current_user == @swap.lunch.user
+        notif_user = @swap.user
+      else
+        notif_user = @swap.lunch.user
+      end
+
+      @notification = Notification.create(content: "Message: ", swap_id: @swap.id, user: notif_user)
       UserChannel.broadcast_to(
         @notification.user,
         render_to_string(partial: "notifications/notification", locals: {notification: @notification})

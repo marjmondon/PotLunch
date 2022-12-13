@@ -29,11 +29,17 @@ class SwapsController < ApplicationController
     authorize @swap
 
     if @swap.save
-      @notification = Notification.create(content: "Message: ", swap_id: @swap.id, user_id: @notification.swap.user_id)
-      UserChannel.broadcast_to(
-        @notification.user,
-        render_to_string(partial: "notification", locals: {notification: @notification})
-      )
+    #   if current_user == @swap.lunch.user
+    #     notif_user = @swap.user
+    #   else
+    #     notif_user = @swap.lunch.user
+    #   end
+
+    #   @notification = Notification.create(content: "Message: ", swap_id: @swap.id, user: notif_user)
+    #   UserChannel.broadcast_to(
+    #     @notification.user,
+    #     render_to_string(partial: "notification", locals: {notification: @notification})
+    #   )
       new_coins_current_user = current_user.coins - 10
       current_user.update!(coins: new_coins_current_user)
       redirect_to group_lunches_path(@lunch.group), notice: 'Your swap request was successfully created.'

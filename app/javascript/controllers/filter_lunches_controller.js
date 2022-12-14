@@ -6,12 +6,13 @@ export default class extends Controller {
   static values = { tag: String }
 
   connect() {
-    // console.log(this.alllunchesTarget);
+    // console.log("Hello");
   }
 
   showfilterlunches(event) {
     event.preventDefault()
     // console.log(event.params.tag)
+
     this.lunchTargets.forEach((lunchTarget) => {
 
       const tags = JSON.parse(lunchTarget.dataset.lunchTags)

@@ -79,13 +79,13 @@ class SwapsController < ApplicationController
         new_coins_current_user = current_user.coins + 10
         current_user.update!(coins: new_coins_current_user)
 
-
           if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
             @notification = Notification.create(content: "Lunch Accepted: ", swap_id: @swap.id, user: notif_user, category: "swap")
             UserChannel.broadcast_to(
               @notification.user,
               render_to_string(partial: "notifications/notification", locals: {notification: @notification})
             )
+            redirect_to swaps_path
           end
       end
 

@@ -23,7 +23,8 @@ export default class extends Controller {
   }
 
   #markNotificationAsRead(notificationUrl) {
-
+    const notificationId = notificationUrl.searchParams.get('notif')
+    fetch(`/notifications/mark_as_read?id=${notificationId}`)
   }
 
   #isUserInChatroom(notification) {

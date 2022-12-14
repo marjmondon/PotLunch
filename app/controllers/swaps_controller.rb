@@ -12,6 +12,11 @@ class SwapsController < ApplicationController
     @swaps_asked = Swap.where(user_id: current_user)
     start_date = params.fetch(:start_date, Date.today).to_date
     @swaps_calendar = Swap.where(delivery_date: start_date.beginning_of_week..start_date.end_of_week)
+
+    if params[:notif].present?
+      @notification = Notification.find(params[:notif].to_i)
+      @notification.update(read: true)
+    end
   end
 
   def new
@@ -84,17 +89,19 @@ class SwapsController < ApplicationController
           end
       end
 
-
-      if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
-        @notification = Notification.create(content: "Lunch Refused: ", swap_id: @swap.id, user: notif_user, category: "swap")
-        UserChannel.broadcast_to(
-          @notification.user,
-          render_to_string(partial: "notifications/notification", locals: {notification: @notification})
-        )
+      if @swap.refused?
+        if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
+          @notification = Notification.create(content: "Lunch Refused: ", swap_id: @swap.id, user: notif_user, category: "swap")
+          UserChannel.broadcast_to(
+            @notification.user,
+            render_to_string(partial: "notifications/notification", locals: {notification: @notification})
+          )
+          redirect_to swaps_path
+        end
       end
 
-      @swap.destroy if @swap.refused?
-      redirect_to swap_chatroom_path(@swap)
+      # @swap.destroy if @swap.refused?
+      # redirect_to swap_chatroom_path(@swap)
 
     else
       render :edit, status: :unprocessable_entity

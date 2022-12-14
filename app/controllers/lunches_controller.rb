@@ -14,7 +14,7 @@ class LunchesController < ApplicationController
   end
 
   def show
-    @swap = Swap.where(lunch_id: @lunch)
+    @swap = Swap.where(lunch_id: @lunch).where.not(status: :refused)
   end
 
   def new

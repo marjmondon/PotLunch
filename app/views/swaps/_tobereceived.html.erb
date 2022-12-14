@@ -33,19 +33,18 @@
           <strong><%= "Status:" %></strong> <%= swap.status %>
         </div>
       </div>
-        <div class="d-flex justify-content-between align-items-center my-3">
-          <div class="d-flex justify-content-between align-items-center w-50">
-            <div>
-              <strong><%= "From:" %> </strong> <%= swap.lunch.user.first_name.capitalize %>
-            </div>
-            <% if swap.user.avatar.attached? %>
-              <%= cl_image_tag swap.lunch.user.avatar.key, class: "avatar card-product-avatar" %>
-            <% else %>
-              <%= image_tag "avatar.png", class: "avatar card-product-avatar" %>
-            <% end %>
+      <div class="d-flex justify-content-between align-items-center my-3">
+        <div class="d-flex justify-content-between align-items-center w-50">
+          <div>
+            <strong><%= "From:" %> </strong> <%= swap.lunch.user.first_name.capitalize %>
           </div>
-          <%= link_to "Chat", swap_chatroom_path(swap, @message), class: "button-acc" %>
+          <% if swap.user.avatar.attached? %>
+            <%= cl_image_tag swap.lunch.user.avatar.key, class: "avatar card-product-avatar" %>
+          <% else %>
+            <%= image_tag "avatar.png", class: "avatar card-product-avatar" %>
+          <% end %>
         </div>
+        <%= link_to "Chat", swap_chatroom_path(swap, @message), class: "button-acc" %>
       </div>
     </div>
   </div>

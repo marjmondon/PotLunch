@@ -6,11 +6,11 @@
         <%= simple_form_for @group do |f| %>
           <%= f.input :name, required: true, autofocus: true %>
           <%= f.input :photo, as: :file %>
-      </div>
-      <div class="text-center">
-          <%= f.button :submit, "Submit", class: "form__button" %>
-      </div>
+          <div class="text-center">
+            <%= f.button :submit, "Submit", class: "form__button" %>
+          </div>
         <% end %>
+      </div>
     </div>
     <div class="col form-img">
       <%= image_tag('SWAPC.png', :class => "swap-image") %>

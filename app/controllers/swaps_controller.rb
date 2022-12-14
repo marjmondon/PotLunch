@@ -86,6 +86,7 @@ class SwapsController < ApplicationController
               @notification.user,
               render_to_string(partial: "notifications/notification", locals: {notification: @notification})
             )
+            redirect_to swaps_path
           end
       end
 

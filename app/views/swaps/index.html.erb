@@ -1,9 +1,10 @@
 <div class="container my-5 swap-page">
-  <nav class="accordion arrows">
+  <div class="accordion arrows">
     <div class="dash-banner">
       <h1><%= "#{current_user.first_name.capitalize}\'s PotList"  %></h1>
     </div>
-
+  </div>
+  <nav class="accordion arrows">
     <%# My Lunches  %>
     <input type="radio" name="accordion" id="cb1" />
     <section class="box mb-5">
@@ -24,9 +25,14 @@
         <%= render "tobereceived", swap: @swap %>
       </div>
     </section>
-    <input type="radio" name="accordion" id="acc-close" />
+    <input type="radio" name="accordion" id="acc-close" class="d-none" />
 
-    <%# calendar %>
     <%= render "calendar", swap: @swaps_calendar %>
   </nav>
 </div>
+ <%# calendar %>
+<%# <div class="container my-5">
+  <nav class="accordion arrow">
+
+  </nav>
+</div> %>

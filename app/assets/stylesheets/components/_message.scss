@@ -1,7 +1,11 @@
 .chatroom-container {
-  background-color: $white;
+  background-image: url("food-background.png");
+  background-size: 30%;
+  // background-position: center;
   padding: 10px;
   border-radius: 15px;
+  width: 1177px;
+  margin: 0 auto;
 }
 
 .validation-lunch {
@@ -30,12 +34,13 @@
 .sender-style {
   border: $orange 2px solid;
   border-radius: 15px;
+  background-color: $orange;
 }
 
 .receiver-style {
-  // background-color: $tan;
   border: $orange 2px solid;
   border-radius: 15px;
+  background-color: $tan;
 }
 
 .message-box {

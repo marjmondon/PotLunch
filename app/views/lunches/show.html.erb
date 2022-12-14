@@ -9,7 +9,12 @@
   <div>
     <ul class="d-flex justify-content-between">
       <div class ="d-flex">
-        <%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %>
+        <%# <%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %>
+        <% if User.find(@lunch.user_id).avatar.attached? %>
+          <%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %>
+        <% else %>
+          <%= image_tag "avatar.png", height: 60, class:"rounded-circle"  %>
+        <% end %>
         <li class="icons"><%= @lunch.user.first_name %> <%= @lunch.user.last_name %></li>
       </div>
       <div class="card-show-info-bar">

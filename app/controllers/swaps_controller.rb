@@ -45,12 +45,12 @@ class SwapsController < ApplicationController
       end
 
       if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
-         @notification = Notification.create(content: "Lunch Requested: ", swap_id: @swap.id, user: notif_user, category: "swap")
+        @notification = Notification.create(content: "Lunch Requested: ", swap_id: @swap.id, user: notif_user, category: "swap")
         UserChannel.broadcast_to(
           @notification.user,
           render_to_string(partial: "notifications/notification", locals: {notification: @notification})
         )
-     end
+      end
       new_coins_current_user = current_user.coins - 10
       current_user.update!(coins: new_coins_current_user)
       redirect_to group_lunches_path(@lunch.group), notice: 'Your swap request was successfully created.'

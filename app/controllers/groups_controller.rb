@@ -15,7 +15,6 @@ class GroupsController < ApplicationController
     if @usergroup.save
       redirect_to group_lunches_path(@group), notice: "#{@group.name} group was successfully created."
     else
-      raise
       render :new, status: :unprocessable_entity
     end
   end

@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_variables
-    @notifications = policy_scope(Notification)
+    @notifications = policy_scope(Notification).where(read: false)
   end
 
   # Pundit: allow-list approach

@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts 'Clear DB..'
-
+Notification.destroy_all
 Swap.destroy_all
 Message.destroy_all
 Lunch.destroy_all
@@ -60,6 +60,5 @@ hamburger.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/H
 
 pizza = Lunch.create!(cooking_date: "2022-12-08", title: "Pizza", user: marc_andre, group: le_wagon, tags: ["Vegan", "Gluten Free"], description: "The BEST vegan pizza made with a garlic-herb crust, simple tomato sauce, TONS of basil and cheese. I topped it with spicy olive oil. Thin crust, tons of flavor, and ridiculously satisfying.")
 pizza.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/pizza.jpg')), filename: "pizza.jpg", content_type: "image/jpg")
-
 
 puts 'Create lunches..'

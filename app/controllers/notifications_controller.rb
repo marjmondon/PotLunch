@@ -4,4 +4,11 @@ class NotificationsController < ApplicationController
   def index
     @notifications = policy_scope(Notification)
   end
+
+  def mark_as_read
+    @notification = Notification.find(params[:id].to_i)
+    authorize @notification
+    @notification.update(read: true)
+    head :ok
+  end
 end

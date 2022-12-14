@@ -24,14 +24,13 @@
           <ul class="navbar-nav me-auto">
   <%# notification on navbar %>
             <li class="nav-item dropdown ">
-              <div class="d-flex align-items-center px-1 dropdown-toggle" id="notificationsDropdown" data-bs-toggle="dropdown">
-                <% if @notifications.all?(&:read) %>
-                  <%= image_tag "notification_off.png" %>
-                <% else %>
-                  <%= image_tag "notification.png" %>
-                <% end %>
+              <div data-notification-subscription-target="notifbutton" class="d-flex align-items-center px-1 dropdown-toggle  <% if @notifications.all?(&:read) %> all-read <% end %>" id="notificationsDropdown" data-bs-toggle="dropdown">
+                <%= image_tag "notification.png" %>
               </div>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown" data-notification-subscription-target="notifications">
+              <% if @notifications.empty? %>
+                <div data-notification-subscription-target="nonotification" class="dropdown-item">No Notification</div>
+              <% end %>
                 <% @notifications.each do |notification| %>
                   <%= render "notifications/notification", notification: notification %>
                 <% end %>

@@ -1,21 +1,20 @@
-<% if !notification.read %>
-  <% if notification.message? %>
-      <%= link_to swap_chatroom_path(notification.swap.id, notif: notification.id), class: "dropdown-item" do %>
-      <%= notification.content %> for <%= notification.swap.lunch.title %> from
-      <% if notification.user == notification.swap.lunch.user %>
-        <%= notification.swap.user.first_name %>
-      <% else %>
-        <%= notification.swap.lunch.user.first_name %>
-      <% end %>
+
+<% if notification.message? %>
+    <%= link_to swap_chatroom_path(notification.swap.id, notif: notification.id), class: "dropdown-item" do %>
+    <%= notification.content %> for <%= notification.swap.lunch.title %> from
+    <% if notification.user == notification.swap.lunch.user %>
+      <%= notification.swap.user.first_name %>
+    <% else %>
+      <%= notification.swap.lunch.user.first_name %>
     <% end %>
-  <% elsif notification.swap? %>
-    <%= link_to swaps_path(notif: notification.id), class: "dropdown-item" do %>
-      <%= notification.content %> for <%= notification.swap.lunch.title %> from
-      <% if notification.user == notification.swap.lunch.user %>
-        <%= notification.swap.user.first_name %>
-      <% else %>
-        <%= notification.swap.lunch.user.first_name %>
-      <% end %>
+  <% end %>
+<% elsif notification.swap? %>
+  <%= link_to swaps_path(notif: notification.id), class: "dropdown-item" do %>
+    <%= notification.content %> for <%= notification.swap.lunch.title %> from
+    <% if notification.user == notification.swap.lunch.user %>
+      <%= notification.swap.user.first_name %>
+    <% else %>
+      <%= notification.swap.lunch.user.first_name %>
     <% end %>
   <% end %>
 <% end %>

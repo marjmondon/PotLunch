@@ -29,7 +29,7 @@
               </div>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown" data-notification-subscription-target="notifications">
               <% if @notifications.empty? %>
-                <div data-notification-subscription-target="nonotiification" hidden="" class="dropdown-item">No Notification</div>
+                <div data-notification-subscription-target="nonotiification" class="dropdown-item">No Notification</div>
               <% end %>
                 <% @notifications.each do |notification| %>
                   <%= render "notifications/notification", notification: notification %>

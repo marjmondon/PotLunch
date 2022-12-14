@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts 'Clear DB..'
-
+Notification.destroy_all
 Swap.destroy_all
 Message.destroy_all
 Lunch.destroy_all

@@ -12,7 +12,7 @@ export default class extends Controller {
       { received: notification => {
         this.#insertMessageAndScrollDown(notification)
         this.#updateNotificationButton()
-        this.notificationTarget.hidden = true
+
        } }
     )
   }

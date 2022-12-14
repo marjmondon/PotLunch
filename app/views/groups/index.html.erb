@@ -4,7 +4,7 @@
       <h1 class="text-center">Create new group </h1>
       <div class="form-inputs">
         <%= simple_form_for @group do |f| %>
-          <%= f.input :name %>
+          <%= f.input :name, required: true, autofocus: true %>
           <%= f.input :photo, as: :file %>
       </div>
       <div class="text-center">

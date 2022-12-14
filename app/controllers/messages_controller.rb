@@ -25,7 +25,6 @@ class MessagesController < ApplicationController
         )
       end
 
-
       SwapChannel.broadcast_to(
         @swap,
         message: render_to_string(partial: "message", locals: {message: @message}),

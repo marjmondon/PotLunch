@@ -95,3 +95,8 @@ input:checked + section.box .box-title:before {
   line-height: 1.2;
   border: none;
 }
+
+.button-acc:hover {
+  background-image: linear-gradient(160deg, $orange 0%, $red 80%);
+  color: $tan !important;
+}

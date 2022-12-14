@@ -4,7 +4,11 @@
 <%# <% end %>
 
   <div class="container">
-    <h1 class="title text-center p-3"><strong>When do you want to have this lunch?</strong></h1>
+
+    <div class="card-create-lunch-banner">
+      <h1 class="title text-center p-3"><strong>When do you want to have this lunch?</strong></h1>
+    </div>
+
     <%= simple_form_for ([@lunch, @swap]) do |f|  %>
       <div class="form-details">
 

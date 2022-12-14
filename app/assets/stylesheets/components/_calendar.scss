@@ -50,3 +50,8 @@
   padding: 5px 30px;
   text-decoration: none;
 }
+
+.calendar-heading a:hover {
+  background-image: linear-gradient(160deg, $orange 0%, $red 80%);
+  color: $tan;
+}

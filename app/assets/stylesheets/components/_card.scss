@@ -10,7 +10,8 @@
   border-radius: 5px;
   margin: 60px;
   padding: 60px;
-  background-image: asset-url('bannertsp.jpg')
+  background-image: asset-url('bannertsp.jpg');
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .card-category h1 {

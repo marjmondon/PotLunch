@@ -4,17 +4,17 @@
   </div>
 
 
-  <div class="container">
+  <div class="container text-center">
     <h1 class="title text-center p-3"><strong>What are you sharing today?</strong></h1>
     <%= simple_form_for ([@group, @lunch]) do |f|  %>
-      <div class="form-details">
+      <div class="row form-details">
 
-        <div class="title-cooking-date">
+        <div class="row title-cooking-date">
           <%= f.input :title, label: "Title", label_html: {class: "label-details"}, placeholder: "Title" %>
           <%= f.input :cooking_date, label: "Cooking date 📅", label_html: {class: "label-details"}, placeholder: "cooking date", as: :date, html5: true %>
         </div>
 
-        <div class="input-box-lunch">
+        <div class="row input-box-lunch">
           <%= f.input :recipe_url, label: "Link to recipe", label_html: {class: "label-details"}, placeholder: "Recipe_url" %>
         </div>
 
@@ -30,13 +30,11 @@
         <div class="input-box-lunch">
           <%= f.input :photos, label: "Photos", label_html: {class: "label-details"}, as: :file, input_html: { multiple: true } %>
         </div>
-
-        <div>
+        <div class="d-flex justify-content-center">
           <%= f.button :submit, "Update Lunch", class: "button-create-lunch"%>
-        </div>
           <% end %>
         </div>
       </div>
+    </div>
   </div>
-
 </div>

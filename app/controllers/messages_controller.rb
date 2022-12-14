@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
       end
 
       if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
-        @notification = Notification.create(content: "Message: ", swap_id: @swap.id, user: notif_user)
+        @notification = Notification.create(content: "Message in Chat: ", swap_id: @swap.id, user: notif_user, category: "message")
         UserChannel.broadcast_to(
           @notification.user,
           render_to_string(partial: "notifications/notification", locals: {notification: @notification})

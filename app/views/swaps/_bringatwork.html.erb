@@ -33,6 +33,7 @@
             <%= link_to "Chat", swap_chatroom_path(swap, @message), class: "btn btn-primary" %>
         </div>
           <%= simple_form_for(swap) do |f| %>
+            <%= hidden_field_tag 'notif', params[:notif] %>
             <div class="d-flex justify-content-between align-items-center my-3">
               <div class="w-50"> <%= f.input :status, :label => 'Do you want accept or decline this swap?', :collection => %w[accepted refused]%></div>
               <div> <%= f.button :submit, "Update swap", class: "btn btn-primary"  %></div>

@@ -4,5 +4,8 @@ class Notification < ApplicationRecord
   has_many :lunches, through: :swaps
   has_many :messages, through: :swaps
 
-
+  enum category: {
+    message: 0,
+    swap: 1
+  }
 end

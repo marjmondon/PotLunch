@@ -40,7 +40,7 @@ class SwapsController < ApplicationController
       end
 
       if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
-        @notification = Notification.create(content: "Lunch Claim: ", swap_id: @swap.id, user: notif_user)
+         @notification = Notification.create(content: "Lunch Requested: ", swap_id: @swap.id, user: notif_user, category: "swap")
         UserChannel.broadcast_to(
           @notification.user,
           render_to_string(partial: "notifications/notification", locals: {notification: @notification})
@@ -58,13 +58,44 @@ class SwapsController < ApplicationController
     @swap = Swap.find(params[:id])
     authorize @swap
     if @swap.update(swap_params)
-      if @swap.status == "accepted"
-        new_coins_current_user = current_user.coins + 10
-        current_user.update!(coins: new_coins_current_user)
+
+      if params[:notif].present?
+        @notification = Notification.find(params[:notif].to_i)
+        @notification.update(read: true)
       end
 
-      @swap.destroy if @swap.status == "refused"
+      if current_user == @swap.lunch.user
+        notif_user = @swap.user
+      else
+        notif_user = @swap.lunch.user
+      end
+
+      if @swap.accepted?
+        new_coins_current_user = current_user.coins + 10
+        current_user.update!(coins: new_coins_current_user)
+
+
+          if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
+            @notification = Notification.create(content: "Lunch Accepted: ", swap_id: @swap.id, user: notif_user, category: "swap")
+            UserChannel.broadcast_to(
+              @notification.user,
+              render_to_string(partial: "notifications/notification", locals: {notification: @notification})
+            )
+          end
+      end
+
+
+      if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
+        @notification = Notification.create(content: "Lunch Refused: ", swap_id: @swap.id, user: notif_user, category: "swap")
+        UserChannel.broadcast_to(
+          @notification.user,
+          render_to_string(partial: "notifications/notification", locals: {notification: @notification})
+        )
+      end
+
+      @swap.destroy if @swap.refused?
       redirect_to swap_chatroom_path(@swap)
+
     else
       render :edit, status: :unprocessable_entity
     end

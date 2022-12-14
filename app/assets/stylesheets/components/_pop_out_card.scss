@@ -1,3 +1,7 @@
+.form-link {
+  position: relative;
+}
+
 .pop-out-card {
   padding-bottom: 1px;
   width: 60px;
@@ -8,7 +12,7 @@
   background-color: white;
   display: inline-block;
   position: absolute;
-  top: 61%;
+  top: -92%;
   left: 26%;
   text-align: center;
   padding: 3px 0;

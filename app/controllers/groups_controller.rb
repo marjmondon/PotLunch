@@ -3,20 +3,20 @@ class GroupsController < ApplicationController
 
   def index
     policy_scope(Group)
-    @groups = Usergroup.where(user: current_user).map(&:group)
+    @groups = current_user.groups
     @group = Group.new
   end
 
   def create
     @group = Group.new(group_params)
-
-    if @group.save!
-      authorize @group
+    authorize @group
+    if @group.save
       @usergroup = Usergroup.new(user: current_user, group: @group)
       @usergroup.save
       redirect_to group_lunches_path(@group), notice: "#{@group.name} group was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      @groups = current_user.groups
+      render :index, status: :unprocessable_entity
     end
   end
 

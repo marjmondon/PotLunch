@@ -9,10 +9,11 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.save
-    authorize @group
-    @usergroup = Usergroup.new(user: current_user, group: @group)
-    if @usergroup.save
+
+    if @group.save!
+      authorize @group
+      @usergroup = Usergroup.new(user: current_user, group: @group)
+      @usergroup.save
       redirect_to group_lunches_path(@group), notice: "#{@group.name} group was successfully created."
     else
       render :new, status: :unprocessable_entity

@@ -146,3 +146,13 @@
   align-items: center;
   justify-content: space-evenly;
 }
+
+.card-caroussel {
+
+  border-radius: 20px;
+  overflow: hidden;
+  & > img {
+   border-radius: 20px;
+   object-fit: cover;
+ }
+}

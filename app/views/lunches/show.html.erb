@@ -1,11 +1,12 @@
 <div class="card-show">
-  <% if @lunch.photos.attached? %>
-    <% @lunch.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 480 %>
-    <% end %>
-  <% else %>
-    <%= image_tag('lunch.jpg') %>
-  <% end %>
+  <%= render "caroussel", lunch: @lunch %>
+  <%# <% if @lunch.photos.attached? %>
+    <%# <% @lunch.photos.each do |photo| %>
+      <%# <%= cl_image_tag photo.key, height: 480 %>
+    <%# <% end %>
+  <%# <% else %>
+    <%# <%= image_tag('lunch.jpg') %>
+  <%# <% end %>
   <div>
     <ul class="d-flex justify-content-between">
       <div class ="d-flex">

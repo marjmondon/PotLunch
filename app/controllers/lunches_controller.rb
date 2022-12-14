@@ -80,7 +80,7 @@ class LunchesController < ApplicationController
   end
 
   def edit_lunch_params
-    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :lunch_id, :user_id, tags: [], photos: [])
+    params.require(:lunch).permit(:cooking_date, :title, :description, :recipe_url, :lunch_id, :user_id, tags: [])
   end
 
   def lunch_params

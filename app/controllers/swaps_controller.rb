@@ -32,19 +32,20 @@ class SwapsController < ApplicationController
     authorize @swap
 
     if @swap.save
-      # pas toucher j en ai besoin pour demain
-      #remettre avec logique du if dans partial notification
-    #   if current_user == @swap.lunch.user
-    #     notif_user = @swap.user
-    #   else
-    #     notif_user = @swap.lunch.user
-    #   end
 
-    #   @notification = Notification.create(content: "Message: ", swap_id: @swap.id, user: notif_user)
-    #   UserChannel.broadcast_to(
-    #     @notification.user,
-    #     render_to_string(partial: "notification", locals: {notification: @notification})
-    #   )
+      if current_user == @swap.lunch.user
+        notif_user = @swap.user
+      else
+        notif_user = @swap.lunch.user
+      end
+
+      if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
+        @notification = Notification.create(content: "Lunch Claim: ", swap_id: @swap.id, user: notif_user)
+        UserChannel.broadcast_to(
+          @notification.user,
+          render_to_string(partial: "notifications/notification", locals: {notification: @notification})
+        )
+     end
       new_coins_current_user = current_user.coins - 10
       current_user.update!(coins: new_coins_current_user)
       redirect_to group_lunches_path(@lunch.group), notice: 'Your swap request was successfully created.'
@@ -63,7 +64,7 @@ class SwapsController < ApplicationController
       end
 
       @swap.destroy if @swap.status == "refused"
-      redirect_to swaps_path
+      redirect_to swap_chatroom_path(@swap)
     else
       render :edit, status: :unprocessable_entity
     end

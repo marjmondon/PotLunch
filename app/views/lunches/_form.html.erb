@@ -1,48 +1,27 @@
-<%# <%= simple_form_for ([@group, @lunch]) do |f|  %>
-  <%# <%= f.input :cooking_date, placeholder: "cooking date", as: :date, html5: true %>
-  <%# <%= f.input :title, placeholder: "Title" %>
-  <%# <%= f.input :description, placeholder: "Description" %>
-  <%# <%= f.input :recipe_url, placeholder: "Recipe_url" %>
-  <%# <%= f.input :tags, :collection => ["Vegan", "Vege", "Spicy", "Nuts", "Gluten", "Seafood"], as: :check_boxes,  input_html: { class: "tag-selector" }, %>
-              <%# item_wrapper_class: 'tag-item' %>
-  <%# <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%# <%= f.button :submit, "Create Lunch"%>
-<%# <% end %>
-
 <%= render "banner"%>
-
-  <div class="container">
-    <%= simple_form_for ([@group, @lunch]) do |f|  %>
-      <div class="form-details">
-
-        <div class="title-cooking-date">
-          <%= f.input :title, label: "Title", label_html: {class: "label-details"}, placeholder: "Title" %>
-          <%= f.input :cooking_date, label: "Cooking date 📅", label_html: {class: "label-details"}, placeholder: "cooking date", as: :date, html5: true %>
-        </div>
-
-        <div class="input-box-lunch">
-          <%= f.input :recipe_url, label: "Link to recipe", label_html: {class: "label-details"}, placeholder: "Recipe_url" %>
-        </div>
-
-        <div class="input-box-lunch">
-          <%= f.input :description, :as => :text, label: "Describe your lunch", label_html: {class: "label-details"}, placeholder: "Description" %>
-        </div>
-
-        <div class="input-box-lunch">
-          <%= f.input :tags, label: "Tags", label_html: {class: "label-details"}, :collection => ["Vegan", "Vegetarian", "Spicy", "Nuts Free", "Gluten Free", "Seafood"], as: :check_boxes,  input_html: { class: "tag-selector" },
-                      item_wrapper_class: 'tag-item' %>
-        </div>
-
-        <div class="input-box-lunch">
-          <%= f.input :photos, label: "Photos", label_html: {class: "label-details"}, as: :file, input_html: { multiple: true } %>
-        </div>
-
-        <div>
-          <%= f.button :submit, "Create Lunch", class: "button-create-lunch"%>
-        </div>
-          <% end %>
-        </div>
+<div class="container">
+  <%= simple_form_for ([@group, @lunch]) do |f|  %>
+    <div class="form-details">
+      <div class="title-cooking-date">
+        <%= f.input :title, label: "Title", label_html: {class: "label-details"}, placeholder: "Title" %>
+        <%= f.input :cooking_date, label: "Cooking date 📅", label_html: {class: "label-details"}, placeholder: "cooking date", as: :date, html5: true %>
       </div>
-  </div>
-
+      <div class="input-box-lunch">
+        <%= f.input :recipe_url, label: "Link to recipe", label_html: {class: "label-details"}, placeholder: "Recipe_url" %>
+      </div>
+      <div class="input-box-lunch">
+        <%= f.input :description, :as => :text, label: "Describe your lunch", label_html: {class: "label-details"}, placeholder: "Description" %>
+      </div>
+      <div class="input-box-lunch">
+        <%= f.input :tags, label: "Tags", label_html: {class: "label-details"}, :collection => ["Vegan", "Vegetarian", "Spicy", "Nuts Free", "Gluten Free", "Seafood"], as: :check_boxes,  input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %>
+      </div>
+      <div class="input-box-lunch">
+        <%= f.input :photos, label: "Photos", label_html: {class: "label-details"}, as: :file, input_html: { multiple: true } %>
+      </div>
+      <div>
+        <%= f.button :submit, "Create Lunch", class: "button-create-lunch"%>
+      </div>
+    </div>
+  <% end %>
 </div>
+

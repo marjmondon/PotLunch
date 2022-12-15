@@ -50,7 +50,7 @@
   <div class="card-show-title">
     <h1 class=" text-center"><%= @lunch.title.capitalize %></h1>
     <div class="d-flex align-items-center">
-      <p><strong>Cooking date : </strong></p><%= @lunch.cooking_date %>
+      <p><strong>Cooking date : </strong></p><%= @lunch.cooking_date.strftime("%B %d %Y")  %>
     </div>
     <div class="d-flex align-items-center">
       <p><strong>Lunch coins : </strong></p><%= "10" %>

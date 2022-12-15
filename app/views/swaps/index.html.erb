@@ -1,12 +1,12 @@
 <div class="container my-5 swap-page">
   <div class="dash-banner">
-      <h1><%= "#{current_user.first_name.capitalize}\'s PotList"  %></h1>
+      <h1><%= "#{current_user.first_name.capitalize}\'s Dashboard"  %></h1>
   </div>
   <nav class="accordion arrows">
     <%# My Lunches  %>
     <input type="radio" name="accordion" id="cb1" />
     <section class="box mb-5">
-      <label class="box-title" for="cb1"> My Lunches</label>
+      <label class="box-title" for="cb1">My Lunches</label>
       <label class="box-close" for="acc-close"></label>
       <div class="box-content">
          <%= render "bringatwork" %>
@@ -17,7 +17,7 @@
     <%# Lunches to be received %>
     <input type="radio" name="accordion" id="cb2" />
     <section class="box mb-5">
-      <label class="box-title" for="cb2">Lunches' from my PotFriends</label>
+      <label class="box-title" for="cb2">Lunches from my PotLunch friends</label>
       <label class="box-close" for="acc-close"></label>
       <div class="box-content">
         <%= render "tobereceived", swap: @swap %>

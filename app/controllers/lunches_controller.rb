@@ -11,6 +11,7 @@ class LunchesController < ApplicationController
     # @lunches = @group.lunches
     @group = policy_scope(Group).find(params[:group_id])
     @lunches = policy_scope(Lunch).where("group_id = ? ", params[:group_id])
+    @swaps = Swap.where(lunch_id: @lunches).where.not(status: :refused)
   end
 
   def show

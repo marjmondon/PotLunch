@@ -80,11 +80,13 @@
             </div>
             <%#= lunch.tokens %>
             <div class="d-flex align-items-center pe-4">
-              <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button text-end " %>
-              <%# <% if (lunch.swaps.exists? == false) %>
-                <%# <%= link_to "Gone", group_lunches_path(current_user.group_ids), class:"header__button-disable text-end " %>
-              <%# <% else %>
-              <%# <% end %>
+              <%# @swaps.each do |swap| %>
+                <% if lunch.swaps.exists?%>
+                  <%= link_to "Gone", group_lunch_path(@group, lunch), class:"btn btn-secondary header__button text-end disabled" %>
+                <% else %>
+                  <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button text-end" %>
+                <% end %>
+              <%# end %>
             </div>
           </div>
         </div>

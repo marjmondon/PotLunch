@@ -1,76 +1,69 @@
-<div class="card-show">
-  <%= render "caroussel", lunch: @lunch %>
-  <%# <% if @lunch.photos.attached? %>
-    <%# <% @lunch.photos.each do |photo| %>
-      <%# <%= cl_image_tag photo.key, height: 480 %>
-    <%# <% end %>
-  <%# <% else %>
-    <%# <%= image_tag('lunch.jpg') %>
-  <%# <% end %>
-  <div>
-    <ul class="d-flex justify-content-between align-items-center">
-      <div class ="d-flex">
-        <%# <%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %>
-        <% if User.find(@lunch.user_id).avatar.attached? %>
-          <%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %>
-        <% else %>
-          <%= image_tag "avatar.png", height: 60, class:"rounded-circle"  %>
-        <% end %>
-        <li class="icons"><%= @lunch.user.first_name.capitalize %> <%= @lunch.user.last_name.capitalize %></li>
-      </div>
-      <div class="card-show-info-bar">
-        <% if @lunch.tags.include?("Vegan") %>
-          <%= image_tag("vegan.png", class: "home-icons-show")%>
-        <% end %>
+<div class="container">
+  <div class="card-show">
+    <%= render "caroussel", lunch: @lunch %>
+    <div>
+      <ul class="d-flex justify-content-between align-items-center">
+        <div class ="d-flex">
+          <%# <%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %>
+          <% if User.find(@lunch.user_id).avatar.attached? %>
+            <%= cl_image_tag User.find(@lunch.user_id).avatar.key, height: 60, class:"rounded-circle" %>
+          <% else %>
+            <%= image_tag "avatar.png", height: 60, class:"rounded-circle"  %>
+          <% end %>
+          <li class="icons"><%= @lunch.user.first_name.capitalize %> <%= @lunch.user.last_name.capitalize %></li>
+        </div>
+        <div class="card-show-info-bar">
+          <% if @lunch.tags.include?("Vegan") %>
+            <%= image_tag("vegan.png", class: "home-icons-show")%>
+          <% end %>
 
-        <% if @lunch.tags.include?("Vegetarian") %>
-          <%= image_tag("vege.png", class: "home-icons-show")%>
-        <% end %>
+          <% if @lunch.tags.include?("Vegetarian") %>
+            <%= image_tag("vege.png", class: "home-icons-show")%>
+          <% end %>
 
-        <% if @lunch.tags.include?("Gluten Free") %>
-          <%= image_tag("glutenfree.png", class: "home-icons-show")%>
-        <% end %>
+          <% if @lunch.tags.include?("Gluten Free") %>
+            <%= image_tag("glutenfree.png", class: "home-icons-show")%>
+          <% end %>
 
-        <% if @lunch.tags.include?("Seafood") %>
-          <%= image_tag("shrimp.png", class: "home-icons-show")%>
-        <% end %>
+          <% if @lunch.tags.include?("Seafood") %>
+            <%= image_tag("shrimp.png", class: "home-icons-show")%>
+          <% end %>
 
-        <% if @lunch.tags.include?("Nuts Free") %>
-          <%= image_tag("peanut.png", class: "home-icons-show")%>
-        <% end %>
-        <% if @lunch.tags.include?("Spicy") %>
-          <%= image_tag("spicy.png", class: "home-icons-show")%>
-        <% end %>
-      </div>
-    </ul>
-  </div>
-</div>
-
-<div class="card-show-info">
-  <div class="card-show-title">
-    <h1 class=" text-center"><%= @lunch.title.capitalize %></h1>
-    <div class="d-flex align-items-center">
-      <p><strong>Cooking date : </strong></p><%= @lunch.cooking_date.strftime("%B %d %Y")  %>
-    </div>
-    <div class="d-flex align-items-center">
-      <p><strong>Lunch coins : </strong></p><%= "10" %>
-    </div>
-    <div class="d-flex align-items-center">
-      <p><strong>Recipe url : </strong><a href="<%= @lunch.recipe_url %>" target="_blank"><%= @lunch.recipe_url %></a></p>
-    </div>
-    <div class="d-flex align-items-center">
-    <p><strong>Description : </strong><%= @lunch.description %></p>
+          <% if @lunch.tags.include?("Nuts Free") %>
+            <%= image_tag("peanut.png", class: "home-icons-show")%>
+          <% end %>
+          <% if @lunch.tags.include?("Spicy") %>
+            <%= image_tag("spicy.png", class: "home-icons-show")%>
+          <% end %>
+        </div>
+      </ul>
     </div>
   </div>
-</div>
-
-<div class="text-center d-flex justify-content-evenly">
-  <% if policy(@lunch).edit? %>
-    <%= link_to "Edit this lunch", edit_group_lunch_path([@group, @lunch]), class:"header__button" %>
-  <% end %>
-  <%= button_to "Destroy this lunch", group_lunch_path([@group,@lunch]), class:"header__button",  method: :delete if policy(@lunch).destroy? %>
-  <% if (@lunch.user != current_user) && (@swap.exists? == false) %>
-    <%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), method: :post, class:"header__button-outlined", data: {turbo_method: :post} %>
-    <%= link_to "Claim this lunch", new_lunch_swap_path(@lunch), class:"header__button"  %>
-  <% end %>
+  <div class="card-show-info">
+    <div class="card-show-title">
+      <h1 class=" text-center"><%= @lunch.title.capitalize %></h1>
+      <div class="d-flex align-items-center">
+        <p><strong>Cooking date : </strong></p><%= @lunch.cooking_date.strftime("%B %d %Y")  %>
+      </div>
+      <div class="d-flex align-items-center">
+        <p><strong>Lunch coins : </strong></p><%= "10" %>
+      </div>
+      <div class="d-flex align-items-center">
+        <p><strong>Recipe url : </strong><a href="<%= @lunch.recipe_url %>" target="_blank"><%= @lunch.recipe_url %></a></p>
+      </div>
+      <div class="d-flex align-items-center">
+      <p><strong>Description : </strong><%= @lunch.description %></p>
+      </div>
+    </div>
+  </div>
+  <div class="text-center d-flex justify-content-evenly">
+    <% if policy(@lunch).edit? %>
+      <%= link_to "Edit this lunch", edit_group_lunch_path([@group, @lunch]), class:"header__button" %>
+    <% end %>
+    <%= button_to "Destroy this lunch", group_lunch_path([@group,@lunch]), class:"header__button",  method: :delete if policy(@lunch).destroy? %>
+    <% if (@lunch.user != current_user) && (@swap.exists? == false) %>
+      <%= link_to "Chat for more details", new_swap_for_chat_path(@lunch), method: :post, class:"header__button-outlined", data: {turbo_method: :post} %>
+      <%= link_to "Claim this lunch", new_lunch_swap_path(@lunch), class:"header__button"  %>
+    <% end %>
+  </div>
 </div>

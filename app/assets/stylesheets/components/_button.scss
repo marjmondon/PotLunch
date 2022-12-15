@@ -28,26 +28,8 @@
   border-style: none;
 }
 
-<<<<<<< HEAD
 .header__buttond {
   background-image: linear-gradient(180deg, #b0b0b0 0%, $light-gray 100%);
-=======
-.button-chat:hover {
-  background-image: linear-gradient(160deg, $orange 0%, $red 80%);
-  color: $tan !important;
-  border: 0px;
-}
-
-
-.header__button:hover {
-  background-image: linear-gradient(160deg, $orange 0%, $red 80%);
-  color: $tan !important;
-  border: 0px;
-}
-
-.header__button-disable a {
-  background-image: linear-gradient(180deg, $light-gray 0%, $light-gray 100%);
->>>>>>> master
   background-position: cover;
   border-radius: 15px;
   color: $tan;

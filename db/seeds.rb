@@ -55,7 +55,7 @@ Usergroup.create!(user: john_doe, group: desjardins)
 
 puts 'Create users..'
 
-chili = Lunch.create!(cooking_date: "2022-12-08", title: "The Best Classic Chili", user: flo, group: le_wagon, tags: ["Spicy", "Vegan"], description: "This traditional chili recipe is just like mom used to make with soy protein, beans, and a simple homemade blend of chili seasonings. Our friends couldn't come last night so we have way too much for us two! Even if it's good, I rather eat something else as a lunch.")
+chili = Lunch.create!(cooking_date: "2022-12-08", title: "The Best Classic Chili", user: flo, group: le_wagon, tags: ["Spicy", "Vegan", "Gluten Free", "Nuts Free"], description: "This traditional chili recipe is just like mom used to make with soy protein, beans, and a simple homemade blend of chili seasonings. Our friends couldn't come last night so we have way too much for us two! Even if it's good, I rather eat something else as a lunch.")
 chili.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/chili.jpg')), filename: "chili.jpg", content_type: "image/jpg")
 
 lasagna = Lunch.create!(cooking_date: "2022-12-08", title: "My mom's lasagna", user: lamia, group: le_wagon, tags: ["Vegetarian", "Spicy"], description: "This is my mom's recipe. Just made a bunch of it (way too much! I'm telling you, just the best lasagna you'll ever get. Extra tomato sauce, amazing vegetables, 3 differents cheese.")
@@ -70,10 +70,18 @@ pizza.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/pizza
 risotto = Lunch.create!(cooking_date: "2022-12-08", title: "Bluebird's Risotto", user: elon, group: le_wagon, tags: ["Vegan"], description: "Go on Twitter to see description.", recipe_url: "https://twitter.com/")
 risotto.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/risotto.jpg')), filename: "risotto.jpg", content_type: "image/jpg")
 
-croque = Lunch.create!(cooking_date: "2022-12-08", title: "Albuquerque's Croque Mr", user: walter, group: le_wagon, tags: ["Vegetarian", "Seafood"], description: "Particularly fresh cheeses and good quality of blue meth! I added spinash, onions, mushrooms, shrimp and LOVE!")
+croque = Lunch.create!(cooking_date: "2022-12-08", title: "Albuquerque's Croque Mr", user: walter, group: le_wagon, tags: ["Vegetarian"], description: "Particularly fresh cheeses and good quality of blue meth! I added spinash, onions, mushrooms, shrimp and LOVE!")
 croque.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/croque.jpg')), filename: "croque.jpg", content_type: "image/jpg")
 
 salmon = Lunch.create!(cooking_date: "2022-12-08", title: "Best smoked salmon", user: walter, group: le_wagon, tags: ["Gluten Free", "Seafood"], description: "Perfectly smoked salmon is one of those simple exquisite indulgences that is so satisfying. Salmon and smoke are just meant for each other. While the process is both a science and an art, it's really so much easier to make at home than you might think.", recipe_url: "https://www.eatthis.com/grilled-salmon-chermoula-chickpeas-recipe/")
 salmon.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/salmonchickpeas.png')), filename: "salmonchickpeas.png", content_type: "image/png")
 
 puts 'Create lunches..'
+
+swap_walter = Swap.new(status: "pending", user_id: walter.id, lunch_id: chili.id, delivery_date: "#{Date.today}")
+swap_walter.save!
+
+swap_elon = Swap.new(status: "pending", user_id: elon.id, lunch_id: hamburger.id, delivery_date: "#{Date.today}")
+swap_elon.save!
+
+puts 'Create swaps..'

@@ -29,7 +29,7 @@ class LunchesController < ApplicationController
     @lunch.group = @group
     authorize @lunch
     @lunches = Lunch.where(user_id: current_user)
-    current_user.update!(coins: 10) if @lunches.count.zero?
+    current_user.update!(coins: 20) if @lunches.count.zero?
 
     if @lunch.save
       redirect_to group_lunches_path(@group), notice: 'Your lunch was successfully created.'

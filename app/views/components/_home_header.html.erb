@@ -1,6 +1,6 @@
 <div class="header d-flex align-items-center justify-content-between">
   <div class="header__background d-flex justify-content-between">
-    <div class="header__content  flex-column justify-content-center">
+    <div class="header__content  flex-column justify-content-center pt-5 ps-5">
       <h1 class="header__title">Swap your lunch</h1>
       <p class="header__subtitle">Never eat twice the same lunch again !</p>
       <% if user_signed_in?%>
@@ -12,9 +12,9 @@
       <% else%>
         <%= link_to "Start now", new_user_session_path, class:"header__button" %>
       <% end %>
-      <div class="homeh d-flex justify-content-end align-items-center ps-5">
-        <%= image_tag('homeh.png') %>
-      </div>
+    </div>
+    <div class="homeh d-flex justify-content-end align-items-center ps-5">
+      <%= image_tag('homeh.png') %>
     </div>
   </div>
 </div>

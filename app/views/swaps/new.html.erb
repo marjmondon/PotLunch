@@ -1,27 +1,17 @@
-<%# <%= simple_form_for ([@lunch, @swap]) do |f|  %>
-  <%# <%= f.input :delivery_date, placeholder: "delivery date", as: :date, html5: true %>
-  <%# <%= f.button :submit, "Ask for Lunch"%>
-<%# <% end %>
-
   <div class="container">
-
     <div class="card-create-lunch-banner">
       <h1 class="title text-center p-3"><strong>When do you want to have this lunch?</strong></h1>
     </div>
-
     <%= simple_form_for ([@lunch, @swap]) do |f|  %>
       <div class="form-details">
-
         <div class="input-box-lunch">
           <%= f.input :delivery_date, label: "Delivery date", label_html: {class: "label-details"}, placeholder: "Delivery date", as: :date, html5: true  %>
         </div>
-
         <div>
-          <%= f.button :submit, "Ask this Lunch", class: "button-create-lunch"%>
+          <%= f.button :submit, "Claim this Lunch", class: "button-create-lunch"%>
         </div>
           <% end %>
         </div>
       </div>
   </div>
-
 </div>

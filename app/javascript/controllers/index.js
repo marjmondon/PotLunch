@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ActiveCurrentGroupController from "./active_current_group_controller"
+application.register("active-current-group", ActiveCurrentGroupController)
+
 import AlertController from "./alert_controller"
 application.register("alert", AlertController)
 

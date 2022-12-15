@@ -11,6 +11,7 @@ class LunchesController < ApplicationController
     # @lunches = @group.lunches
     @group = policy_scope(Group).find(params[:group_id])
     @lunches = policy_scope(Lunch).where("group_id = ? ", params[:group_id])
+    @swaps = Swap.where(lunch_id: @lunches).where.not(status: :refused)
   end
 
   def show
@@ -29,7 +30,7 @@ class LunchesController < ApplicationController
     @lunch.group = @group
     authorize @lunch
     @lunches = Lunch.where(user_id: current_user)
-    current_user.update!(coins: 10) if @lunches.count.zero?
+    current_user.update!(coins: 20) if @lunches.count.zero?
 
     if @lunch.save
       redirect_to group_lunches_path(@group), notice: 'Your lunch was successfully created.'

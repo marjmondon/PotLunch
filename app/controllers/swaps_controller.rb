@@ -86,19 +86,22 @@ class SwapsController < ApplicationController
               @notification.user,
               render_to_string(partial: "notifications/notification", locals: {notification: @notification})
             )
-            redirect_to swaps_path
           end
+        redirect_to swaps_path, notice: 'Swap have been accepted.'
       end
 
       if @swap.refused?
+        new_coins_user = @swap.user.coins + 10
+        @swap.user.update!(coins: new_coins_user)
+
         if @swap.notifications.all? { |n| n.read } || @swap.notifications.empty?
           @notification = Notification.create(content: "Lunch Refused: ", swap_id: @swap.id, user: notif_user, category: "swap")
           UserChannel.broadcast_to(
             @notification.user,
-            render_to_string(partial: "notifications/notification", locals: {notification: @notification})
+            render_to_string(partial: "notifications/notification", locals: { notification: @notification })
           )
-          redirect_to swaps_path
         end
+        redirect_to swaps_path, notice: 'Swap have been refused.'
       end
 
       # @swap.destroy if @swap.refused?

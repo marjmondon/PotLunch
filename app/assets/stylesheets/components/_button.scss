@@ -35,7 +35,7 @@
   border: 0px;
 }
 
-.header__button-disable {
+.header__button-disable a {
   background-image: linear-gradient(180deg, $light-gray 0%, $light-gray 100%);
   background-position: cover;
   border-radius: 15px;
@@ -46,7 +46,7 @@
   text-decoration: none;
 }
 
-.header__button-disable:hover {
+.header__button-disable:hover a {
   background-image: linear-gradient(160deg, $light-gray 0%, $light-gray 80%);
   color: $tan;
 }

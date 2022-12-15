@@ -8,7 +8,7 @@
       <% end %>
       <div class="card-product-infos w-100">
         <div class="mb-3">
-          <h2><strong><%= swap.lunch.title.capitalize %></strong></h2>
+          <h2><strong><%= link_to swap.lunch.title.capitalize, group_lunch_path(swap.lunch.group_id, swap.lunch) %></strong></h2>
         </div>
         <%# LUNCH REQUESTED %>
         <% if swap.status == "requested" %>

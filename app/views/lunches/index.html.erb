@@ -24,13 +24,13 @@
   <%# filter %>
   <div class="col mb-5 filter_index d-flex">
     <div class="col filter_index d-flex justify-content-around">
-        <span data-action="click->filter-lunches#showalllunches" data-filter-lunches-tag-param="all"><%= image_tag("all.png", class: "home-icons active")%></span>
-        <span data-action='click->filter-lunches#showfilterlunches' data-filter-lunches-tag-param="Vegan"><%= image_tag("vegan.png", :class=> "home-icons")%></span>
-        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Vegetarian"><%= image_tag("vege.png", class: "home-icons")%></span>
-        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Gluten Free"><%= image_tag("glutenfree.png", class: "home-icons")%></span>
-        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Seafood"><%= image_tag("shrimp.png", class: "home-icons")%></span>
-        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Nuts Free"><%= image_tag("peanut.png", class: "home-icons")%></span>
-        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Spicy"><%= image_tag("spicy.png", class: "home-icons")%></span>
+        <span data-action="click->filter-lunches#showalllunches" data-filter-lunches-tag-param="all" ><%= image_tag("all.png", class: "home-icons active")%></span>
+        <span data-action='click->filter-lunches#showfilterlunches' data-filter-lunches-tag-param="Vegan" ><%= image_tag("vegan.png", :class=> "home-icons")%></span>
+        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Vegetarian" ><%= image_tag("vege.png", class: "home-icons")%></span>
+        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Gluten Free" ><%= image_tag("glutenfree.png", class: "home-icons")%></span>
+        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Seafood" ><%= image_tag("shrimp.png", class: "home-icons")%></span>
+        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Nuts Free" ><%= image_tag("peanut.png", class: "home-icons")%></span>
+        <span data-action="click->filter-lunches#showfilterlunches" data-filter-lunches-tag-param="Spicy" ><%= image_tag("spicy.png", class: "home-icons")%></span>
     </div>
   </div>
     <%# fin du filter %>
@@ -80,11 +80,13 @@
             </div>
             <%#= lunch.tokens %>
             <div class="d-flex align-items-center pe-4">
-              <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button text-end " %>
-              <%# <% if (lunch.swaps.exists? == false) %>
-                <%# <%= link_to "Gone", group_lunches_path(current_user.group_ids), class:"header__button-disable text-end " %>
-              <%# <% else %>
-              <%# <% end %>
+              <%# @swaps.each do |swap| %>
+                <% if lunch.swaps.exists?%>
+                  <%= link_to "Gone", group_lunch_path(@group, lunch), class:"btn btn-secondary header__button text-end disabled" %>
+                <% else %>
+                  <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button text-end" %>
+                <% end %>
+              <%# end %>
             </div>
           </div>
         </div>

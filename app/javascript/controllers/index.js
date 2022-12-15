@@ -27,3 +27,6 @@ application.register("notification-subscription", NotificationSubscriptionContro
 
 import SwapSubscriptionController from "./swap_subscription_controller"
 application.register("swap-subscription", SwapSubscriptionController)
+
+import TooltipController from "./tooltip_controller"
+application.register("tooltip", TooltipController)

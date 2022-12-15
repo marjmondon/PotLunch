@@ -55,9 +55,13 @@ class LunchesController < ApplicationController
   end
 
   def destroy
-    # @group = Group.find(params[:group_id])
-    @lunch.destroy
-    redirect_to group_lunches_path(@group), status: :see_other
+    if @lunch.swaps.nil?
+      @lunch.destroy
+      redirect_to group_lunches_path(@group), status: :see_other
+    else
+      flash[:alert] = "Mmh 🤔 seems like there is a swap in process for this lunch."
+      redirect_to group_lunch_path([@group, @lunch])
+    end
   end
 
   private

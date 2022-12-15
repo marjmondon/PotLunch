@@ -55,7 +55,7 @@ class LunchesController < ApplicationController
   end
 
   def destroy
-    if @lunch.swaps.nil?
+    if @lunch.swaps.empty?
       @lunch.destroy
       redirect_to group_lunches_path(@group), status: :see_other
     else

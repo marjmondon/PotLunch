@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   inlight(event) {
-    event.preventDefault()
+    // event.preventDefault()
     // console.log(event);
 
     this.groupTargets.forEach((groupTarget) => {

@@ -14,7 +14,7 @@
         <% if swap.status == "requested" %>
           <div class="d-flex justify-content-between align-items-center my-3" >
           <div>
-            <strong><%= "Delivery date:" %> </strong> <%= swap.delivery_date %>
+            <strong><%= "Delivery date:" %> </strong> <%= swap.delivery_date.strftime("%B %d %Y") %>
           </div>
           <div>
             <strong><%= "Status:" %></strong> <%= swap.status %>
@@ -35,7 +35,7 @@
           </div>
             <%= simple_form_for(swap) do |f| %>
               <div class="d-flex justify-content-between align-items-center my-3">
-                <div class="w-50"> <%= f.input :status, :label => 'Do you want accept or decline this swap?', :collection => %w[accepted refused]%></div>
+                <div class="w-50"> <%= f.input :status, :label => 'Do you want accept or decline this swap?', :collection => %w[accepted refused], :prompt => "" %></div>
                 <div> <%= f.button :submit, "Update swap", class: "button-acc"  %></div>
               </div>
             <% end %>
@@ -44,7 +44,7 @@
         <% elsif swap.status == "accepted" %>
           <div class="d-flex justify-content-between align-items-center my-3" >
           <div>
-            <strong><%= "Delivery date:" %> </strong> <%= swap.delivery_date %>
+            <strong><%= "Delivery date:" %> </strong> <%= swap.delivery_date.strftime("%B %d %Y") %>
           </div>
           <div>
             <strong><%= "Status:" %></strong> <%= swap.status %>

@@ -11,7 +11,7 @@
       </div>
       <div class="d-flex justify-content-between align-items-center my-3" >
         <div>
-          <strong><%= "Delivery date:" %> </strong> <%= swap.delivery_date %>
+          <strong><%= "Delivery date:" %> </strong> <%= swap.delivery_date.strftime("%B %d %Y") %>
         </div>
         <div>
           <strong><%= "Status:" %></strong> <%= swap.status %>

@@ -1,13 +1,14 @@
+
 <ul class="nav flex-column vertical-nav">
   <% @groups.each do |group| %>
     <li class="nav-item">
-    <span data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" title="<%= group.name %>">
+    <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" title="<%= group.name %>">
       <% if group.photo.attached? %>
         <%= link_to cl_image_tag(group.photo.key, :class => "group-logo"), group_lunches_path(group) %>
       <% else %>
         <%= link_to image_tag('wagon.png', :class => "group-logo"), group_lunches_path(group) %>
       <% end %>
-    </span>
+    </div>
     </li>
   <% end %>
   <li class="nav-item">

@@ -87,7 +87,7 @@ class SwapsController < ApplicationController
               render_to_string(partial: "notifications/notification", locals: {notification: @notification})
             )
           end
-          redirect_to swaps_path
+        redirect_to swaps_path, notice: 'Swap have been accepted.'
       end
 
       if @swap.refused?
@@ -98,10 +98,10 @@ class SwapsController < ApplicationController
           @notification = Notification.create(content: "Lunch Refused: ", swap_id: @swap.id, user: notif_user, category: "swap")
           UserChannel.broadcast_to(
             @notification.user,
-            render_to_string(partial: "notifications/notification", locals: {notification: @notification})
+            render_to_string(partial: "notifications/notification", locals: { notification: @notification })
           )
         end
-        redirect_to swaps_path
+        redirect_to swaps_path, notice: 'Swap have been refused.'
       end
 
       # @swap.destroy if @swap.refused?

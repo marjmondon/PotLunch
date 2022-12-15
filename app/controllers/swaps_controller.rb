@@ -87,7 +87,7 @@ class SwapsController < ApplicationController
               render_to_string(partial: "notifications/notification", locals: {notification: @notification})
             )
           end
-        redirect_to swaps_path, notice: 'Swap have been accepted.'
+        redirect_to swaps_path, notice: 'Swap has been accepted.'
       end
 
       if @swap.refused?
@@ -101,7 +101,7 @@ class SwapsController < ApplicationController
             render_to_string(partial: "notifications/notification", locals: { notification: @notification })
           )
         end
-        redirect_to swaps_path, notice: 'Swap have been refused.'
+        redirect_to swaps_path, notice: 'Swap has been refused.'
       end
 
       # @swap.destroy if @swap.refused?

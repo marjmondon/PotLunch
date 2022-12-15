@@ -1,6 +1,6 @@
-<ul class="nav flex-column vertical-nav">
+<ul class="nav flex-column vertical-nav" data-controller="active-current-group">
   <% @groups.each do |group| %>
-    <li class="nav-item">
+    <li class="nav-item" data-active-current-group-target="group" data-action="click->active-current-group#inlight">
       <% if group.photo.attached? %>
         <%= link_to cl_image_tag(group.photo.key, :class => "group-logo"), group_lunches_path(group) %>
       <% else %>
@@ -12,7 +12,3 @@
     <%= link_to image_tag("AddGroupButton.png", class: "nav-link-vertical"), groups_path, data: { turbo: false } %>
   </li>
 </ul>
-
-
-
-

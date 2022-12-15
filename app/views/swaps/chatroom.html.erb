@@ -30,13 +30,13 @@
 
   <% if @swap.lunch.user == current_user %>
     <div class="validation-lunch">
-      <% if @swap.status == "pending" || @swap.status == "requested" %>
+      <%# if @swap.status == "pending" || @swap.status == "requested" %>
         <%= simple_form_for(@swap) do |f| %>
           <%= f.input :status, :label => 'Do you want accepted or declined this swap?', :collection => %w[accepted refused]%>
           <%= f.input :delivery_date, :label => 'When do you want to swap this lunch?', placeholder: "Delivery date", as: :date, html5: true %>
           <%= f.button :submit, "Update swap", class: "button-chat mb-3" %>
         <% end %>
-      <% end %>
+      <%# end %>
     </div>
   <% end %>
 </div>

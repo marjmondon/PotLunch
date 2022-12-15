@@ -82,7 +82,7 @@
             <div class="d-flex align-items-center pe-4">
               <%# @swaps.each do |swap| %>
                 <% if lunch.swaps.exists?%>
-                  <%= link_to "Claimed", group_lunch_path(@group, lunch), class:"btn btn-secondary header__button text-end disabled" %>
+                  <%= link_to "Claimed", group_lunch_path(@group, lunch), class:"btn btn-info header__buttond disabled" %>
                 <% else %>
                   <%= link_to "Infos", group_lunch_path(@group, lunch), class:"header__button text-end" %>
                 <% end %>

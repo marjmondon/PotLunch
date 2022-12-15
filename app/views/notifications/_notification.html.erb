@@ -5,7 +5,7 @@
     <% if notification.user == notification.swap.lunch.user %>
       <%= notification.swap.user.first_name.capitalize %>
     <% else %>
-      <%= notification.swap.lunch.user.first_name %>
+      <%= notification.swap.lunch.user.first_name.capitalize %>
     <% end %>
   <% end %>
 <% elsif notification.swap? %>
@@ -14,7 +14,7 @@
     <% if notification.user == notification.swap.lunch.user %>
       <%= notification.swap.user.first_name.capitalize %>
     <% else %>
-      <%= notification.swap.lunch.user.first_name %>
+      <%= notification.swap.lunch.user.first_name.capitalize %>
     <% end %>
   <% end %>
 <% end %>

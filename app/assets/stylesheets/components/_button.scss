@@ -22,9 +22,16 @@
   border-style: none;
 }
 
+.button-chat:hover {
+  background-image: linear-gradient(160deg, $orange 0%, $red 80%);
+  color: $tan !important;
+  border: 0px;
+}
+
+
 .header__button:hover {
   background-image: linear-gradient(160deg, $orange 0%, $red 80%);
-  color: $tan;
+  color: $tan !important;
   border: 0px;
 }
 

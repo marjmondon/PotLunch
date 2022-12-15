@@ -16,7 +16,7 @@
         <% else %>
           <%= image_tag "avatar.png", height: 60, class:"rounded-circle"  %>
         <% end %>
-        <li class="icons"><%= @lunch.user.first_name %> <%= @lunch.user.last_name %></li>
+        <li class="icons"><%= @lunch.user.first_name.capitalize %> <%= @lunch.user.last_name.capitalize %></li>
       </div>
       <div class="card-show-info-bar">
         <% if @lunch.tags.include?("Vegan") %>
@@ -56,7 +56,7 @@
       <p><strong>Lunch coins : </strong></p><%= "10" %>
     </div>
     <div class="d-flex align-items-center">
-      <p><strong>Recipe url : </strong><%= @lunch.recipe_url %></p>
+      <p><strong>Recipe url : </strong><a href="<%= @lunch.recipe_url %>" target="_blank"><%= @lunch.recipe_url %></a></p>
     </div>
     <div class="d-flex align-items-center">
     <p><strong>Description : </strong><%= @lunch.description %></p>
